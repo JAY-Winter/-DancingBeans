@@ -100,13 +100,13 @@ def main():
             name_position = output['result'][j]['recognition_words'][0]
 
             if name_position == "이름" :
+                
+                
+            
 
-                print(name_position)
-            # print(output['result'][j]['recognition_words'])
-
-        # OCR_result.json file 중 0번째 index 가 이름 value
-        student_name = OCR_result['recognition_words'][0]
-        # print(student_name)
+        
+        # student_name = OCR_result['recognition_words'][0]
+        
 
         # 첫 번째 파일의 이름을 json 파일에서 추출한 student_name 으로 선언하고
         # 이어서 두 번째 파일 이름을 첫 번째 파일에서 (1)을 더한 이름으로 선언
