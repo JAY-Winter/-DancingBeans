@@ -13,7 +13,6 @@ class MenuListViewController: UIViewController, SelectOptionDelegate{
     
     @IBOutlet var menuChooseButton: [UIButton]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +27,6 @@ class MenuListViewController: UIViewController, SelectOptionDelegate{
         
     }
     
-    
     @IBAction func selectMenuButtonTapped(_ sender: UIButton) {
         
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
@@ -38,12 +36,14 @@ class MenuListViewController: UIViewController, SelectOptionDelegate{
         if let menu = sender.titleLabel?.text! {
             
             main.setCommonMenuInfo(menuName: menu)
-            
-            
             SelectOptionVC.productName = menu
-            SelectOptionVC.productPrice = main.menuInfo?.menuPrice ?? 0 //menuPrice
-            SelectOptionVC.productMenuImage = UIImage(named: menu)
+            SelectOptionVC.productPrice = main.menuInfoInstance.menuPrice
             
+            if let menuImage = UIImage(named: menu){
+                SelectOptionVC.productMenuImage = menuImage
+            } else {
+                SelectOptionVC.productMenuImage = UIImage(named: "Sorry :(")
+            }
             self.present(SelectOptionVC, animated: true, completion: nil)
         }
         

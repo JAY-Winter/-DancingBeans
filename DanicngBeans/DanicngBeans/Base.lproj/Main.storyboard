@@ -99,23 +99,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Filter" titleAlignment="trailing">
+                                <buttonConfiguration key="configuration" style="gray" title="Black Tea" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="wb0-jj-570"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9e-kh-eSZ">
-                                <rect key="frame" x="20" y="628" width="339" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Espresso" titleAlignment="trailing">
-                                    <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="RYS-IW-1ai"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39c-X0-9k2">
@@ -148,7 +136,6 @@
                         <outletCollection property="menuChooseButton" destination="SHf-Ut-456" collectionClass="NSMutableArray" id="RMM-Mw-auL"/>
                         <outletCollection property="menuChooseButton" destination="SWC-Bg-In6" collectionClass="NSMutableArray" id="41L-cr-bk1"/>
                         <outletCollection property="menuChooseButton" destination="s1d-QI-ob0" collectionClass="NSMutableArray" id="bRJ-A3-ppP"/>
-                        <outletCollection property="menuChooseButton" destination="g9e-kh-eSZ" collectionClass="NSMutableArray" id="bge-df-Qmm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-nF-65n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
