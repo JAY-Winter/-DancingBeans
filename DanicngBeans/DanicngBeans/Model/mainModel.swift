@@ -38,7 +38,7 @@ class MainModel {
         var menuShot: Int?
         
     }
-    
+    //test
     
     //    var menuInfo: MenuInfo?
     var menuInfoInstance = MenuInfo()
