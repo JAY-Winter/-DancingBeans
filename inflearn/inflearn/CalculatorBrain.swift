@@ -138,6 +138,7 @@
 //            case .BinaryOperation : break
 //            case .Equals : break
 //
+
 //
 //            }
 //        }
@@ -160,6 +161,7 @@
 //}
 
 import Foundation
+import UIKit
 
 func multiply(op1: Double, op2: Double) -> Double {
     return op1 * op2
@@ -167,7 +169,9 @@ func multiply(op1: Double, op2: Double) -> Double {
 
 class CalculatorBrain {
     
-    var accumlator = 0.0
+    private var accumlator = 0.0
+    //    private var internalProgram = [Any]()
+    private var internalProgram = [AnyObject]()
     
     var result: Double {
         get {
@@ -178,6 +182,7 @@ class CalculatorBrain {
     func setOperand(operand: Double) {
         
         accumlator = operand
+        internalProgram.append(operand)
         
     }
     
@@ -210,12 +215,25 @@ class CalculatorBrain {
     
     private var pending: PendingBinaryOperationInfo?
     
+    typealias PropertyList = AnyObject
+    
+    var program: PropertyList {
+        get {
+            return internalProgram
+        }
+        set {
+        }
+    }
+    
+    
+    
+    
     func performOperation(symbol: String) {
         
+        internalProgram.append(symbol)
         if let operations = operations[symbol] {
             
             switch operations {
-                
             case .Constant(let value) :
                 accumlator = value
             case .UnaryOperation(let function) :
@@ -237,4 +255,8 @@ class CalculatorBrain {
         }
     }
 }
+
+
+
+
 

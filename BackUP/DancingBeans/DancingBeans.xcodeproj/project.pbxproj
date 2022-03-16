@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		303A2CB827AACDBF004873D9 /* PayTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A2CB727AACDBF004873D9 /* PayTableDelegate.swift */; };
+		3045450C27C4FD9A006848D8 /* mainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3045450B27C4FD9A006848D8 /* mainModel.swift */; };
+		30534FA12785E49300EE5B61 /* SecondMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30534FA02785E49200EE5B61 /* SecondMenuViewController.swift */; };
+		30534FA52786FC1500EE5B61 /* CornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30534FA42786FC1500EE5B61 /* CornerButton.swift */; };
+		30534FA727887B8800EE5B61 /* OrderMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30534FA627887B8800EE5B61 /* OrderMenuViewController.swift */; };
+		3074969627AFAFB30083ECC1 /* SelectOptionBottomSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074969527AFAFB30083ECC1 /* SelectOptionBottomSheetDelegate.swift */; };
+		30796DEA279A4D0600B9B80B /* SelectOptionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30796DE9279A4D0600B9B80B /* SelectOptionDelegate.swift */; };
+		30796DEC279A884C00B9B80B /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30796DEB279A884B00B9B80B /* MenuListViewController.swift */; };
+		30796DEE279A885700B9B80B /* SelectOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30796DED279A885700B9B80B /* SelectOptionViewController.swift */; };
+		3079CEE527AFA709002FB579 /* SelectOptionBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079CEE427AFA709002FB579 /* SelectOptionBottomSheetViewController.swift */; };
+		3098685527B1215D007C1B06 /* OptionShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3098685427B1215C007C1B06 /* OptionShotViewController.swift */; };
+		3098685727B546D4007C1B06 /* test1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3098685627B546D4007C1B06 /* test1ViewController.swift */; };
+		3098685927B546E6007C1B06 /* test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3098685827B546E6007C1B06 /* test2ViewController.swift */; };
+		3098685B27B55A23007C1B06 /* testDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3098685A27B55A23007C1B06 /* testDelegate.swift */; };
+		30A80C6827A299450040374D /* PayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A80C6727A299450040374D /* PayTableViewController.swift */; };
+		30A80C6A27A2E8AE0040374D /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A80C6927A2E8AE0040374D /* Value.swift */; };
+		30C89E49277C9CFF007A3D0B /* NaverLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C89E48277C9CFF007A3D0B /* NaverLoginViewController.swift */; };
+		78998DB4277B5E7400D022B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78998DB3277B5E7400D022B1 /* AppDelegate.swift */; };
+		78998DB6277B5E7400D022B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78998DB5277B5E7400D022B1 /* SceneDelegate.swift */; };
+		78998DB8277B5E7400D022B1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78998DB7277B5E7400D022B1 /* StartViewController.swift */; };
+		78998DBB277B5E7400D022B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78998DB9277B5E7400D022B1 /* Main.storyboard */; };
+		78998DBD277B5E7900D022B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78998DBC277B5E7900D022B1 /* Assets.xcassets */; };
+		78998DC0277B5E7900D022B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78998DBE277B5E7900D022B1 /* LaunchScreen.storyboard */; };
+		CD12EB22EFF6A19D798B1954 /* Pods_DancingBeans.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5724DFB6F9FC08A2A815DD8 /* Pods_DancingBeans.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01EA4DF1E22EE8727EC8433C /* Pods-DancingBeans.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DancingBeans.debug.xcconfig"; path = "Target Support Files/Pods-DancingBeans/Pods-DancingBeans.debug.xcconfig"; sourceTree = "<group>"; };
+		303A2CB727AACDBF004873D9 /* PayTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableDelegate.swift; sourceTree = "<group>"; };
+		3045450B27C4FD9A006848D8 /* mainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainModel.swift; sourceTree = "<group>"; };
+		30534FA02785E49200EE5B61 /* SecondMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMenuViewController.swift; sourceTree = "<group>"; };
+		30534FA42786FC1500EE5B61 /* CornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerButton.swift; sourceTree = "<group>"; };
+		30534FA627887B8800EE5B61 /* OrderMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderMenuViewController.swift; sourceTree = "<group>"; };
+		3074969527AFAFB30083ECC1 /* SelectOptionBottomSheetDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionBottomSheetDelegate.swift; sourceTree = "<group>"; };
+		30796DE9279A4D0600B9B80B /* SelectOptionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionDelegate.swift; sourceTree = "<group>"; };
+		30796DEB279A884B00B9B80B /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
+		30796DED279A885700B9B80B /* SelectOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };
+		3079CEE427AFA709002FB579 /* SelectOptionBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionBottomSheetViewController.swift; sourceTree = "<group>"; };
+		3098685427B1215C007C1B06 /* OptionShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionShotViewController.swift; sourceTree = "<group>"; };
+		3098685627B546D4007C1B06 /* test1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test1ViewController.swift; sourceTree = "<group>"; };
+		3098685827B546E6007C1B06 /* test2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2ViewController.swift; sourceTree = "<group>"; };
+		3098685A27B55A23007C1B06 /* testDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testDelegate.swift; sourceTree = "<group>"; };
+		30A80C6727A299450040374D /* PayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewController.swift; sourceTree = "<group>"; };
+		30A80C6927A2E8AE0040374D /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		30C89E48277C9CFF007A3D0B /* NaverLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLoginViewController.swift; sourceTree = "<group>"; };
+		38FF4395008AAE6FC610568C /* Pods-DancingBeans.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DancingBeans.release.xcconfig"; path = "Target Support Files/Pods-DancingBeans/Pods-DancingBeans.release.xcconfig"; sourceTree = "<group>"; };
+		78998DB0277B5E7400D022B1 /* DancingBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DancingBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78998DB3277B5E7400D022B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78998DB5277B5E7400D022B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		78998DB7277B5E7400D022B1 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		78998DBA277B5E7400D022B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		78998DBC277B5E7900D022B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		78998DBF277B5E7900D022B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		78998DC1277B5E7900D022B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5724DFB6F9FC08A2A815DD8 /* Pods_DancingBeans.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DancingBeans.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		78998DAD277B5E7400D022B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD12EB22EFF6A19D798B1954 /* Pods_DancingBeans.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		303A2CB627A67BA6004873D9 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				30796DE9279A4D0600B9B80B /* SelectOptionDelegate.swift */,
+				303A2CB727AACDBF004873D9 /* PayTableDelegate.swift */,
+				30A80C6927A2E8AE0040374D /* Value.swift */,
+				3074969527AFAFB30083ECC1 /* SelectOptionBottomSheetDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		78998DA7277B5E7400D022B1 = {
+			isa = PBXGroup;
+			children = (
+				78998DB2277B5E7400D022B1 /* DancingBeans */,
+				78998DB1277B5E7400D022B1 /* Products */,
+				BA81B1130E26DDA552AB88D8 /* Pods */,
+				F942D57389FFA34060603105 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		78998DB1277B5E7400D022B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78998DB0277B5E7400D022B1 /* DancingBeans.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78998DB2277B5E7400D022B1 /* DancingBeans */ = {
+			isa = PBXGroup;
+			children = (
+				303A2CB627A67BA6004873D9 /* Delegate */,
+				78998DD0277C407F00D022B1 /* Model */,
+				78998DB3277B5E7400D022B1 /* AppDelegate.swift */,
+				78998DB5277B5E7400D022B1 /* SceneDelegate.swift */,
+				30534FA42786FC1500EE5B61 /* CornerButton.swift */,
+				78998DCB277C2B2200D022B1 /* ViewController */,
+				78998DB9277B5E7400D022B1 /* Main.storyboard */,
+				3098685627B546D4007C1B06 /* test1ViewController.swift */,
+				3098685A27B55A23007C1B06 /* testDelegate.swift */,
+				3098685827B546E6007C1B06 /* test2ViewController.swift */,
+				78998DBC277B5E7900D022B1 /* Assets.xcassets */,
+				78998DBE277B5E7900D022B1 /* LaunchScreen.storyboard */,
+				78998DC1277B5E7900D022B1 /* Info.plist */,
+			);
+			path = DancingBeans;
+			sourceTree = "<group>";
+		};
+		78998DCB277C2B2200D022B1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				78998DB7277B5E7400D022B1 /* StartViewController.swift */,
+				30C89E48277C9CFF007A3D0B /* NaverLoginViewController.swift */,
+				30534FA02785E49200EE5B61 /* SecondMenuViewController.swift */,
+				30534FA627887B8800EE5B61 /* OrderMenuViewController.swift */,
+				30796DEB279A884B00B9B80B /* MenuListViewController.swift */,
+				30A80C6727A299450040374D /* PayTableViewController.swift */,
+				30796DED279A885700B9B80B /* SelectOptionViewController.swift */,
+				3079CEE427AFA709002FB579 /* SelectOptionBottomSheetViewController.swift */,
+				3098685427B1215C007C1B06 /* OptionShotViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		78998DD0277C407F00D022B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3045450B27C4FD9A006848D8 /* mainModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BA81B1130E26DDA552AB88D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01EA4DF1E22EE8727EC8433C /* Pods-DancingBeans.debug.xcconfig */,
+				38FF4395008AAE6FC610568C /* Pods-DancingBeans.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F942D57389FFA34060603105 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5724DFB6F9FC08A2A815DD8 /* Pods_DancingBeans.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		78998DAF277B5E7400D022B1 /* DancingBeans */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78998DC4277B5E7900D022B1 /* Build configuration list for PBXNativeTarget "DancingBeans" */;
+			buildPhases = (
+				54F287B357BD8EEA41BE3361 /* [CP] Check Pods Manifest.lock */,
+				78998DAC277B5E7400D022B1 /* Sources */,
+				78998DAD277B5E7400D022B1 /* Frameworks */,
+				78998DAE277B5E7400D022B1 /* Resources */,
+				188E5CD08128607C4BCD33A6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DancingBeans;
+			productName = Dancing_Ted;
+			productReference = 78998DB0277B5E7400D022B1 /* DancingBeans.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78998DA8277B5E7400D022B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					78998DAF277B5E7400D022B1 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 78998DAB277B5E7400D022B1 /* Build configuration list for PBXProject "DancingBeans" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 78998DA7277B5E7400D022B1;
+			productRefGroup = 78998DB1277B5E7400D022B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				78998DAF277B5E7400D022B1 /* DancingBeans */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		78998DAE277B5E7400D022B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78998DC0277B5E7900D022B1 /* LaunchScreen.storyboard in Resources */,
+				78998DBD277B5E7900D022B1 /* Assets.xcassets in Resources */,
+				78998DBB277B5E7400D022B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		188E5CD08128607C4BCD33A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DancingBeans/Pods-DancingBeans-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DancingBeans/Pods-DancingBeans-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DancingBeans/Pods-DancingBeans-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54F287B357BD8EEA41BE3361 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DancingBeans-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78998DAC277B5E7400D022B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				303A2CB827AACDBF004873D9 /* PayTableDelegate.swift in Sources */,
+				3098685927B546E6007C1B06 /* test2ViewController.swift in Sources */,
+				78998DB8277B5E7400D022B1 /* StartViewController.swift in Sources */,
+				30534FA12785E49300EE5B61 /* SecondMenuViewController.swift in Sources */,
+				78998DB4277B5E7400D022B1 /* AppDelegate.swift in Sources */,
+				30A80C6A27A2E8AE0040374D /* Value.swift in Sources */,
+				30796DEE279A885700B9B80B /* SelectOptionViewController.swift in Sources */,
+				3098685B27B55A23007C1B06 /* testDelegate.swift in Sources */,
+				30796DEC279A884C00B9B80B /* MenuListViewController.swift in Sources */,
+				78998DB6277B5E7400D022B1 /* SceneDelegate.swift in Sources */,
+				30534FA727887B8800EE5B61 /* OrderMenuViewController.swift in Sources */,
+				3074969627AFAFB30083ECC1 /* SelectOptionBottomSheetDelegate.swift in Sources */,
+				30C89E49277C9CFF007A3D0B /* NaverLoginViewController.swift in Sources */,
+				3045450C27C4FD9A006848D8 /* mainModel.swift in Sources */,
+				30534FA52786FC1500EE5B61 /* CornerButton.swift in Sources */,
+				3098685527B1215D007C1B06 /* OptionShotViewController.swift in Sources */,
+				30796DEA279A4D0600B9B80B /* SelectOptionDelegate.swift in Sources */,
+				30A80C6827A299450040374D /* PayTableViewController.swift in Sources */,
+				3079CEE527AFA709002FB579 /* SelectOptionBottomSheetViewController.swift in Sources */,
+				3098685727B546D4007C1B06 /* test1ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		78998DB9277B5E7400D022B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78998DBA277B5E7400D022B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		78998DBE277B5E7900D022B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				78998DBF277B5E7900D022B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		78998DC2277B5E7900D022B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		78998DC3277B5E7900D022B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78998DC5277B5E7900D022B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01EA4DF1E22EE8727EC8433C /* Pods-DancingBeans.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H69592229C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DancingBeans/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DancingBeans;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jaywinter.DancingBeans;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78998DC6277B5E7900D022B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38FF4395008AAE6FC610568C /* Pods-DancingBeans.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H69592229C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DancingBeans/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DancingBeans;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jaywinter.DancingBeans;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		78998DAB277B5E7400D022B1 /* Build configuration list for PBXProject "DancingBeans" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78998DC2277B5E7900D022B1 /* Debug */,
+				78998DC3277B5E7900D022B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78998DC4277B5E7900D022B1 /* Build configuration list for PBXNativeTarget "DancingBeans" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78998DC5277B5E7900D022B1 /* Debug */,
+				78998DC6277B5E7900D022B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78998DA8277B5E7400D022B1 /* Project object */;
+}

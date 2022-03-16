@@ -29,7 +29,7 @@
         <!--Menu List View Controller-->
         <scene sceneID="bRd-wk-05W">
             <objects>
-                <viewController id="9Lp-SY-Eko" customClass="MenuListViewController" customModule="DancingBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9Lp-SY-Eko" customClass="MenuListViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bbY-v1-zm5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,7 +145,7 @@
         <!--Select Option View Controller-->
         <scene sceneID="GDu-NZ-3aA">
             <objects>
-                <viewController storyboardIdentifier="SelectOptionViewController" id="SZr-oH-CY7" customClass="SelectOptionViewController" customModule="DancingBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectOptionViewController" id="SZr-oH-CY7" customClass="SelectOptionViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eTo-JW-crp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,7 +242,7 @@
         <!--Pay Table View Controller-->
         <scene sceneID="cYL-hq-Ddm">
             <objects>
-                <viewController storyboardIdentifier="PayTableViewController" id="NIk-fF-Kvt" customClass="PayTableViewController" customModule="DancingBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PayTableViewController" id="NIk-fF-Kvt" customClass="PayTableViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afZ-lx-bv8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,7 +292,7 @@
         <!--Select Option Bottom Sheet View Controller-->
         <scene sceneID="sMN-Ot-HHK">
             <objects>
-                <viewController storyboardIdentifier="SelectOptionBottomSheetViewController" id="shU-Gj-QNh" customClass="SelectOptionBottomSheetViewController" customModule="DancingBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectOptionBottomSheetViewController" id="shU-Gj-QNh" customClass="SelectOptionBottomSheetViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LVy-Ek-sUf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -386,7 +386,7 @@
         <!--Option Shot View Controller-->
         <scene sceneID="Zcl-Ja-ZaM">
             <objects>
-                <viewController storyboardIdentifier="OptionShotViewController" id="OkZ-vI-OhW" customClass="OptionShotViewController" customModule="DancingBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OptionShotViewController" id="OkZ-vI-OhW" customClass="OptionShotViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="THh-bb-MlY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

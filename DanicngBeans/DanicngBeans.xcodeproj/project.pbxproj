@@ -30,6 +30,7 @@
 		30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */; };
 		30D702E827C60EA80044B4B6 /* MenuCartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E427C60EA80044B4B6 /* MenuCartDelegate.swift */; };
 		30D702EA27C60ED70044B4B6 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E927C60ED70044B4B6 /* Value.swift */; };
+		30F7AB7627E06D4A00C0359D /* calculatePriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F7AB7527E06D4A00C0359D /* calculatePriceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableDelegate.swift; sourceTree = "<group>"; };
 		30D702E427C60EA80044B4B6 /* MenuCartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCartDelegate.swift; sourceTree = "<group>"; };
 		30D702E927C60ED70044B4B6 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		30F7AB7527E06D4A00C0359D /* calculatePriceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calculatePriceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				30D702DE27C604020044B4B6 /* mainModel.swift */,
 				30D702E927C60ED70044B4B6 /* Value.swift */,
+				30F7AB7527E06D4A00C0359D /* calculatePriceModel.swift */,
 			);
 			name = Model;
 			path = DanicngBeans/Model;
@@ -221,6 +224,7 @@
 				30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */,
 				30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */,
 				30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */,
+				30F7AB7627E06D4A00C0359D /* calculatePriceModel.swift in Sources */,
 				30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */,
 				30D702DF27C604020044B4B6 /* mainModel.swift in Sources */,
 				30D702D227C603FB0044B4B6 /* SelectOptionViewController.swift in Sources */,

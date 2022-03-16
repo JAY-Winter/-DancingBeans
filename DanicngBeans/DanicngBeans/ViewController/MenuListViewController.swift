@@ -7,36 +7,31 @@
 
 import UIKit
 
-class MenuListViewController: UIViewController, SelectOptionDelegate{
+class MenuListViewController: UIViewController{
     
     private var main = MainModel()
     
     @IBOutlet var menuChooseButton: [UIButton]!
     
+    //-------------------------------------------------------------------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     private func setUI() {
         navigationController?.navigationBar.isHidden = true
     }
-    
-    // (3) 프로토콜의 메서드를 구현한 부분 / 현재는 필요 없음
-    func alarmCartIsFilled(itemCount: Int) {
-        
-    }
-    
+    // MARK: - User actions
+    //-------------------------------------------------------------------------------------------------------------------------------------------
     @IBAction func selectMenuButtonTapped(_ sender: UIButton) {
         
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
-        SelectOptionVC.delegate = self // (2) SelectOptionVC의 권한 대신함
-        
         
         if let menu = sender.titleLabel?.text! {
             
             main.setCommonMenuInfo(menuName: menu)
-            SelectOptionVC.productName = menu
+            SelectOptionVC.productName = main.menuInfoInstance.menuName
             SelectOptionVC.productPrice = main.menuInfoInstance.menuPrice
             
             if let menuImage = UIImage(named: menu){
@@ -44,10 +39,8 @@ class MenuListViewController: UIViewController, SelectOptionDelegate{
             } else {
                 SelectOptionVC.productMenuImage = UIImage(named: "Sorry :(")
             }
+            
             self.present(SelectOptionVC, animated: true, completion: nil)
         }
-        
-        
-        
     }
 }
