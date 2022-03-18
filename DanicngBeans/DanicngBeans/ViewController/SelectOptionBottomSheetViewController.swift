@@ -9,40 +9,48 @@ import UIKit
 
 
 class SelectOptionBottomSheetViewController: UIViewController {
+    
+    let main = MainModel.shared
+    
     var menuName: String?
-    var shotCount: String?
+    var shotCount: Int?
     
     @IBOutlet weak var menuNameLabel: UILabel!
-    @IBOutlet var shotCountLabel: UILabel!
+    @IBOutlet var shotCountLabel: UILabel?
     
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menuNameLabel.text = self.menuName
-        shotCountLabel.text = "Esspresso 1shot"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let ad = UIApplication.shared.delegate as? AppDelegate
-        
-        if let testLabel = ad?.shotCountTest {
-            print("nil 아니네용")
-            shotCountLabel.text = ("Esspresso \(testLabel)shot")
-        } else {
-            print("bottom sheet 일 때 작동하는 지 확인")
-        }
+        menuNameLabel.text = menuName
+        shotCountLabel?.text = shotCount?.description
     }
     
     // MARK: - User actions
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    
     @IBAction func selectShot(_ sender: Any) {
-        let SelectOptionShotBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "OptionShotViewController") as! OptionShotViewController
+        guard let AfterVC = self.storyboard?.instantiateViewController(withIdentifier: "OptionShotViewController") as? OptionShotViewController else { return }
         
-        // bottomsheet 생성
-        if let sheet = SelectOptionShotBottomSheetVC.sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
-        present(SelectOptionShotBottomSheetVC, animated: true, completion: nil)
+        AfterVC.delegate = self
+        
+        AfterVC.sheetPresentationController?.detents = [.medium()]
+
+        present(AfterVC, animated: true, completion: nil)
+     }
+    
+    @IBAction func confirmOption(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
+
+//--------------------------------------------------------------------------------------------
+extension SelectOptionBottomSheetViewController: SelectOptionBottomSheetDelegate {
+    func adjustOption(_ vc: UIViewController, value: Int?) {
+        shotCountLabel?.text = value?.description
+
+        main.menuInfoInstance.menuShot = value
+        main.deinitialize()
+    }
+}
+

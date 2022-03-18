@@ -1,16 +1,13 @@
-//
-//  OptionShotViewController.swift
-//  DancingBeans
-//
-//  Created by JAEHYEON on 2022/02/07.
-//
-
 import UIKit
 
 class OptionShotViewController: UIViewController {
+    
+    var delegate : SelectOptionBottomSheetDelegate?
+    var resultShot: String?
+    
     @IBOutlet weak var esspressoShotCountLabel: UILabel!
     @IBOutlet weak var esspressoShotCountStepper: UIStepper!
-
+    
     //-------------------------------------------------------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +19,13 @@ class OptionShotViewController: UIViewController {
     //-------------------------------------------------------------------------------------------------------------------------------------------
     @IBAction func countEsspressoShotStepper(_ sender: UIStepper) {
         esspressoShotCountLabel.text = Int(sender.value).description
+        
+        resultShot = Int(sender.value).description
     }
     
     @IBAction func adjustOption(_ sender: Any) {
-        let ad = UIApplication.shared.delegate as? AppDelegate
-
-        ad?.shotCountTest = self.esspressoShotCountLabel?.text!
-       
+        delegate?.adjustOption(self, value: resultShot)
+        
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-        
 }

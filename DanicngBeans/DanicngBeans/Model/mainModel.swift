@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class MainModel {
+    static let shared = MainModel()
+    
+    var menuInfoInstance = menuInfo()
     
     var menuList : Dictionary<String, Drink> =
     [
@@ -26,12 +29,10 @@ class MainModel {
     }
     
     struct menuInfo {
-        var menuName: String = " "
-        var menuPrice: Int = 0
+        var menuName: String!
+        var menuPrice: Int!
         var menuShot: Int?
     }
-    
-    var menuInfoInstance = menuInfo()
     
     func setCommonMenuInfo(menuName: String) {
         if let menu = menuList[menuName] {
@@ -40,10 +41,17 @@ class MainModel {
                 menuInfoInstance.menuName = menuName
                 menuInfoInstance.menuPrice = price
                 menuInfoInstance.menuShot = shot
+                
             case .Tea(let price) :
                 menuInfoInstance.menuName = menuName
                 menuInfoInstance.menuPrice = price
             }
         }
+    }
+    
+    private init() { }
+    
+    deinit {
+        print("deinit 으로 메모리 해제")
     }
 }

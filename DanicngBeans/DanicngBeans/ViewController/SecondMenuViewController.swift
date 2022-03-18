@@ -33,7 +33,6 @@ class SecondMenuViewController: UIViewController {
         numberFormatter.numberStyle = .decimal
         
         let price = numberFormatter.string(from: NSNumber(value: Int(sender.value) * menuPrice))
-        print(price)
         
         menuCountNumberLabel.text = Int(sender.value).description
         menuOrderPrice.text = " \(price!) 원"

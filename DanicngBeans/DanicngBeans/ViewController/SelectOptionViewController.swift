@@ -3,6 +3,7 @@ import UIKit
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     private var calculate: CalculateModel = CalculateModel()
+    let main = MainModel.shared
     
     var delegate: SelectOptionDelegate?
     var productName: String = ""
@@ -16,7 +17,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     @IBOutlet weak var menuCountNumberLabel: UILabel!
     @IBOutlet weak var menuCountPriceLabel: UILabel!
     
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         optionMenuNameLabel.text = productName
@@ -33,7 +34,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     }
     
     // MARK: - User actions
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    
     @IBAction func addMenuCartButtonTapped(_ sender: UIButton) {
         // addMenuCartButtonTapped 시 Value file 의 공란의 배열인 globalOrderMenuList 에 self.productName 이 추가된다
         Value.sharedInstance().globalOrderMenuList.append(self.productName)
@@ -43,9 +44,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         alarmCartIsFilled(itemCount: Value.sharedInstance().globalCountInt)
     }
     
-    //-------------------------------------------------------------------------------------------------------------------------------------------
     @IBAction func menuCountNumberStepper(_ sender: UIStepper) {
-        
         menuCountNumberLabel.text = Int(sender.value).description
         
         if let menuCount = menuCountNumberLabel {
@@ -54,11 +53,19 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             menuCountPriceLabel.text = "\(calculate.result) 원"
         }
     }
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    
     @IBAction func openSelectOptionBottomSheeet() {
         let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "SelectOptionBottomSheetViewController") as! SelectOptionBottomSheetViewController
         
         SelectOptionBottomSheetVC.menuName = productName
+        
+        if let boolShot = main.menuInfoInstance.menuShot {
+            SelectOptionBottomSheetVC.shotCount = boolShot
+        } else {
+            SelectOptionBottomSheetVC.shotCountLabel?.removeFromSuperview()
+            print(main.menuInfoInstance.menuShot)
+            print(SelectOptionBottomSheetVC.shotCountLabel)
+        }
         
         if let sheet = SelectOptionBottomSheetVC.sheetPresentationController {
             sheet.detents = [.medium()]
