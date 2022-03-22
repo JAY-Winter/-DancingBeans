@@ -8,9 +8,6 @@
 import UIKit
 
 class MenuListViewController: UIViewController {
-    
-    let main = MainModel.shared
-    
     @IBOutlet var menuChooseButton: [UIButton]!
     
     //--------------------------------------------------------------------------------------------
@@ -21,18 +18,20 @@ class MenuListViewController: UIViewController {
     private func setUI() {
         navigationController?.navigationBar.isHidden = true
     }
+    
     // MARK: - User actions
     
     @IBAction func selectMenuButtonTapped(_ sender: UIButton) {
-        
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
+        
+        let main = MainModel.shared
         
         if let menu = sender.titleLabel?.text! {
             main.setCommonMenuInfo(menuName: menu)
+            print("instance 기본 값 : \(main.menuInfoInstance)")
+            
             SelectOptionVC.productName = main.menuInfoInstance.menuName
             SelectOptionVC.productPrice = main.menuInfoInstance.menuPrice
-            
-            print("MenuListVC : \(main.menuInfoInstance.menuName)")
             
             if let menuImage = UIImage(named: menu) {
                 SelectOptionVC.productMenuImage = menuImage
