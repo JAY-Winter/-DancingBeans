@@ -6,9 +6,9 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     let main = MainModel.shared
     
     var delegate: SelectOptionDelegate?
-    var productName: String = ""
-    var productPrice: Int = 0
-    var productMenuImage: UIImage!
+    var menuName: String = ""
+    var menuPrice: Int = 0
+    var menuImage: UIImage!
     var indexOfOneAndOnlyGetWay: Int?
     var indexOfOneAndOnlyTemp: Int?
     
@@ -24,13 +24,13 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     //-------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        optionMenuNameLabel.text = productName
-        optionMenuPriceLabel.text = ("\(productPrice) 원")
+        optionMenuNameLabel.text = menuName
+        optionMenuPriceLabel.text = ("\(menuPrice) 원")
         
         menuCountNumberLabel.text = "1"
-        menuCountPriceLabel.text = ("\(productPrice) 원")
+        menuCountPriceLabel.text = ("\(menuPrice) 원")
         
-        menuImageView.image = productMenuImage
+        menuImageView.image = menuImage
         
         menuCountStepper.wraps = true
         menuCountStepper.autorepeat = true
@@ -39,36 +39,22 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         if main.menuInfoInstance.temp == "OnlyIce" {
             self.hotOrIce[0].removeFromSuperview()
-            print("remove button")
         }
-        
-        //        if hotOrIce[indexOfOneAndOnlyTemp] == 0 {
-        //            print("1")
-        //        } else {
-        //            print("2")
-        //        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         print("disappear")
         
-        main.menuInfoInstance.menuName = nil
-        main.menuInfoInstance.menuPrice = nil
-        main.menuInfoInstance.menuShot = nil
-        main.menuInfoInstance.getWay = nil
-        main.menuInfoInstance.temp = nil
-        // 여기서 mainModel Instance 메모리 해제되어야함
+        main.initMenuInfoInstance()
     }
     
     // MARK: - User actions
-    
-    
     
     @IBAction func menuCountNumberStepper(_ sender: UIStepper) {
         menuCountNumberLabel.text = Int(sender.value).description
         
         if let menuCount = menuCountNumberLabel {
-            calculate.setPrice(sender: sender, menuPrice: productPrice)
+            calculate.setPrice(sender: sender, menuPrice: menuPrice)
             
             menuCountPriceLabel.text = "\(calculate.result) 원"
         }
@@ -77,13 +63,11 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     @IBAction func openSelectOptionBottomSheeet() {
         let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "SelectOptionBottomSheetViewController") as! SelectOptionBottomSheetViewController
         
-        SelectOptionBottomSheetVC.menuName = productName
+        SelectOptionBottomSheetVC.menuName = menuName
         
-        if let boolShot = main.menuInfoInstance.menuShot {
+        if let boolShot = main.menuInfoInstance.shot {
             SelectOptionBottomSheetVC.shotCount = boolShot
-        } else {
         }
-        
         if let sheet = SelectOptionBottomSheetVC.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
@@ -129,35 +113,37 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
             main.menuInfoInstance.temp = sender.titleLabel?.text!
         }
-        
         if indexOfOneAndOnlyTemp == 0 {
             menuImageView.image = UIImage(named: "americano_hot")
-        } else {
+        } else if indexOfOneAndOnlyTemp == 1 {
             menuImageView.image = UIImage(named: "americano_ice")
+        } else {
+            menuImageView.image = menuImage
         }
     }
     
     @IBAction func addMenuCartButtonTapped(_ sender: UIButton) {
-        // addMenuCartButtonTapped 시 Value file 의 공란의 배열인 globalOrderMenuList 에 self.productName 이 추가된다
-        Value.sharedInstance().globalOrderMenuList.append(self.productName)
-        // addMenuCartButtonTapped 시 Value file 의 0 으로 정의된 정수타입 globalCountInt 가 +1 된다
-        Value.sharedInstance().globalCountInt += 1
-        // "선택한 음료 담기" 클릭 시 alert 뜸
-        
         if let checkGetWay = main.menuInfoInstance.getWay, let checkTemp = main.menuInfoInstance.temp {
+            // addMenuCartButtonTapped 시 Value file 의 공란의 배열인 globalOrderMenuList 에 self.productName 이 추가된다
+            Value.sharedInstance().globalOrderMenuList.append(self.menuName)
+            // addMenuCartButtonTapped 시 Value file 의 0 으로 정의된 정수타입 globalCountInt 가 +1 된다
+            Value.sharedInstance().globalCountInt += 1
+            // "선택한 음료 담기" 클릭 시 alert 뜸
+            alarmCartIsFilled(itemCount: Value.sharedInstance().globalCountInt)
         } else {
             if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil{
-                occurErrorMessage(errorCode: "옵션")
+                main.setErrorMessage(errorCase: "옵션")
+                occurErrorAlert(errorMessage: main.errorMessage)
             }
             if main.menuInfoInstance.getWay == nil {
-                occurErrorMessage(errorCode: "포장/매장")
+                main.setErrorMessage(errorCase: "포장/매장")
+                occurErrorAlert(errorMessage: main.errorMessage)
             }
             if main.menuInfoInstance.temp == nil {
-                occurErrorMessage(errorCode: "핫/아이스")
+                main.setErrorMessage(errorCase: "핫/아이스")
+                occurErrorAlert(errorMessage: main.errorMessage)
             }
-            
         }
-        alarmCartIsFilled(itemCount: Value.sharedInstance().globalCountInt)
     }
     
     // MARK: - Methods
@@ -168,28 +154,17 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         let okAction = UIAlertAction(title: "확인", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)})
         
-        print("add menu To Cart : \(main.menuInfoInstance)")
         alertVC.addAction(okAction)
         
         present(alertVC, animated: true, completion: nil)
     }
     
-    func occurErrorMessage(errorCode: String) {
-        print("occurErrorMessage : \(main.menuInfoInstance)")
-        
-        var errorMessage: String = ""
-        
-        switch errorCode {
-        case "핫/아이스" : errorMessage = "핫/아이스를 선택해주세요 :)"
-        case "포장/매장" : errorMessage = "포장/매장을 선택해주세요 :)"
-        default : errorMessage = "옵션을 선택해주세요 :)"
-        }
-        
+    func occurErrorAlert(errorMessage: String) {
         let alertVC = UIAlertController(title: "확인해주세요!", message: errorMessage, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "확인", style: .default)
         alertVC.addAction(okAction)
+        
         present(alertVC, animated: true, completion: nil)
     }
-    
 }

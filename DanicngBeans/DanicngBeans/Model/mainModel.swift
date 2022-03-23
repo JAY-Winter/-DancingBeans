@@ -3,7 +3,7 @@
 //  DancingBeans
 //
 //  Created by JAEHYEON on 2022/02/22.
-//
+
 
 import Foundation
 import UIKit
@@ -15,57 +15,80 @@ class MainModel {
     
     var menuList : Dictionary<String, Drink> =
     [
-        "Americano" : .Espresso(price: 3500, shot: 2),
-        "Latte" : .Espresso(price: 4000, shot: 2),
-        "Dancing Latte" : .Espresso(price: 5000, shot: 2),
-        "Vanilla Latte" : .Espresso(price: 4500, shot: 2),
-        "Ein Spanner" : .Special(price: 6000, shot: 2, temp: "OnlyIce"),
+        "Americano" : .Espresso(price: 3500, shot: 2, syrup: 0),
+        "Latte" : .Espresso(price: 4000, shot: 2, syrup: 0),
+        "Dancing Latte" : .Espresso(price: 5000, shot: 2, syrup: 0),
+        "Vanilla Latte" : .Espresso(price: 4500, shot: 2, syrup: 2),
+        "Ein Spanner" : .Signature(price: 6000, shot: 2, temp: "OnlyIce"),
         "Black Tea" : .Tea(price: 7000)
     ]
     
     enum Drink {
-        case Espresso(price: Int, shot: Int)
+        case Espresso(price: Int, shot: Int, syrup: Int?)
+        case NonEspresso(price: Int, temp: String)
         case Tea(price: Int)
-        case Special(price: Int, shot: Int, temp: String)
+        case Signature(price: Int, shot: Int, temp: String)
     }
     
     struct menuInfo {
-        var menuName: String!
-        var menuPrice: Int!
-        var menuShot: Int?
+        var name: String!
+        var price: Int!
+        var shot: Int?
+        var syrup: Int?
         var getWay: String!
         var temp: String!
     }
     
+    func initMenuInfoInstance() {
+        menuInfoInstance.name = nil
+        menuInfoInstance.price = nil
+        menuInfoInstance.shot = nil
+        menuInfoInstance.syrup = nil
+        menuInfoInstance.getWay = nil
+        menuInfoInstance.temp = nil
+    }
+    
+    
     func setCommonMenuInfo(menuName: String) {
         if let menu = menuList[menuName] {
             switch menu {
-            case .Espresso(let price, let shot) :
-                menuInfoInstance.menuName = menuName
-                menuInfoInstance.menuPrice = price
-                menuInfoInstance.menuShot = shot
+            case .Espresso(let price, let shot, let syrup) :
+                menuInfoInstance.name = menuName
+                menuInfoInstance.price = price
+                menuInfoInstance.shot = shot
+                menuInfoInstance.syrup = syrup
+                
+            case .NonEspresso(let price, let temp) :
+                menuInfoInstance.name = menuName
+                menuInfoInstance.price = price
+                menuInfoInstance.temp = temp
                 
             case .Tea(let price) :
-                menuInfoInstance.menuName = menuName
-                menuInfoInstance.menuPrice = price
-//                menuInfoInstance.menuShot = nil
-                // Espresso menu 들어갔다가 나오면 struct menuInfo.menuShot 에 Espresso shot 이 남아있어서 Tea menu 들어갈 시 nil 로 초기화
+                menuInfoInstance.name = menuName
+                menuInfoInstance.price = price
                 
-            case .Special(let price, let shot, let temp) :
-                menuInfoInstance.menuName = menuName
-                menuInfoInstance.menuPrice = price
-                menuInfoInstance.menuShot = shot
+            case .Signature(let price, let shot, let temp) :
+                menuInfoInstance.name = menuName
+                menuInfoInstance.price = price
+                menuInfoInstance.shot = shot
                 menuInfoInstance.temp = temp
             }
         }
     }
     
-    private init() {
-//        print("mainModel Instance Init")
+    var errorMessage: String = ""
+
+    func setErrorMessage(errorCase: String) {
+        switch errorCase {
+        case "핫/아이스" :
+            self.errorMessage = "핫/아이스를 선택해주세요 :)"
+            
+        case "포장/매장" :
+            self.errorMessage = "포장/매장을 선택해주세요 :)"
+            
+        default :
+            self.errorMessage = "옵션을 선택해주세요 :)"
+        }
     }
-    
-    deinit {
-        print("mainModel Instance Deinit")
-    }
-    
+    private init() {    }
 }

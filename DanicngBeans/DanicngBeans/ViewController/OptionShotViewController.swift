@@ -23,11 +23,11 @@ class OptionShotViewController: UIViewController {
         
         esspressoShotCountStepper.isContinuous = false
         
-        esspressoShotCountLabel.text = main.menuInfoInstance.menuShot?.description
+        esspressoShotCountLabel.text = main.menuInfoInstance.shot?.description
         
-        print("esspresso 기본 샷 : \(main.menuInfoInstance.menuShot?.description)")
+        print("esspresso 기본 샷 : \(main.menuInfoInstance.shot?.description)")
         
-        esspressoShotCountStepper.value = Double(main.menuInfoInstance.menuShot!)
+        esspressoShotCountStepper.value = Double(main.menuInfoInstance.shot!)
     }
     
     // MARK: - User actions

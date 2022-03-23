@@ -30,13 +30,13 @@ class MenuListViewController: UIViewController {
             main.setCommonMenuInfo(menuName: menu)
             print("instance 기본 값 : \(main.menuInfoInstance)")
             
-            SelectOptionVC.productName = main.menuInfoInstance.menuName
-            SelectOptionVC.productPrice = main.menuInfoInstance.menuPrice
+            SelectOptionVC.menuName = main.menuInfoInstance.name
+            SelectOptionVC.menuPrice = main.menuInfoInstance.price
             
             if let menuImage = UIImage(named: menu) {
-                SelectOptionVC.productMenuImage = menuImage
+                SelectOptionVC.menuImage = menuImage
             } else {
-                SelectOptionVC.productMenuImage = UIImage(named: "Sorry :(")
+                SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
             }
             self.present(SelectOptionVC, animated: true, completion: nil)
         }

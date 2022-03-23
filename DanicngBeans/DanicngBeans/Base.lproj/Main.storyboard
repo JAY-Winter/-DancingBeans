@@ -278,7 +278,7 @@
                         <outlet property="menuCountNumberLabel" destination="OeQ-BZ-fdv" id="6Co-Z8-cO2"/>
                         <outlet property="menuCountPriceLabel" destination="SfR-1d-nq6" id="Ept-TE-uY9"/>
                         <outlet property="menuCountStepper" destination="jtz-r5-72p" id="7BX-7T-SYc"/>
-                        <outlet property="menuImageView" destination="wvm-c7-f92" id="dyq-7h-FRg"/>
+                        <outlet property="menuImageView" destination="wvm-c7-f92" id="QBe-hw-6Yj"/>
                         <outlet property="optionMenuNameLabel" destination="uzC-Iu-9jD" id="XSV-dF-1zl"/>
                         <outlet property="optionMenuPriceLabel" destination="yG9-nW-pqo" id="PyT-3j-uRf"/>
                         <outletCollection property="hereOrToGo" destination="eBK-24-nyK" collectionClass="NSMutableArray" id="fdI-E4-XDT"/>
@@ -361,18 +361,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6M-56-xVw">
-                                <rect key="frame" x="16" y="188" width="343" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GDI-Us-5h7">
                                 <rect key="frame" x="16" y="277" width="343" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuN-or-X4A">
-                                <rect key="frame" x="16" y="391" width="343" height="31"/>
+                                <rect key="frame" x="16" y="378" width="343" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -390,7 +385,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-oS-i4c">
-                                <rect key="frame" x="11" y="86" width="339" height="21"/>
+                                <rect key="frame" x="19" y="86" width="339" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -441,7 +436,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="hNq-CL-Sl1">
-                                <rect key="frame" x="142" y="289" width="91" height="30"/>
+                                <rect key="frame" x="142" y="309" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="적용"/>
@@ -449,6 +444,11 @@
                                     <action selector="adjustOption:" destination="OkZ-vI-OhW" eventType="touchUpInside" id="nGV-0h-hfg"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="du3-ID-CCF">
+                                <rect key="frame" x="20" y="280" width="343" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qjU-x3-piC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -460,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu7-7M-RQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784.8" y="3312.5615763546798"/>
+            <point key="canvasLocation" x="2743" y="3299"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AuO-H5-eDj">

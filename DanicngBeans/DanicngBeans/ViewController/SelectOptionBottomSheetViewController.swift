@@ -28,9 +28,9 @@ class SelectOptionBottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         menuNameLabel.text = menuName
-        shotCountLabel?.text = shotCount?.description
+        shotCountLabel?.text = "\(shotCount!.description)개"
         
-        if main.menuInfoInstance.menuShot == nil {
+        if main.menuInfoInstance.shot == nil {
             print("tea 메뉴라 shot 버튼 삭제")
             self.shotOptionButton?.removeFromSuperview()
         }
@@ -57,8 +57,8 @@ class SelectOptionBottomSheetViewController: UIViewController {
 //-----------------------------------------------------------------------------
 extension SelectOptionBottomSheetViewController: SelectOptionBottomSheetDelegate {
     func adjustOption(_ vc: UIViewController, value: Int?) {
-        shotCountLabel?.text = value?.description
+        shotCountLabel?.text = "\(value!.description)개"
         
-        main.menuInfoInstance.menuShot = value
+        main.menuInfoInstance.shot = value
     }
 }
