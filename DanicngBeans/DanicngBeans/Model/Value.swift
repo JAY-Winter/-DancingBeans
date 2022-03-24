@@ -1,6 +1,5 @@
 class Value{
     
-    
     public var globalCountInt: Int = 0
     public var globalOrderMenuList: [String] = []
     

@@ -8,13 +8,18 @@
 import UIKit
 
 class MenuListViewController: UIViewController {
+    let main = MainModel.shared
+    
+    //--------------------------------------------------------------------------------------------
     @IBOutlet var menuChooseButton: [UIButton]!
     
     //--------------------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    //--------------------------------------------------------------------------------------------
     private func setUI() {
         navigationController?.navigationBar.isHidden = true
     }
@@ -23,12 +28,10 @@ class MenuListViewController: UIViewController {
     
     @IBAction func selectMenuButtonTapped(_ sender: UIButton) {
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
-        
-        let main = MainModel.shared
-        
+
         if let menu = sender.titleLabel?.text! {
             main.setCommonMenuInfo(menuName: menu)
-            print("instance 기본 값 : \(main.menuInfoInstance)")
+            print("main.instanceInfo : \(main.menuInfoInstance)")
             
             SelectOptionVC.menuName = main.menuInfoInstance.name
             SelectOptionVC.menuPrice = main.menuInfoInstance.price

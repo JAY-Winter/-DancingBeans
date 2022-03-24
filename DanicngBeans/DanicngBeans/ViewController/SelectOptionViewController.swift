@@ -39,12 +39,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         if main.menuInfoInstance.temp == "OnlyIce" {
             self.hotOrIce[0].removeFromSuperview()
+            self.hotOrIce[1].isSelected = true
+            self.hotOrIce[1].isEnabled = false
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("disappear")
-        
         main.initMenuInfoInstance()
     }
     
@@ -124,22 +124,20 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     @IBAction func addMenuCartButtonTapped(_ sender: UIButton) {
         if let checkGetWay = main.menuInfoInstance.getWay, let checkTemp = main.menuInfoInstance.temp {
-            // addMenuCartButtonTapped 시 Value file 의 공란의 배열인 globalOrderMenuList 에 self.productName 이 추가된다
-            Value.sharedInstance().globalOrderMenuList.append(self.menuName)
-            // addMenuCartButtonTapped 시 Value file 의 0 으로 정의된 정수타입 globalCountInt 가 +1 된다
-            Value.sharedInstance().globalCountInt += 1
-            // "선택한 음료 담기" 클릭 시 alert 뜸
+            main.addedMenuList.append(main.menuInfoInstance)
+            
             alarmCartIsFilled(itemCount: Value.sharedInstance().globalCountInt)
+            // "선택한 음료 담기" 클릭 시 alert 뜸
         } else {
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil{
+            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "옵션")
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.getWay == nil {
+            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
                 main.setErrorMessage(errorCase: "포장/매장")
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.temp == nil {
+            if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "핫/아이스")
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
@@ -168,3 +166,11 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         present(alertVC, animated: true, completion: nil)
     }
 }
+
+
+
+
+
+
+
+

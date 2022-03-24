@@ -23,7 +23,9 @@ class MainModel {
         "Black Tea" : .Tea(price: 7000)
     ]
     
-    enum Drink {
+    var addedMenuList: [menuInfo] = [menuInfo]()
+    
+    indirect enum Drink {
         case Espresso(price: Int, shot: Int, syrup: Int?)
         case NonEspresso(price: Int, temp: String)
         case Tea(price: Int)
@@ -36,7 +38,7 @@ class MainModel {
         var shot: Int?
         var syrup: Int?
         var getWay: String!
-        var temp: String!
+        var temp: String?
     }
     
     func initMenuInfoInstance() {
@@ -47,8 +49,7 @@ class MainModel {
         menuInfoInstance.getWay = nil
         menuInfoInstance.temp = nil
     }
-    
-    
+            
     func setCommonMenuInfo(menuName: String) {
         if let menu = menuList[menuName] {
             switch menu {
@@ -77,7 +78,7 @@ class MainModel {
     }
     
     var errorMessage: String = ""
-
+    
     func setErrorMessage(errorCase: String) {
         switch errorCase {
         case "핫/아이스" :
