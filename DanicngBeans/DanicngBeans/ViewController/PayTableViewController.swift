@@ -21,16 +21,10 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        display.text = String(main.accumlator)
-        
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 150))
-        
-        footer.backgroundColor = .systemRed
-        
+        display.text = main.DeciamlWon(value: main.accumlator)
     }
     
     // MARK: - User actions
-    
     
     @IBAction func orderAddedMenus(_ sender: UIButton) {
         
@@ -59,7 +53,7 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.nameLabel.text = addedMenu.name
         cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)"
-        cell.priceLabel.text = "\(addedMenu.price.description)원"
+        cell.priceLabel.text = main.DeciamlWon(value: addedMenu.price)
         
         if let menuImage = UIImage(named: addedMenu.name) {
             cell.menuImageView.image = menuImage
@@ -76,31 +70,16 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
+            
+            main.accumlator -= main.addedMenuList[indexPath.row].price
             main.addedMenuList.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             
-            // view reload 
-            main.accumlator -= 1000
-            
-            
-            print("endUpdates 후 addMenuList : \(main.addedMenuList)")
+            display.text = main.DeciamlWon(value: main.accumlator)
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30.0
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "THIS IS FOOTER SECTION"
-    }
-    
-    
-    
-
-    
-    
 }
 // MARK: - Extension
 extension UITableView {
@@ -153,4 +132,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var menuImageView: UIImageView!
 }
+
+
 

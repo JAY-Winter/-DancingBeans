@@ -27,13 +27,11 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("main model accumlator 에 newValue 들어갈 시 : \(main.result)")
-        
         optionMenuNameLabel.text = menuName
-        optionMenuPriceLabel.text = ("\(menuPrice) 원")
+        optionMenuPriceLabel.text = main.DeciamlWon(value: menuPrice)
         
         menuCountNumberLabel.text = "1"
-        menuCountPriceLabel.text = ("\(menuPrice) 원")
+        menuCountPriceLabel.text = main.DeciamlWon(value: menuPrice)
         
         menuImageView.image = menuImage
         
@@ -65,7 +63,9 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         if let menuCount = menuCountNumberLabel {
             calculate.setPrice(sender: sender, menuPrice: menuPrice)
             
-            menuCountPriceLabel.text = "\(calculate.result) 원"
+            // menuCountPriceLabel.text = "\(calculate.result) 원"
+            menuCountPriceLabel.text = main.DeciamlWon(value: calculate.result)
+            
             main.menuInfoInstance.price = calculate.result
         }
     }
@@ -163,6 +163,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     }
     
     // MARK: - Methods
+    
+
     
     func occurAddedMenuAlert(itemCount: Int) {
         let alertVC = UIAlertController(title: "장바구니 확인", message: "장바구니에 상품이 추가되었습니다.", preferredStyle: .alert)

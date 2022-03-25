@@ -108,12 +108,15 @@ class MainModel {
             self.errorMessage = "옵션을 선택해주세요 :)"
         }
     }
-    
-    func setTotalPrice(perPrice: Double) {
-        return
+
+    func DeciamlWon(value: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let result = numberFormatter.string(from: NSNumber(value: value))! + "원"
+        
+        return result
     }
-    
-    
     
     private init() {    }
 }
