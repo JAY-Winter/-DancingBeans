@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MainModel {
+    
     static let shared = MainModel()
     
     var menuInfoInstance = menuInfo()
@@ -19,19 +20,34 @@ class MainModel {
         "Latte" : .Espresso(price: 4000, shot: 2, syrup: 0),
         "Dancing Latte" : .Espresso(price: 5000, shot: 2, syrup: 0),
         "Vanilla Latte" : .Espresso(price: 4500, shot: 2, syrup: 2),
-        "Ein Spanner" : .Signature(price: 6000, shot: 2, temp: "OnlyIce"),
+        "Ein Spanner" : .Signature(price: 6000, shot: 2, temp: "OnlyIce", getWay: "매장 전용"),
         "Black Tea" : .Tea(price: 7000)
     ]
     
     var addedMenuList: [menuInfo] = [menuInfo]()
     
-    indirect enum Drink {
+    var errorMessage: String = ""
+    
+    var accumlator: Int = 0
+        
+    var result: Int {
+        get {
+            return accumlator
+        }
+        set {
+            accumlator += newValue
+        }
+    }
+    
+   // MARK: - User actions
+    enum Drink {
         case Espresso(price: Int, shot: Int, syrup: Int?)
         case NonEspresso(price: Int, temp: String)
         case Tea(price: Int)
-        case Signature(price: Int, shot: Int, temp: String)
+        case Signature(price: Int, shot: Int, temp: String, getWay: String)
     }
     
+    // MARK: - User actions
     struct menuInfo {
         var name: String!
         var price: Int!
@@ -41,6 +57,8 @@ class MainModel {
         var temp: String?
     }
     
+    // MARK: - User actions
+    
     func initMenuInfoInstance() {
         menuInfoInstance.name = nil
         menuInfoInstance.price = nil
@@ -49,7 +67,7 @@ class MainModel {
         menuInfoInstance.getWay = nil
         menuInfoInstance.temp = nil
     }
-            
+    
     func setCommonMenuInfo(menuName: String) {
         if let menu = menuList[menuName] {
             switch menu {
@@ -68,16 +86,15 @@ class MainModel {
                 menuInfoInstance.name = menuName
                 menuInfoInstance.price = price
                 
-            case .Signature(let price, let shot, let temp) :
+            case .Signature(let price, let shot, let temp, let getWay) :
                 menuInfoInstance.name = menuName
                 menuInfoInstance.price = price
                 menuInfoInstance.shot = shot
                 menuInfoInstance.temp = temp
+                menuInfoInstance.getWay = getWay
             }
         }
     }
-    
-    var errorMessage: String = ""
     
     func setErrorMessage(errorCase: String) {
         switch errorCase {
@@ -91,5 +108,12 @@ class MainModel {
             self.errorMessage = "옵션을 선택해주세요 :)"
         }
     }
+    
+    func setTotalPrice(perPrice: Double) {
+        return
+    }
+    
+    
+    
     private init() {    }
 }

@@ -31,7 +31,6 @@ class MenuListViewController: UIViewController {
 
         if let menu = sender.titleLabel?.text! {
             main.setCommonMenuInfo(menuName: menu)
-            print("main.instanceInfo : \(main.menuInfoInstance)")
             
             SelectOptionVC.menuName = main.menuInfoInstance.name
             SelectOptionVC.menuPrice = main.menuInfoInstance.price

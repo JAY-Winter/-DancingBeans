@@ -10,5 +10,5 @@ import Foundation
 // protocol 에서는 기능을 직접 구현하지 않는다
 // 왜?
 protocol PayTableDelegate: AnyObject {
-    func alarmCartIsFilled(itemCount: Int)
+    func occurAddedMenuAlert(itemCount: Int)
 }

@@ -3,7 +3,7 @@ import UIKit
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     private var calculate: CalculateModel = CalculateModel()
-    let main = MainModel.shared
+    private let main = MainModel.shared
     
     var delegate: SelectOptionDelegate?
     var menuName: String = ""
@@ -18,12 +18,17 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     @IBOutlet weak var menuCountStepper: UIStepper!
     @IBOutlet weak var menuCountNumberLabel: UILabel!
     @IBOutlet weak var menuCountPriceLabel: UILabel!
-    @IBOutlet var hereOrToGo: [UIButton]!
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet var hotOrIce: [UIButton]!
+    @IBOutlet var hereOrToGo: [UIButton]!
+    
     
     //-------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("main model accumlator 에 newValue 들어갈 시 : \(main.result)")
+        
         optionMenuNameLabel.text = menuName
         optionMenuPriceLabel.text = ("\(menuPrice) 원")
         
@@ -39,8 +44,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         if main.menuInfoInstance.temp == "OnlyIce" {
             self.hotOrIce[0].removeFromSuperview()
-            self.hotOrIce[1].isSelected = true
+            self.hotOrIce[1].isSelected = false
             self.hotOrIce[1].isEnabled = false
+            
+            self.hereOrToGo[0].removeFromSuperview()
+            self.hereOrToGo[1].isSelected = false
+            self.hereOrToGo[1].isEnabled = false
         }
     }
     
@@ -57,6 +66,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             calculate.setPrice(sender: sender, menuPrice: menuPrice)
             
             menuCountPriceLabel.text = "\(calculate.result) 원"
+            main.menuInfoInstance.price = calculate.result
         }
     }
     
@@ -113,6 +123,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
             main.menuInfoInstance.temp = sender.titleLabel?.text!
         }
+        
         if indexOfOneAndOnlyTemp == 0 {
             menuImageView.image = UIImage(named: "americano_hot")
         } else if indexOfOneAndOnlyTemp == 1 {
@@ -122,23 +133,30 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         }
     }
     
-    @IBAction func addMenuCartButtonTapped(_ sender: UIButton) {
+
+    @IBAction func addMenuToCart(_ sender: UIButton) {
         if let checkGetWay = main.menuInfoInstance.getWay, let checkTemp = main.menuInfoInstance.temp {
             main.addedMenuList.append(main.menuInfoInstance)
             
-            alarmCartIsFilled(itemCount: Value.sharedInstance().globalCountInt)
-            // "선택한 음료 담기" 클릭 시 alert 뜸
+            print("addMenuToCart : \(main.addedMenuList)")
+            
+            main.result = main.menuInfoInstance.price!
+            
+            occurAddedMenuAlert(itemCount: main.addedMenuList.count)
         } else {
             if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "옵션")
+                
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
             if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
                 main.setErrorMessage(errorCase: "포장/매장")
+                
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
             if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "핫/아이스")
+                
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
         }
@@ -146,7 +164,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     // MARK: - Methods
     
-    func alarmCartIsFilled(itemCount: Int) {
+    func occurAddedMenuAlert(itemCount: Int) {
         let alertVC = UIAlertController(title: "장바구니 확인", message: "장바구니에 상품이 추가되었습니다.", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "확인", style: .default, handler: { (action) in

@@ -28,11 +28,12 @@ class SelectOptionBottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         menuNameLabel.text = menuName
-        shotCountLabel?.text = "\(shotCount!.description)개"
         
         if main.menuInfoInstance.shot == nil {
-            print("tea 메뉴라 shot 버튼 삭제")
             self.shotOptionButton?.removeFromSuperview()
+            self.shotCountLabel?.removeFromSuperview()
+        } else {
+            shotCountLabel?.text = "\(shotCount!.description)개"
         }
     }
     
