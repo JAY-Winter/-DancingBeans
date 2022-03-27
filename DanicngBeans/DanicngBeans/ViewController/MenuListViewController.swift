@@ -19,28 +19,29 @@ class MenuListViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    //--------------------------------------------------------------------------------------------
-    private func setUI() {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
     // MARK: - User actions
     
     @IBAction func selectMenuButtonTapped(_ sender: UIButton) {
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
-
+        
         if let menu = sender.titleLabel?.text! {
             main.setCommonMenuInfo(menuName: menu)
             
-            SelectOptionVC.menuName = main.menuInfoInstance.name
-            SelectOptionVC.menuPrice = main.menuInfoInstance.price
+            SelectOptionVC.defaultMenuName = main.menuInfoInstance.name
+            SelectOptionVC.defaultMenuPrice = main.menuInfoInstance.price
+            SelectOptionVC.menuDescription = main.menuInfoInstance.detail
             
             if let menuImage = UIImage(named: menu) {
                 SelectOptionVC.menuImage = menuImage
             } else {
                 SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
             }
-            self.present(SelectOptionVC, animated: true, completion: nil)
+
+            // setCommonMenuInfo 가 정상적으로 진행되지 않았으면 present 가 되지 말아야함
+            do{
+                self.present(SelectOptionVC, animated: true, completion: nil)
+            }
         }
     }
 }
+

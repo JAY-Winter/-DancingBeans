@@ -16,12 +16,12 @@ class MainModel {
     
     var menuList : Dictionary<String, Drink> =
     [
-        "Americano" : .Espresso(price: 3500, shot: 2, syrup: 0),
-        "Latte" : .Espresso(price: 4000, shot: 2, syrup: 0),
-        "Dancing Latte" : .Espresso(price: 5000, shot: 2, syrup: 0),
-        "Vanilla Latte" : .Espresso(price: 4500, shot: 2, syrup: 2),
-        "Ein Spanner" : .Signature(price: 6000, shot: 2, temp: "OnlyIce", getWay: "매장 전용"),
-        "Black Tea" : .Tea(price: 7000)
+        "Americano" : .Espresso(count: 1, price: 3500, shot: 2, syrup: 0, detail: "아메리카노"),
+        "Latte" : .Espresso(count: 1, price: 4000, shot: 2, syrup: 0, detail: "라떼"),
+        "Dancing Latte" : .Espresso(count: 1, price: 5000, shot: 2, syrup: 0, detail: "댄싱라떼"),
+        "Vanilla Latte" : .Espresso(count: 1, price: 4500, shot: 2, syrup: 2, detail: "바닐라라떼"),
+        "Ein Spanner" : .Signature(count: 1, price: 6000, shot: 2, temp: "ICED ONLY", getWay: "매장 전용", detail: "매장전용, 아이스만 가능한 아인슈페너"),
+        "Black Tea" : .Tea(count: 1, price: 7000, detail: "블랙티")
     ]
     
     var addedMenuList: [menuInfo] = [menuInfo]()
@@ -41,20 +41,22 @@ class MainModel {
     
    // MARK: - User actions
     enum Drink {
-        case Espresso(price: Int, shot: Int, syrup: Int?)
-        case NonEspresso(price: Int, temp: String)
-        case Tea(price: Int)
-        case Signature(price: Int, shot: Int, temp: String, getWay: String)
+        case Espresso(count: Int, price: Int, shot: Int, syrup: Int?, detail: String)
+        case NonEspresso(count: Int, price: Int, temp: String, detail: String)
+        case Tea(count: Int, price: Int, detail: String)
+        case Signature(count: Int, price: Int, shot: Int, temp: String, getWay: String, detail: String)
     }
     
     // MARK: - User actions
     struct menuInfo {
         var name: String!
+        var count: Int!
         var price: Int!
         var shot: Int?
         var syrup: Int?
         var getWay: String!
         var temp: String?
+        var detail: String!
     }
     
     // MARK: - User actions
@@ -71,27 +73,36 @@ class MainModel {
     func setCommonMenuInfo(menuName: String) {
         if let menu = menuList[menuName] {
             switch menu {
-            case .Espresso(let price, let shot, let syrup) :
+            case .Espresso(let count, let price, let shot, let syrup, let detail) :
                 menuInfoInstance.name = menuName
+                menuInfoInstance.count = count
                 menuInfoInstance.price = price
                 menuInfoInstance.shot = shot
                 menuInfoInstance.syrup = syrup
+                menuInfoInstance.detail = detail
                 
-            case .NonEspresso(let price, let temp) :
+            case .NonEspresso(let count, let price, let temp, let detail) :
                 menuInfoInstance.name = menuName
+                menuInfoInstance.count = count
                 menuInfoInstance.price = price
                 menuInfoInstance.temp = temp
+                menuInfoInstance.detail = detail
                 
-            case .Tea(let price) :
+            case .Tea(let count, let price, let detail) :
                 menuInfoInstance.name = menuName
+                menuInfoInstance.count = count
                 menuInfoInstance.price = price
+                menuInfoInstance.detail = detail
                 
-            case .Signature(let price, let shot, let temp, let getWay) :
+            case .Signature(let count, let price, let shot, let temp, let getWay, let detail) :
                 menuInfoInstance.name = menuName
+                menuInfoInstance.count = count
                 menuInfoInstance.price = price
                 menuInfoInstance.shot = shot
                 menuInfoInstance.temp = temp
                 menuInfoInstance.getWay = getWay
+                menuInfoInstance.detail = detail
+                
             }
         }
     }
@@ -109,13 +120,27 @@ class MainModel {
         }
     }
 
-    func DeciamlWon(value: Int) -> String {
+    func setDeciamlWon(value: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
         let result = numberFormatter.string(from: NSNumber(value: value))! + "원"
         
         return result
+    }
+    
+    func calculateAddedPrice(sender: UIStepper, menuPrice: Int) -> Int {
+        
+        let menuCount = Int(sender.value)
+        
+        let calculatedPrice = menuCount * menuPrice
+        
+        return calculatedPrice
+    }
+    
+    func changeNameAndImageByTemp(_ sender: UIButton, menuName: String) {
+            
+        
     }
     
     private init() {    }

@@ -22,7 +22,17 @@ class CalculateModel {
         let menuCount = Int(sender.value)
         
         price = menuCount*menuPrice
-
+        
+        var result: Int {
+            get {
+                return menuPrice
+            }
+            set{
+                
+            }
+        }
+        
+        
         return price
     }
   }

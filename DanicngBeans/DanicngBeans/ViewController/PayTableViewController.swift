@@ -9,10 +9,13 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     private var delegate: PayTableDelegate?
     
     // MARK: - User actions
+    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
+    
     // MARK: - User actions
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -21,7 +24,7 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        display.text = main.DeciamlWon(value: main.accumlator)
+        totalPriceLabel.text = main.setDeciamlWon(value: main.accumlator)
     }
     
     // MARK: - User actions
@@ -31,7 +34,6 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - User actions
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if main.addedMenuList.count == 0 {
             tableView.setEmptyView(title: "현재 담긴 메뉴가 없습니다!", message: "")
@@ -41,9 +43,11 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         return main.addedMenuList.count
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return 120
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -52,8 +56,8 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         let addedMenu = main.addedMenuList[indexPath.row]
         
         cell.nameLabel.text = addedMenu.name
-        cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)"
-        cell.priceLabel.text = main.DeciamlWon(value: addedMenu.price)
+        cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)⎜\(addedMenu.count!)잔"
+        cell.priceLabel.text = main.setDeciamlWon(value: addedMenu.price)
         
         if let menuImage = UIImage(named: addedMenu.name) {
             cell.menuImageView.image = menuImage
@@ -63,9 +67,11 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -77,11 +83,22 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             
-            display.text = main.DeciamlWon(value: main.accumlator)
+            totalPriceLabel.text = main.setDeciamlWon(value: main.accumlator)
         }
     }
 }
+
+// MARK: - CustomCell
+
+class CustomCell: UITableViewCell {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var optionLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var menuImageView: UIImageView!
+}
+
 // MARK: - Extension
+
 extension UITableView {
     
     func setEmptyView(title: String, message: String) {
@@ -123,15 +140,5 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
-
-// MARK: - CustomCell
-
-class CustomCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var optionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var menuImageView: UIImageView!
-}
-
 
 

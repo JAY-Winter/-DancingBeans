@@ -14,20 +14,14 @@ class OptionShotViewController: UIViewController {
         
         super.viewDidLoad()
         
-        let ad = UIApplication.shared.delegate as? AppDelegate
-        
         esspressoShotCountStepper.wraps = false
         esspressoShotCountStepper.autorepeat = true
         esspressoShotCountStepper.minimumValue = 1
         esspressoShotCountStepper.maximumValue = 6
-        
         esspressoShotCountStepper.isContinuous = false
-        
-        esspressoShotCountLabel.text = main.menuInfoInstance.shot?.description
-        
-        print("esspresso 기본 샷 : \(main.menuInfoInstance.shot?.description)")
-        
         esspressoShotCountStepper.value = Double(main.menuInfoInstance.shot!)
+
+        esspressoShotCountLabel.text = main.menuInfoInstance.shot?.description
     }
     
     // MARK: - User actions
