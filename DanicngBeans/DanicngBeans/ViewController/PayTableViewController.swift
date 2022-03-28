@@ -11,20 +11,43 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - User actions
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var orderButton: UIButton!
+    // @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    private var totalPriceLabel = UILabel()
+    private var orderButton: UIButton!
     
     // MARK: - User actions
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationItem.title = "Pay"
+        self.navigationItem.title = "Payment"
+        
+        orderButton = UIButton(type: .system)
+        
+        view.addSubview(orderButton)
+        view.addSubview(totalPriceLabel)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         totalPriceLabel.text = main.setDeciamlWon(value: main.accumlator)
+        totalPriceLabel.font = UIFont(name: "Gill Sans", size: 20)
+        totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        totalPriceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        totalPriceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        
+        orderButton.setTitle("PAY", for: .normal)
+        orderButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
+        orderButton.setTitleColor(.white, for: .normal)
+        orderButton.backgroundColor = .systemBlue
+        orderButton.layer.cornerRadius = 12
+        orderButton.translatesAutoresizingMaskIntoConstraints = false
+        orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        orderButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        orderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     // MARK: - User actions
@@ -36,7 +59,9 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - User actions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if main.addedMenuList.count == 0 {
-            tableView.setEmptyView(title: "현재 담긴 메뉴가 없습니다!", message: "")
+            tableView.setEmptyView(title: "현재 담긴 메뉴가 없습니다!")
+            totalPriceLabel.isHidden = true
+            orderButton.isHidden = true
         } else {
             tableView.restore()
         }
@@ -59,8 +84,39 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)⎜\(addedMenu.count!)잔"
         cell.priceLabel.text = main.setDeciamlWon(value: addedMenu.price)
         
+        cell.menuImageView.translatesAutoresizingMaskIntoConstraints = false
+        cell.menuImageView.contentMode = .scaleAspectFit
+        cell.menuImageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0).isActive = true
+        cell.menuImageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0).isActive = true
+        cell.menuImageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -200).isActive = true
+        cell.menuImageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
+        // cell.menuImageView.bottomAnchor.constraint(equalTo: table)/
+        // cell.menuImageView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 10).isActive = true
+        // cell.menuImageView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: cell.width).isActive = true
+        // cell.menuImageView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
+        
+        // orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        // orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //
+        
+        cell.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.nameLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
+        cell.nameLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
+        // cell.nameLabel.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -10).isActive = true
+        
+        cell.optionLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.optionLabel.topAnchor.constraint(equalTo: cell.nameLabel.bottomAnchor, constant: 10).isActive = true
+        cell.optionLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
+        
+        cell.priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.priceLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -10).isActive = true
+        cell.priceLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
+        
+        
+        
         if let menuImage = UIImage(named: addedMenu.name) {
             cell.menuImageView.image = menuImage
+            
         } else {
             cell.menuImageView.image = UIImage(named: "Sorry :(")
         }
@@ -101,35 +157,20 @@ class CustomCell: UITableViewCell {
 
 extension UITableView {
     
-    func setEmptyView(title: String, message: String) {
+    func setEmptyView(title: String) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         let titleLabel = UILabel()
-        let messageLabel = UILabel()
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        
         emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
         
         titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 20).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -20).isActive = true
-        
         titleLabel.text = title
-        messageLabel.text = message
-        
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
         
         self.backgroundView = emptyView
         self.separatorStyle = .none

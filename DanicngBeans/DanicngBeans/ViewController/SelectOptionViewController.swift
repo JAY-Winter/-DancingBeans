@@ -11,17 +11,20 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     var menuDescription: String!
     var indexOfOneAndOnlyGetWay: Int?
     var indexOfOneAndOnlyTemp: Int?
-    
-    @IBOutlet weak var menuImageView: UIImageView!
-    @IBOutlet weak var defaultMenuNameLabel: UILabel!
-    @IBOutlet weak var defaultMenuPriceLabel: UILabel!
+
+    // @IBOutlet weak var details: UILabel!
     @IBOutlet var hotOrIce: [UIButton]!
-    @IBOutlet weak var details: UILabel!
     @IBOutlet var hereOrToGo: [UIButton]!
     @IBOutlet weak var countStepper: UIStepper!
     @IBOutlet weak var countedNumberLabel: UILabel!
     @IBOutlet weak var countedPriceLabel: UILabel!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var setOptionButton: UIButton!
+    
+    private var menuImageView = UIImageView()
+    private var defaultMenuNameLabel = UILabel()
+    private var secondView = UIView()
+    private var defaultMenuPriceLabel = UILabel()
+    var addMenuToCartButton: UIButton!
     
     // MARK: - viewDidLoad
     
@@ -29,22 +32,87 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         super.viewDidLoad()
         
+        menuImageView.image = menuImage
         defaultMenuNameLabel.text = String(main.menuInfoInstance.name)
         defaultMenuPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
-        
         countedNumberLabel.text = "\(String(main.menuInfoInstance.count))잔"
         countedPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
         
-        menuImageView.image = menuImage
-        details.text = menuDescription
+        addMenuToCartButton = UIButton(type: .system)
+        addMenuToCartButton.setTitle("PUT", for: .normal)
+        addMenuToCartButton.titleLabel?.font = UIFont(name: "Beckman-Free", size: 20)
+        // addMenuToCartButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
+        addMenuToCartButton.setTitleColor(.white, for: .normal)
+        addMenuToCartButton.backgroundColor = .systemBlue
+        
+        addMenuToCartButton.addTarget(self, action: #selector(abc), for: .touchUpInside)
         
         countStepper.wraps = true
         countStepper.autorepeat = true
         countStepper.minimumValue = 1
         countStepper.maximumValue = 30
         
+        self.view.addSubview(menuImageView)
+        self.view.addSubview(defaultMenuNameLabel)
+        self.view.addSubview(defaultMenuPriceLabel)
+        self.view.addSubview(addMenuToCartButton)
+        
+        menuImageView.translatesAutoresizingMaskIntoConstraints = false
+        defaultMenuNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultMenuPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        hotOrIce[0].translatesAutoresizingMaskIntoConstraints = false
+        hotOrIce[1].translatesAutoresizingMaskIntoConstraints = false
+        hereOrToGo[0].translatesAutoresizingMaskIntoConstraints = false
+        hereOrToGo[1].translatesAutoresizingMaskIntoConstraints = false
+        setOptionButton.translatesAutoresizingMaskIntoConstraints = false
+        countStepper.translatesAutoresizingMaskIntoConstraints = false
+        countedNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        countedPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        addMenuToCartButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        menuImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+        menuImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        menuImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        menuImageView.heightAnchor.constraint(equalTo: self.view.heightAnchor, constant: -self.view.frame.height/2).isActive = true
+        
+        defaultMenuNameLabel.topAnchor.constraint(equalTo: self.menuImageView.bottomAnchor, constant: 15).isActive = true
+        defaultMenuNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        
+        defaultMenuPriceLabel.topAnchor.constraint(equalTo: self.menuImageView.bottomAnchor, constant: 15).isActive = true
+        defaultMenuPriceLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        
+        hotOrIce[0].topAnchor.constraint(equalTo: self.menuImageView.bottomAnchor, constant: 40).isActive = true
+        hotOrIce[0].leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100).isActive = true
+        hotOrIce[1].topAnchor.constraint(equalTo: self.menuImageView.bottomAnchor, constant: 40).isActive = true
+        hotOrIce[1].trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -100).isActive = true
+        
+        hereOrToGo[0].bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -190).isActive = true
+        hereOrToGo[0].leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 100).isActive = true
+        hereOrToGo[1].bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -190).isActive = true
+        hereOrToGo[1].trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -100).isActive = true
+        
+        setOptionButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -150).isActive = true
+        setOptionButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40).isActive = true
+        
+        countStepper.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+        countStepper.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        countedNumberLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -110).isActive = true
+        countedNumberLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60).isActive = true
+        
+        countedPriceLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -110).isActive = true
+        countedPriceLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60).isActive = true
+        
+        addMenuToCartButton.layer.cornerRadius = 12
+        addMenuToCartButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        addMenuToCartButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        addMenuToCartButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40).isActive = true
+        
+        // details.text = menuDescription
+        
         if main.menuInfoInstance.temp == "ICED ONLY" {
-            setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1])
+            setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1], button3: hereOrToGo[0] ,button4:hereOrToGo[1])
         }
     }
     
@@ -127,31 +195,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     }
     
     
-    @IBAction func addMenuToCart(_ sender: UIButton) {
-        if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp != nil {
-            main.addedMenuList.append(main.menuInfoInstance)
-            
-            main.result = main.menuInfoInstance.price!
-            
-            occurAddedMenuAlert(itemCount: main.addedMenuList.count)
-        } else {
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
-                main.setErrorMessage(errorCase: "옵션")
-                
-                occurErrorAlert(errorMessage: main.errorMessage)
-            }
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
-                main.setErrorMessage(errorCase: "포장/매장")
-                
-                occurErrorAlert(errorMessage: main.errorMessage)
-            }
-            if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
-                main.setErrorMessage(errorCase: "핫/아이스")
-                
-                occurErrorAlert(errorMessage: main.errorMessage)
-            }
-        }
-    }
     // MARK: - Methods
     
     func occurAddedMenuAlert(itemCount: Int) {
@@ -202,33 +245,74 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     }
     
     
-    func setSignatureMenuButton(button1: UIButton, button2: UIButton) {
+    func setSignatureMenuButton(button1: UIButton, button2: UIButton, button3: UIButton, button4: UIButton) {
+        
+        self.view.addSubview(button2)
+        self.view.addSubview(button4)
+        
         button1.isHidden = true
         button2.isSelected = true
         button2.isEnabled = false
         
-        button2.translatesAutoresizingMaskIntoConstraints = false
-        button2.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        // button2.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        // button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        // button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        // button2.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        // button2.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        // button2.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        // button2.frame = CGRect(x: self.view.centerXAnchor, y: 400, width: 150, height: 30)
-        // button2.frame.size = CGSize(width: 120, height: 30)
-        
-        // button2.frame = CGRect(x: self.view.frame.width/4, y: 400, width: 120, height: 30)
-        
+        button2.setTitle("ICED ONLY", for: .normal)
         button2.layer.borderWidth = 1
         button2.layer.cornerRadius = 12
         button2.layer.borderColor = UIColor.systemBlue.cgColor
+        
+        button3.isHidden = true
+        button4.isSelected = true
+        button4.isEnabled = false
+        
+        button4.setTitle("매장 전용", for: .normal)
+        button4.layer.borderWidth = 1
+        button4.layer.cornerRadius = 12
+        button4.layer.borderColor = UIColor.systemBlue.cgColor
+        
+        button2.translatesAutoresizingMaskIntoConstraints = false
+        button4.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        button2.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button2.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button2.topAnchor.constraint(equalTo: self.menuImageView.bottomAnchor, constant: 40).isActive = true
+        button2.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        button4.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button4.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button4.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -190).isActive = true
+        button4.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
+    
+    @objc
+    func abc() {
+        if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp != nil {
+            main.addedMenuList.append(main.menuInfoInstance)
+            
+            main.result = main.menuInfoInstance.price!
+            
+            occurAddedMenuAlert(itemCount: main.addedMenuList.count)
+        } else {
+            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
+                main.setErrorMessage(errorCase: "옵션")
+                
+                occurErrorAlert(errorMessage: main.errorMessage)
+            }
+            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
+                main.setErrorMessage(errorCase: "포장/매장")
+                
+                occurErrorAlert(errorMessage: main.errorMessage)
+            }
+            if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
+                main.setErrorMessage(errorCase: "핫/아이스")
+                
+                occurErrorAlert(errorMessage: main.errorMessage)
+            }
+        }
+    }
 }
+
+// MARK: - Extension
 
 extension UIButton {
     func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
@@ -239,7 +323,7 @@ extension UIButton {
         
         let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-         
+        
         self.setBackgroundImage(backgroundImage, for: state)
     }
 }

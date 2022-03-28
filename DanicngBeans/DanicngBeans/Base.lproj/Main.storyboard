@@ -19,12 +19,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9Lp-SY-Eko" kind="relationship" relationship="rootViewController" id="ebu-tE-VFf"/>
+                        <segue destination="MYa-vV-fpD" kind="relationship" relationship="rootViewController" id="R4j-1H-cU3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sd2-oe-GwN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18" y="1773"/>
+            <point key="canvasLocation" x="-414" y="1745"/>
         </scene>
         <!--Menu List View Controller-->
         <scene sceneID="bRd-wk-05W">
@@ -106,24 +106,6 @@
                                     <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="wb0-jj-570"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39c-X0-9k2">
-                                <rect key="frame" x="16" y="88" width="72" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYX-JK-6dm">
-                                <rect key="frame" x="53" y="717" width="268" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Order">
-                                    <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="22"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="NIk-fF-Kvt" kind="show" id="XkX-9h-1S0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OHd-so-qD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -140,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-nF-65n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="1773"/>
+            <point key="canvasLocation" x="1754" y="1773"/>
         </scene>
         <!--Select Option View Controller-->
         <scene sceneID="GDu-NZ-3aA">
@@ -150,37 +132,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzC-Iu-9jD">
-                                <rect key="frame" x="16" y="320" width="147" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvm-c7-f92">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG9-nW-pqo">
-                                <rect key="frame" x="271" y="334" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pk-dn-IKs">
-                                <rect key="frame" x="21" y="652" width="332" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.99207526450000005" green="0.97260278460000005" blue="0.94106537099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="선택한 음료 담기">
-                                    <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="addMenuToCart:" destination="SZr-oH-CY7" eventType="touchUpInside" id="JuH-aB-c2l"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeQ-BZ-fdv">
                                 <rect key="frame" x="21" y="604" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -202,11 +153,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePW-Z8-cI7">
-                                <rect key="frame" x="16" y="559" width="343" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxq-bW-W8G">
                                 <rect key="frame" x="1" y="559" width="100" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -234,18 +180,8 @@
                                     <action selector="selectGetWay:" destination="SZr-oH-CY7" eventType="touchUpInside" id="huA-cT-nB9"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zon-Dc-jOa">
-                                <rect key="frame" x="16" y="520" width="343" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="769-Tl-YKb">
-                                <rect key="frame" x="15" y="360" width="343" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-ZX-DFm">
-                                <rect key="frame" x="29" y="366" width="147" height="31"/>
+                                <rect key="frame" x="29" y="389" width="147" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="HOT">
@@ -256,7 +192,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHj-wo-3r5">
-                                <rect key="frame" x="184" y="366" width="147" height="31"/>
+                                <rect key="frame" x="184" y="389" width="147" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="ICED"/>
@@ -264,27 +200,16 @@
                                     <action selector="selectTemp:" destination="SZr-oH-CY7" eventType="touchUpInside" id="97y-ty-jrO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="메뉴설명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnl-3m-sBJ">
-                                <rect key="frame" x="21" y="405" width="310" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zKn-dx-BIu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kn6-Yo-0f6"/>
                     <connections>
-                        <outlet property="confirmButton" destination="0pk-dn-IKs" id="jea-WD-8ci"/>
                         <outlet property="countStepper" destination="jtz-r5-72p" id="7BX-7T-SYc"/>
-                        <outlet property="countedNumberLabel" destination="OeQ-BZ-fdv" id="6Co-Z8-cO2"/>
+                        <outlet property="countedNumberLabel" destination="OeQ-BZ-fdv" id="BY1-SX-4Dk"/>
                         <outlet property="countedPriceLabel" destination="SfR-1d-nq6" id="Ept-TE-uY9"/>
-                        <outlet property="defaultMenuNameLabel" destination="uzC-Iu-9jD" id="XSV-dF-1zl"/>
-                        <outlet property="defaultMenuPriceLabel" destination="yG9-nW-pqo" id="l06-ac-Kil"/>
-                        <outlet property="details" destination="dnl-3m-sBJ" id="jMv-te-Qy4"/>
-                        <outlet property="menuImageView" destination="wvm-c7-f92" id="QBe-hw-6Yj"/>
+                        <outlet property="setOptionButton" destination="oxq-bW-W8G" id="JVU-dv-a8V"/>
                         <outletCollection property="hereOrToGo" destination="eBK-24-nyK" collectionClass="NSMutableArray" id="fdI-E4-XDT"/>
                         <outletCollection property="hereOrToGo" destination="Dpz-Qp-hXP" collectionClass="NSMutableArray" id="3jb-2H-5G4"/>
                         <outletCollection property="hotOrIce" destination="gKI-ZX-DFm" collectionClass="NSMutableArray" id="Ijr-Za-iG8"/>
@@ -293,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blH-y6-teM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="1772.6600985221676"/>
+            <point key="canvasLocation" x="2663" y="1773"/>
         </scene>
         <!--Pay Table View Controller-->
         <scene sceneID="cYL-hq-Ddm">
@@ -304,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OhO-5R-m7c">
-                                <rect key="frame" x="0.0" y="88" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="yiH-z0-A9X" customClass="CustomCell" customModule="DanicngBeans" customModuleProvider="target">
@@ -355,22 +280,6 @@
                                     <outlet property="delegate" destination="NIk-fF-Kvt" id="nMu-dk-Bcd"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEC-P3-xyh">
-                                <rect key="frame" x="0.0" y="693" width="375" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0z-dH-tms">
-                                <rect key="frame" x="98" y="749" width="178" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Order"/>
-                                <connections>
-                                    <action selector="orderAddedMenus:" destination="NIk-fF-Kvt" eventType="touchUpInside" id="AMa-aJ-OOc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oF8-rw-hxk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -383,9 +292,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Gfo-cM-bnO"/>
                     <connections>
-                        <outlet property="orderButton" destination="s0z-dH-tms" id="zRW-1h-OFd"/>
                         <outlet property="tableView" destination="OhO-5R-m7c" id="WIw-Qo-FTf"/>
-                        <outlet property="totalPriceLabel" destination="sEC-P3-xyh" id="lIU-zq-rOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dCi-QI-i0T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -595,10 +502,10 @@
             </objects>
             <point key="canvasLocation" x="892" y="1061"/>
         </scene>
-        <!--View Controller-->
+        <!--Test View Controller-->
         <scene sceneID="hd6-zh-iat">
             <objects>
-                <viewController id="CIj-gm-SV8" customClass="ViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CIj-gm-SV8" customClass="testViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DZG-tJ-mLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -607,49 +514,6 @@
                                 <rect key="frame" x="16" y="55" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="45"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DESSERT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgO-rB-8YU">
-                                <rect key="frame" x="193" y="516" width="166" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NON COFFEE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkF-Ay-x6m">
-                                <rect key="frame" x="147" y="292" width="212" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FILTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fii-uo-Gzm">
-                                <rect key="frame" x="16" y="430" width="128" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="COFFEE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSL-aK-Ars">
-                                <rect key="frame" x="16" y="166" width="138" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ORDER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhg-1P-V46">
-                                <rect key="frame" x="110" y="674" width="138" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBm-wA-sUf">
-                                <rect key="frame" x="110" y="700" width="154" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="7"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -662,6 +526,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bjh-tb-QN6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16.800000000000001" y="1060.344827586207"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="hGv-8R-Sz5">
+            <objects>
+                <viewController id="MYa-vV-fpD" customClass="categoryViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YdJ-Dq-WZS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YZL-fm-oTI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bxW-dv-qNn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VG3-n0-ALJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="1745"/>
         </scene>
     </scenes>
     <resources>
