@@ -19,9 +19,9 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.minimumValue = 1
         esspressoShotCountStepper.maximumValue = 6
         esspressoShotCountStepper.isContinuous = false
-        esspressoShotCountStepper.value = Double(main.menuInfoInstance.shot!)
+        esspressoShotCountStepper.value = Double(main.modifiedMenuInfoInstance.shot!)
 
-        esspressoShotCountLabel.text = main.menuInfoInstance.shot?.description
+        esspressoShotCountLabel.text = String(main.modifiedMenuInfoInstance.shot!)
     }
     
     // MARK: - User actions

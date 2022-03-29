@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sd2-oe-GwN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-414" y="1745"/>
+            <point key="canvasLocation" x="265" y="1795"/>
         </scene>
         <!--Menu List View Controller-->
         <scene sceneID="bRd-wk-05W">
@@ -42,9 +42,6 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Americano">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="i2j-I6-IvA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXs-cX-aob">
                                 <rect key="frame" x="20" y="213" width="339" height="61"/>
@@ -54,9 +51,6 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Latte" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="h46-8w-xjh"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRh-Kl-GFx">
                                 <rect key="frame" x="20" y="297" width="339" height="61"/>
@@ -66,9 +60,6 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Vanilla Latte" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="PDV-5d-hdU"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHf-Ut-456">
                                 <rect key="frame" x="20" y="379" width="339" height="61"/>
@@ -78,9 +69,6 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Dancing Latte" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="vvH-wU-Rwq"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWC-Bg-In6">
                                 <rect key="frame" x="20" y="462" width="339" height="61"/>
@@ -90,9 +78,6 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Ein Spanner" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="KGG-S2-lJ5"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1d-QI-ob0">
                                 <rect key="frame" x="20" y="544" width="339" height="61"/>
@@ -102,27 +87,16 @@
                                 <buttonConfiguration key="configuration" style="gray" title="Black Tea" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="selectMenuButtonTapped:" destination="9Lp-SY-Eko" eventType="touchUpInside" id="wb0-jj-570"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OHd-so-qD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="HFU-Fl-Lhu"/>
-                    <connections>
-                        <outletCollection property="menuChooseButton" destination="pM4-R7-ND9" collectionClass="NSMutableArray" id="qhY-BG-4Yg"/>
-                        <outletCollection property="menuChooseButton" destination="bXs-cX-aob" collectionClass="NSMutableArray" id="fPv-0r-EC7"/>
-                        <outletCollection property="menuChooseButton" destination="NRh-Kl-GFx" collectionClass="NSMutableArray" id="YE7-Zg-Ybf"/>
-                        <outletCollection property="menuChooseButton" destination="SHf-Ut-456" collectionClass="NSMutableArray" id="RMM-Mw-auL"/>
-                        <outletCollection property="menuChooseButton" destination="SWC-Bg-In6" collectionClass="NSMutableArray" id="41L-cr-bk1"/>
-                        <outletCollection property="menuChooseButton" destination="s1d-QI-ob0" collectionClass="NSMutableArray" id="bRJ-A3-ppP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-nF-65n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="1773"/>
+            <point key="canvasLocation" x="1852" y="1795"/>
         </scene>
         <!--Select Option View Controller-->
         <scene sceneID="GDu-NZ-3aA">
@@ -218,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blH-y6-teM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663" y="1773"/>
+            <point key="canvasLocation" x="2662" y="1795"/>
         </scene>
         <!--Pay Table View Controller-->
         <scene sceneID="cYL-hq-Ddm">
@@ -302,7 +276,7 @@
                     <viewLayoutGuide key="safeArea" id="lnm-dQ-A7w"/>
                 </stackView>
             </objects>
-            <point key="canvasLocation" x="892" y="2563.3004926108374"/>
+            <point key="canvasLocation" x="1009" y="2566"/>
         </scene>
         <!--Select Option Bottom Sheet View Controller-->
         <scene sceneID="sMN-Ot-HHK">
@@ -366,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OlR-rK-XtU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="2563"/>
+            <point key="canvasLocation" x="2662" y="2554"/>
         </scene>
         <!--Option Shot View Controller-->
         <scene sceneID="Zcl-Ja-ZaM">
@@ -423,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xu7-7M-RQQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="3330"/>
+            <point key="canvasLocation" x="2710" y="3318"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AuO-H5-eDj">
@@ -541,7 +515,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VG3-n0-ALJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="1745"/>
+            <point key="canvasLocation" x="1009" y="1795"/>
+        </scene>
+        <!--New Menu View Controller-->
+        <scene sceneID="8HT-Tm-rC3">
+            <objects>
+                <viewController storyboardIdentifier="newMenuListVC" id="ClC-Vl-lao" customClass="newMenuViewController" customModule="DanicngBeans" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dc8-TQ-MKW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0rC-Ni-ghd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rf4-lX-C7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1852" y="1060"/>
         </scene>
     </scenes>
     <resources>

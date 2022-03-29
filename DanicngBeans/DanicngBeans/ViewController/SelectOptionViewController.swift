@@ -33,15 +33,21 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         super.viewDidLoad()
         
         menuImageView.image = menuImage
-        defaultMenuNameLabel.text = String(main.menuInfoInstance.name)
-        defaultMenuPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
-        countedNumberLabel.text = "\(String(main.menuInfoInstance.count))잔"
-        countedPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
+        // defaultMenuNameLabel.text = String(main.menuInfoInstance.name)
+        defaultMenuNameLabel.text = main.modifiedMenuInfoInstance.name
+        print("print: \(main.modifiedMenuInfoInstance.name!)")
+        
+        // defaultMenuPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
+        defaultMenuPriceLabel.text = main.setDeciamlWon(value: main.modifiedMenuInfoInstance.price)
+        
+        // countedNumberLabel.text = "\(String(main.menuInfoInstance.count))잔"
+        countedNumberLabel.text = "\(String(main.modifiedMenuInfoInstance.count))잔"
+        // countedPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
+        countedPriceLabel.text = main.setDeciamlWon(value: main.modifiedMenuInfoInstance.price)
         
         addMenuToCartButton = UIButton(type: .system)
         addMenuToCartButton.setTitle("PUT", for: .normal)
-        addMenuToCartButton.titleLabel?.font = UIFont(name: "Beckman-Free", size: 20)
-        // addMenuToCartButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
+        addMenuToCartButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
         addMenuToCartButton.setTitleColor(.white, for: .normal)
         addMenuToCartButton.backgroundColor = .systemBlue
         
@@ -111,7 +117,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         // details.text = menuDescription
         
-        if main.menuInfoInstance.temp == "ICED ONLY" {
+        if main.modifiedMenuInfoInstance.temp == "ICED ONLY" {
             setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1], button3: hereOrToGo[0] ,button4:hereOrToGo[1])
         }
     }
@@ -128,17 +134,18 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countedNumberLabel.text = "\(Int(sender.value))잔"
         countedPriceLabel.text = main.setDeciamlWon(value: calculatedPrice)
         
-        main.menuInfoInstance.price = calculatedPrice
-        main.menuInfoInstance.count = Int(sender.value)
+        main.modifiedMenuInfoInstance.price = calculatedPrice
+        main.modifiedMenuInfoInstance.count = Int(sender.value)
     }
     
     
     @IBAction func openSelectOptionBottomSheeet() {
         let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "SelectOptionBottomSheetViewController") as! SelectOptionBottomSheetViewController
         
-        SelectOptionBottomSheetVC.menuName = main.menuInfoInstance.name
+        SelectOptionBottomSheetVC.menuName = main.modifiedMenuInfoInstance.name
+        SelectOptionBottomSheetVC.menuName = main.modifiedMenuInfoInstance.name
         
-        if let boolShot = main.menuInfoInstance.shot {
+        if let boolShot = main.modifiedMenuInfoInstance.shot {
             SelectOptionBottomSheetVC.shotCount = boolShot
         }
         
@@ -155,7 +162,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             if !sender.isSelected {
                 for index in hotOrIce.indices {
                     hotOrIce[index].isSelected = false
-                    main.menuInfoInstance.temp = sender.titleLabel?.text!
+                    main.modifiedMenuInfoInstance.temp = sender.titleLabel?.text!
                 }
                 sender.isSelected = true
                 indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
@@ -163,7 +170,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         } else {
             sender.isSelected = true
             indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
-            main.menuInfoInstance.temp = sender.titleLabel?.text!
+            main.modifiedMenuInfoInstance.temp = sender.titleLabel?.text!
         }
         
         if indexOfOneAndOnlyTemp == 0 {
@@ -185,12 +192,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             } else {
                 sender.isSelected = false
                 indexOfOneAndOnlyGetWay = nil
-                main.menuInfoInstance.getWay = nil
+                main.modifiedMenuInfoInstance.getWay = nil
             }
         } else {
             sender.isSelected = true
             indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
-            main.menuInfoInstance.getWay = sender.titleLabel?.text!
+            main.modifiedMenuInfoInstance.getWay = sender.titleLabel?.text!
         }
     }
     
@@ -207,7 +214,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         present(alertVC, animated: true, completion: nil)
     }
-    
     
     func occurErrorAlert(errorMessage: String) {
         let alertVC = UIAlertController(title: "확인해주세요!", message: errorMessage, preferredStyle: .alert)
@@ -237,7 +243,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
                 menuImageView.image = UIImage(named: "Sorry :(")
             }
             menuLabel.text = ("Iced \(defaultMenuName)")
-            main.menuInfoInstance.name = menuLabel.text
+            main.modifiedMenuInfoInstance.name = menuLabel.text
             
         default :
             break
@@ -286,24 +292,24 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     @objc
     func abc() {
-        if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp != nil {
-            main.addedMenuList.append(main.menuInfoInstance)
+        if main.modifiedMenuInfoInstance.getWay != nil, main.modifiedMenuInfoInstance.temp != nil {
+            main.addedMenuList.append(main.modifiedMenuInfoInstance)
             
-            main.result = main.menuInfoInstance.price!
+            main.result = main.modifiedMenuInfoInstance.price!
             
             occurAddedMenuAlert(itemCount: main.addedMenuList.count)
         } else {
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
+            if main.modifiedMenuInfoInstance.getWay == nil, main.modifiedMenuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "옵션")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
+            if main.modifiedMenuInfoInstance.getWay == nil, main.modifiedMenuInfoInstance.temp != nil {
                 main.setErrorMessage(errorCase: "포장/매장")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
+            if main.modifiedMenuInfoInstance.getWay != nil, main.modifiedMenuInfoInstance.temp == nil {
                 main.setErrorMessage(errorCase: "핫/아이스")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)

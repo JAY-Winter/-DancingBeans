@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		300FB1E227F1E82100F4863C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E127F1E82100F4863C /* testViewController.swift */; };
 		300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E327F1F3E200F4863C /* categoryViewController.swift */; };
+		300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E527F2E6B900F4863C /* UIModel.swift */; };
+		300FB1E827F3003900F4863C /* newMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E727F3003900F4863C /* newMenuViewController.swift */; };
 		30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AC27C5E7450044B4B6 /* AppDelegate.swift */; };
 		30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */; };
 		30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702B027C5E7450044B4B6 /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		300FB1E127F1E82100F4863C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		300FB1E327F1F3E200F4863C /* categoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryViewController.swift; sourceTree = "<group>"; };
+		300FB1E527F2E6B900F4863C /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
+		300FB1E727F3003900F4863C /* newMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newMenuViewController.swift; sourceTree = "<group>"; };
 		30D702A927C5E7450044B4B6 /* DanicngBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanicngBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D702AC27C5E7450044B4B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				30D702CD27C603FB0044B4B6 /* MenuListViewController.swift */,
 				300FB1E127F1E82100F4863C /* testViewController.swift */,
 				300FB1E327F1F3E200F4863C /* categoryViewController.swift */,
+				300FB1E727F3003900F4863C /* newMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				30D702DE27C604020044B4B6 /* mainModel.swift */,
+				300FB1E527F2E6B900F4863C /* UIModel.swift */,
 				30D702E927C60ED70044B4B6 /* Value.swift */,
 			);
 			name = Model;
@@ -204,6 +210,7 @@
 			files = (
 				30D702E527C60EA80044B4B6 /* SelectOptionDelegate.swift in Sources */,
 				30D702EA27C60ED70044B4B6 /* Value.swift in Sources */,
+				300FB1E827F3003900F4863C /* newMenuViewController.swift in Sources */,
 				30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */,
 				300FB1E227F1E82100F4863C /* testViewController.swift in Sources */,
 				300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */,
@@ -211,6 +218,7 @@
 				30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */,
 				30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */,
 				30D702DF27C604020044B4B6 /* mainModel.swift in Sources */,
+				300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */,
 				30D702D227C603FB0044B4B6 /* SelectOptionViewController.swift in Sources */,
 				30D702DB27C603FB0044B4B6 /* MenuListViewController.swift in Sources */,
 				30D702E827C60EA80044B4B6 /* MenuCartDelegate.swift in Sources */,

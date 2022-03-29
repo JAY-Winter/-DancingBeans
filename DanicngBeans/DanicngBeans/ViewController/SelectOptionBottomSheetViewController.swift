@@ -29,7 +29,7 @@ class SelectOptionBottomSheetViewController: UIViewController {
         
         menuNameLabel.text = menuName
         
-        if main.menuInfoInstance.shot == nil {
+        if main.modifiedMenuInfoInstance.shot == nil {
             self.shotOptionButton?.removeFromSuperview()
             self.shotCountLabel?.removeFromSuperview()
         } else {
@@ -60,6 +60,6 @@ extension SelectOptionBottomSheetViewController: SelectOptionBottomSheetDelegate
     func adjustOption(_ vc: UIViewController, value: Int?) {
         shotCountLabel?.text = "\(value!.description)개"
         
-        main.menuInfoInstance.shot = value
+        main.modifiedMenuInfoInstance.shot = value
     }
 }

@@ -27,12 +27,16 @@ class testViewController: UIViewController {
         coffee = UILabel()
         coffee.text = "COFFEE"
         coffee.font = UIFont(name: "Gill Sans Bold", size: 30)
+        coffee.font = UIFont.preferredFont(forTextStyle: .body)
+        coffee.adjustsFontForContentSizeCategory = true
         coffee.textColor = .black
         
         
         noncoffee = UILabel()
         noncoffee.text = "NON COFFEE"
         noncoffee.font = UIFont(name: "Gill Sans Bold", size: 30)
+        noncoffee.font = UIFont.preferredFont(forTextStyle: .body)
+        noncoffee.adjustsFontForContentSizeCategory = true
         noncoffee.textColor = .black
         
         
@@ -59,7 +63,6 @@ class testViewController: UIViewController {
         
         coffee2 = UILabel()
         coffee2.text = "                      "
-        coffee2.font = UIFont(name: "Gill Sans Bold", size: 30)
         coffee2.backgroundColor = .systemBrown
 
         

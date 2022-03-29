@@ -15,7 +15,6 @@ class MenuListViewController: UIViewController {
     @IBOutlet var menuChooseButton: [UIButton]!
     
     private var viewLabel = UILabel()
-    var orderButton: UIButton!
     //--------------------------------------------------------------------------------------------
     
     override func viewDidLoad() {
@@ -23,27 +22,11 @@ class MenuListViewController: UIViewController {
         
         viewLabel.text = "MENU"
         viewLabel.font = UIFont(name: "Gill Sans Bold", size: 40)
-        
-        orderButton = UIButton(type: .system)
-        orderButton.setTitle("ORDER", for: .normal)
-        orderButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
-        orderButton.setTitleColor(.white, for: .normal)
-        orderButton.backgroundColor = .systemBlue
-        orderButton.layer.cornerRadius = 12
-        orderButton.addTarget(self, action: #selector(regSegue), for: .touchUpInside)
-        
         view.addSubview(viewLabel)
-        view.addSubview(orderButton)
         
         viewLabel.translatesAutoresizingMaskIntoConstraints = false
-        viewLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        viewLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         viewLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        
-        orderButton.translatesAutoresizingMaskIntoConstraints = false
-        orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        orderButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-        orderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         var cons: CGFloat = 200
         for menuButton in menuChooseButton {
@@ -58,12 +41,6 @@ class MenuListViewController: UIViewController {
             
             cons += 80
         }
-        
-        orderButton.layer.cornerRadius = 12
-        orderButton.translatesAutoresizingMaskIntoConstraints = false
-        orderButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        orderButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -40).isActive = true
-        
     }
     
     // MARK: - User actions
@@ -72,11 +49,11 @@ class MenuListViewController: UIViewController {
         let SelectOptionVC = storyboard?.instantiateViewController(identifier: "SelectOptionViewController") as! SelectOptionViewController
         
         if let menu = sender.titleLabel?.text! {
-            main.setCommonMenuInfo(menuName: menu)
+            // main.setCommonMenuInfo(menuName: menu)
             
-            SelectOptionVC.defaultMenuName = main.menuInfoInstance.name
-            SelectOptionVC.defaultMenuPrice = main.menuInfoInstance.price
-            SelectOptionVC.menuDescription = main.menuInfoInstance.detail
+            // SelectOptionVC.defaultMenuName = main.menuInfoInstance.name
+            // SelectOptionVC.defaultMenuPrice = main.menuInfoInstance.price
+            // SelectOptionVC.menuDescription = main.menuInfoInstance.detail
             
             if let menuImage = UIImage(named: menu) {
                 SelectOptionVC.menuImage = menuImage
@@ -89,12 +66,6 @@ class MenuListViewController: UIViewController {
             self.present(SelectOptionVC, animated: true, completion: nil)
             
         }
-    }
-    
-    @objc
-    func regSegue() {
-        let page = self.storyboard?.instantiateViewController(withIdentifier: "PayTableViewController") as! PayTableViewController
-        self.navigationController?.pushViewController(page, animated: true)
     }
 }
 
