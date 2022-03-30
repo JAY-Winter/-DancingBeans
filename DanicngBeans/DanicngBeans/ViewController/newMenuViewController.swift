@@ -21,27 +21,21 @@ class newMenuViewController: UIViewController {
 }
 
 
-// MARK: - func *
-
+// MARK: - func 
 
 extension newMenuViewController {
     
     func setView(menuType: String) {
         
+        var appendedPrArrIrregularly: Dictionary<Int, String> = [:]
+        
         switch menuType {
         case "COFFEE" :
-            var defaultHeight: CGFloat = view.frame.height/5
-            
-            for name in main.modifiedMenuList.keys.sorted(by: {$0 < $1}) {
-                let startIdx: String.Index = name.index(name.startIndex, offsetBy: 1)
-                let result = String(name[startIdx...])
-                
-                if let menu = main.modifiedMenuList[name] {
-                    
-                    switch menu {
-                    case .coffee :
-                        setButton(buttonTitle: result, defaultHeight: defaultHeight)
-                        defaultHeight += 80
+            for menuName in main.modifiedMenuList.keys {
+                if let cons = main.modifiedMenuList[menuName] {
+                    switch cons {
+                    case .coffee(let pr, _, _, _, _, _, _, _) :
+                        appendedPrArrIrregularly[pr] = menuName
                     case .nonCoffee :
                         break
                     case .filters :
@@ -51,22 +45,16 @@ extension newMenuViewController {
                     }
                 }
             }
+            setButtonList(beforeArr: appendedPrArrIrregularly)
+            
         case "NON COFFEE" :
-            var defaultHeight: CGFloat = view.frame.height/5
-            
-            for name in main.modifiedMenuList.keys.sorted(by: {$0 < $1}) {
-                let startIdx: String.Index = name.index(name.startIndex, offsetBy: 1)
-                let result = String(name[startIdx...])
-                
-                if let menu = main.modifiedMenuList[name] {
-                    
-                    switch menu {
-                        
+            for menuName in main.modifiedMenuList.keys {
+                if let cons = main.modifiedMenuList[menuName] {
+                    switch cons {
                     case .coffee :
                         break
-                    case .nonCoffee :
-                        setButton(buttonTitle: result, defaultHeight: defaultHeight)
-                        defaultHeight += 80
+                    case .nonCoffee(let pr, _, _, _, _, _) :
+                        appendedPrArrIrregularly[pr] = menuName
                     case .filters :
                         break
                     case .dessert :
@@ -74,90 +62,108 @@ extension newMenuViewController {
                     }
                 }
             }
+            setButtonList(beforeArr: appendedPrArrIrregularly)
+            
         case "FILTER" :
-            var defaultHeight: CGFloat = view.frame.height/5
-            
-            for name in main.modifiedMenuList.keys.sorted(by: {$0 < $1}) {
-                let startIdx: String.Index = name.index(name.startIndex, offsetBy: 1)
-                let result = String(name[startIdx...])
-                
-                if let menu = main.modifiedMenuList[name] {
-                    
-                    switch menu {
-                        
-                    case .coffee :
+            for menuName in main.modifiedMenuList.keys {
+                if let cons = main.modifiedMenuList[menuName] {
+                    switch cons {
+                    case .coffee:
                         break
-                    case .nonCoffee :
+                    case .nonCoffee:
                         break
-                    case .filters :
-                        setButton(buttonTitle: result, defaultHeight: defaultHeight)
-                        defaultHeight += 80
+                    case .filters(let pr, _, _, _, _, _) :
+                        appendedPrArrIrregularly[pr] = menuName
                     case .dessert :
                         break
                     }
                 }
             }
+            setButtonList(beforeArr: appendedPrArrIrregularly)
+            
         case "DESSERT" :
-            var defaultHeight: CGFloat = view.frame.height/5
-            
-            for name in main.modifiedMenuList.keys.sorted(by: {$0 < $1}) {
-                let startIdx: String.Index = name.index(name.startIndex, offsetBy: 1)
-                let result = String(name[startIdx...])
-                
-                if let menu = main.modifiedMenuList[name] {
-                    
-                    switch menu {
-                    case .coffee :
+            for menuName in main.modifiedMenuList.keys {
+                if let cons = main.modifiedMenuList[menuName] {
+                    switch cons {
+                    case .coffee:
                         break
-                    case .nonCoffee :
+                    case .nonCoffee:
                         break
-                    case .filters :
+                    case .filters:
                         break
-                    case .dessert :
-                        setButton(buttonTitle: result, defaultHeight: defaultHeight)
-                        defaultHeight += 80
+                    case .dessert(let pr, _, _, _, _) :
+                        appendedPrArrIrregularly[pr] = menuName
                     }
                 }
             }
+            setButtonList(beforeArr: appendedPrArrIrregularly)
         default : break
         }
     }
     
     
+    func setButtonList(beforeArr: Dictionary<Int, String>) {
+        var spacingFromTop: CGFloat = view.frame.height/5
+        let sortedprArr = beforeArr.sorted { $0.0 < $1.0}
+        
+        for (_, name) in sortedprArr {
+            setButton(buttonTitle: name, defaultHeight: spacingFromTop)
+            spacingFromTop += 100
+        }
+    }
+    
+    
     func setButton(buttonTitle: String, defaultHeight: CGFloat) {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(buttonTitle, for: .normal)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.font = UIFont(name: "DIN Alternate", size: 20)
         button.setTitleColor(.black, for: .normal)
-        button.setBackgroundColor(.gray, for: .normal)
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 12
+        // button.contentHorizontalAlignment = .left
+        button.setBackgroundColor(UIColor(named: "customGray")!.withAlphaComponent(0.8), for: .normal)
         
         self.view.addSubview(button)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.topAnchor.constraint(equalTo: view.topAnchor, constant: defaultHeight).isActive = true
-        button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         
+        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        button.topAnchor.constraint(equalTo: view.topAnchor, constant: defaultHeight).isActive = true
+        button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        button.layer.cornerRadius = 12
         button.addTarget(self, action: #selector(tappedSetButton), for: .touchUpInside)
     }
     
     
     @objc func tappedSetButton(_ sender: UIButton) {
-        
-        main.setMenuDetailedOptionByTappedMenuButton(menuName: "1Espresso")
-        // main.setMenuDetailedOptionByTappedMenuButton(menuName: ("1\(String(describing: sender.titleLabel?.text!))"))
-        
-        // print("1\(String(describing: sender.titleLabel?.text!).description )")
-        
-        
-        
         let SelectOptionVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectOptionViewController") as! SelectOptionViewController
         
-        // SelectOptionVC.defaultMenuName = main.modifiedMenuInfoInstance.name
-        // SelectOptionVC.defaultMenuPrice = main.modifiedMenuInfoInstance.price
-        SelectOptionVC.menuDescription = main.modifiedMenuInfoInstance.kr
-        
+        if let buttonTitle = sender.title(for: .normal) {
+            main.setMenuDetailedOptionByTappedMenuButton(menuName: buttonTitle)
+            
+            SelectOptionVC.defaultMenuEngName = main.modifiedMenuInfoInstance.name
+            SelectOptionVC.defaultMenuKrName = main.modifiedMenuInfoInstance.kr
+            SelectOptionVC.defaultMenuPrice = main.modifiedMenuInfoInstance.price
+            SelectOptionVC.menuKrName = main.modifiedMenuInfoInstance.kr
+            
+            if let image = UIImage(named: buttonTitle) {
+                SelectOptionVC.menuImage = image
+            } else {
+                SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
+            }
+            
+            switch main.modifiedMenuList[buttonTitle] {
+            case .coffee :
+                SelectOptionVC.menuType = "coffee"
+            case .nonCoffee :
+                SelectOptionVC.menuType = "nonCoffee"
+            case .filters :
+                SelectOptionVC.menuType = "filters"
+            case .dessert :
+                SelectOptionVC.menuType = "dessert"
+            default :
+                break
+            }
+        }
         self.present(SelectOptionVC, animated: true, completion: nil)
     }
 }

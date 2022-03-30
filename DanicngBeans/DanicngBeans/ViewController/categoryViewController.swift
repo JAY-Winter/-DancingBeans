@@ -9,18 +9,22 @@ import UIKit
 
 class categoryViewController: UIViewController {
     
+    let main = MainModel.shared
+    
+    var coffee: UIButton!
+    var noncoffee: UIButton!
+    var filter: UIButton!
+    var dessert: UIButton!
+    var coffee2: UIButton!
+    var noncoffee2: UIButton!
+    var filter2: UIButton!
+    var dessert2: UIButton!
+    var order: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var coffee: UIButton!
-        var noncoffee: UIButton!
-        var filter: UIButton!
-        var dessert: UIButton!
-        var coffee2: UIButton!
-        var noncoffee2: UIButton!
-        var filter2: UIButton!
-        var dessert2: UIButton!
-        var order: UIButton!
+    
+        let defaultHeight: CGFloat = view.frame.height/5
         
         coffee = UIButton()
         coffee.setTitle("COFFEE", for: .normal)
@@ -87,9 +91,7 @@ class categoryViewController: UIViewController {
         view.addSubview(dessert2)
         view.addSubview(order)
         
-        let defaultHeight: CGFloat = view.frame.height/5
-        
-        coffee.setBackgroundColor(.red, for: .normal)
+        coffee.setBackgroundColor(.white, for: .normal)
         coffee.translatesAutoresizingMaskIntoConstraints = false
         coffee.topAnchor.constraint(equalTo: view.topAnchor, constant: defaultHeight-10).isActive = true
         coffee.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -132,45 +134,39 @@ class categoryViewController: UIViewController {
         order.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
     
-    @objc
-    func presentDetailMenuList() {
+    
+    @objc func presentDetailMenuList() {
         let menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuListViewVC") as! MenuListViewController
         self.navigationController?.pushViewController(menuVC, animated: true)
     }
     
-    @objc
-    func regSegue() {
+    
+    @objc func regSegue() {
         let page = self.storyboard?.instantiateViewController(withIdentifier: "PayTableViewController") as! PayTableViewController
         self.navigationController?.pushViewController(page, animated: true)
     }
-    
-    
-    let main = MainModel.shared
+   
     
     @objc
     func pushMenuList(_ sender: UIButton){
         let newMenuListVC = storyboard?.instantiateViewController(identifier: "newMenuListVC") as! newMenuViewController
         
+        
         switch sender.titleLabel?.text {
         case "COFFEE" :
             self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            
             newMenuListVC.menuType = "COFFEE"
-            
             
         case "NON COFFEE" :
             self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            
             newMenuListVC.menuType = "NON COFFEE"
             
         case "FILTER" :
             self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            
             newMenuListVC.menuType = "FILTER"
             
         case "DESSERT" :
             self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            
             newMenuListVC.menuType = "DESSERT"
             
         default : break

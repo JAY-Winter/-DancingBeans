@@ -22,9 +22,12 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         super.viewDidLoad()
         self.navigationItem.title = "Payment"
+
+        self.view.backgroundColor = UIColor(named: "defaultBackGroundColor")
         
         orderButton = UIButton(type: .system)
         
+
         view.addSubview(orderButton)
         view.addSubview(totalPriceLabel)
         
@@ -50,11 +53,6 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         orderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    // MARK: - User actions
-    
-    @IBAction func orderAddedMenus(_ sender: UIButton) {
-        
-    }
     
     // MARK: - User actions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,8 +78,16 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         let addedMenu = main.addedMenuList[indexPath.row]
         
+        
         cell.nameLabel.text = addedMenu.name
         cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)⎜\(addedMenu.count!)잔"
+        
+        if let isShotMenu = addedMenu.shot {
+            cell.option2Label.text = "\(isShotMenu)shot"
+        } else {
+            cell.option2Label.isHidden = true
+        }
+        
         cell.priceLabel.text = main.setDeciamlWon(value: addedMenu.price)
         
         cell.menuImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,23 +96,23 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         cell.menuImageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0).isActive = true
         cell.menuImageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -200).isActive = true
         cell.menuImageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
-        // cell.menuImageView.bottomAnchor.constraint(equalTo: table)/
-        // cell.menuImageView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 10).isActive = true
-        // cell.menuImageView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: cell.width).isActive = true
-        // cell.menuImageView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
-        
-        // orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        // orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        //
+
         
         cell.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
         cell.nameLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
-        // cell.nameLabel.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -10).isActive = true
+        cell.nameLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -10).isActive = true
         
         cell.optionLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.optionLabel.adjustsFontSizeToFitWidth = true
         cell.optionLabel.topAnchor.constraint(equalTo: cell.nameLabel.bottomAnchor, constant: 10).isActive = true
         cell.optionLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
+
+        cell.option2Label.translatesAutoresizingMaskIntoConstraints = false
+        cell.option2Label.adjustsFontSizeToFitWidth = true
+        cell.option2Label.topAnchor.constraint(equalTo: cell.nameLabel.bottomAnchor, constant: 30).isActive = true
+        cell.option2Label.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
         
         cell.priceLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.priceLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -10).isActive = true
@@ -151,6 +157,7 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var menuImageView: UIImageView!
+    @IBOutlet weak var option2Label: UILabel!
 }
 
 // MARK: - Extension
