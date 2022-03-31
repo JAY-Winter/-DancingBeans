@@ -10,19 +10,20 @@
 		300FB1E227F1E82100F4863C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E127F1E82100F4863C /* testViewController.swift */; };
 		300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E327F1F3E200F4863C /* categoryViewController.swift */; };
 		300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E527F2E6B900F4863C /* UIModel.swift */; };
-		300FB1E827F3003900F4863C /* newMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E727F3003900F4863C /* newMenuViewController.swift */; };
+		300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E727F3003900F4863C /* menuListViewController.swift */; };
+		3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */; };
+		3097100627F4A9230034EAA1 /* Beckman.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3097100527F4A9230034EAA1 /* Beckman.otf */; };
 		30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AC27C5E7450044B4B6 /* AppDelegate.swift */; };
 		30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */; };
 		30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702B027C5E7450044B4B6 /* ViewController.swift */; };
 		30D702B427C5E7450044B4B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D702B227C5E7450044B4B6 /* Main.storyboard */; };
 		30D702B627C5E7480044B4B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D702B527C5E7480044B4B6 /* Assets.xcassets */; };
 		30D702B927C5E7480044B4B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D702B727C5E7480044B4B6 /* LaunchScreen.storyboard */; };
-		30D702D127C603FB0044B4B6 /* SelectOptionBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702C327C603FB0044B4B6 /* SelectOptionBottomSheetViewController.swift */; };
+		30D702D127C603FB0044B4B6 /* PersonalOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702C327C603FB0044B4B6 /* PersonalOptionTableViewController.swift */; };
 		30D702D227C603FB0044B4B6 /* SelectOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702C427C603FB0044B4B6 /* SelectOptionViewController.swift */; };
 		30D702D527C603FB0044B4B6 /* OptionShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702C727C603FB0044B4B6 /* OptionShotViewController.swift */; };
 		30D702DA27C603FB0044B4B6 /* PayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */; };
-		30D702DB27C603FB0044B4B6 /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702CD27C603FB0044B4B6 /* MenuListViewController.swift */; };
-		30D702DF27C604020044B4B6 /* mainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702DE27C604020044B4B6 /* mainModel.swift */; };
+		30D702DF27C604020044B4B6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702DE27C604020044B4B6 /* MainModel.swift */; };
 		30D702E527C60EA80044B4B6 /* SelectOptionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */; };
 		30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */; };
 		30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */; };
@@ -34,7 +35,9 @@
 		300FB1E127F1E82100F4863C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		300FB1E327F1F3E200F4863C /* categoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryViewController.swift; sourceTree = "<group>"; };
 		300FB1E527F2E6B900F4863C /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
-		300FB1E727F3003900F4863C /* newMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newMenuViewController.swift; sourceTree = "<group>"; };
+		300FB1E727F3003900F4863C /* menuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuListViewController.swift; sourceTree = "<group>"; };
+		3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalOptionTableDelegate.swift; sourceTree = "<group>"; };
+		3097100527F4A9230034EAA1 /* Beckman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beckman.otf; path = ../../../../../../Downloads/Beckman.otf; sourceTree = "<group>"; };
 		30D702A927C5E7450044B4B6 /* DanicngBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanicngBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D702AC27C5E7450044B4B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,12 +46,11 @@
 		30D702B527C5E7480044B4B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30D702B827C5E7480044B4B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30D702BA27C5E7480044B4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30D702C327C603FB0044B4B6 /* SelectOptionBottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionBottomSheetViewController.swift; sourceTree = "<group>"; };
+		30D702C327C603FB0044B4B6 /* PersonalOptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalOptionTableViewController.swift; sourceTree = "<group>"; };
 		30D702C427C603FB0044B4B6 /* SelectOptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };
 		30D702C727C603FB0044B4B6 /* OptionShotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionShotViewController.swift; sourceTree = "<group>"; };
 		30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableViewController.swift; sourceTree = "<group>"; };
-		30D702CD27C603FB0044B4B6 /* MenuListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
-		30D702DE27C604020044B4B6 /* mainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainModel.swift; sourceTree = "<group>"; };
+		30D702DE27C604020044B4B6 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionDelegate.swift; sourceTree = "<group>"; };
 		30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionBottomSheetDelegate.swift; sourceTree = "<group>"; };
 		30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				30D702B527C5E7480044B4B6 /* Assets.xcassets */,
 				30D702B727C5E7480044B4B6 /* LaunchScreen.storyboard */,
 				30D702BA27C5E7480044B4B6 /* Info.plist */,
+				3097100527F4A9230034EAA1 /* Beckman.otf */,
 				30D702E027C60EA80044B4B6 /* Delegate */,
 				30D702DD27C604020044B4B6 /* Model */,
 				30D702C027C603FB0044B4B6 /* ViewController */,
@@ -103,14 +106,13 @@
 		30D702C027C603FB0044B4B6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				30D702C327C603FB0044B4B6 /* SelectOptionBottomSheetViewController.swift */,
+				300FB1E327F1F3E200F4863C /* categoryViewController.swift */,
+				300FB1E727F3003900F4863C /* menuListViewController.swift */,
 				30D702C427C603FB0044B4B6 /* SelectOptionViewController.swift */,
+				30D702C327C603FB0044B4B6 /* PersonalOptionTableViewController.swift */,
 				30D702C727C603FB0044B4B6 /* OptionShotViewController.swift */,
 				30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */,
-				30D702CD27C603FB0044B4B6 /* MenuListViewController.swift */,
 				300FB1E127F1E82100F4863C /* testViewController.swift */,
-				300FB1E327F1F3E200F4863C /* categoryViewController.swift */,
-				300FB1E727F3003900F4863C /* newMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -118,7 +120,7 @@
 		30D702DD27C604020044B4B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				30D702DE27C604020044B4B6 /* mainModel.swift */,
+				30D702DE27C604020044B4B6 /* MainModel.swift */,
 				300FB1E527F2E6B900F4863C /* UIModel.swift */,
 				30D702E927C60ED70044B4B6 /* Value.swift */,
 			);
@@ -129,6 +131,7 @@
 		30D702E027C60EA80044B4B6 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */,
 				30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */,
 				30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */,
 				30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */,
@@ -198,6 +201,7 @@
 				30D702B927C5E7480044B4B6 /* LaunchScreen.storyboard in Resources */,
 				30D702B627C5E7480044B4B6 /* Assets.xcassets in Resources */,
 				30D702B427C5E7450044B4B6 /* Main.storyboard in Resources */,
+				3097100627F4A9230034EAA1 /* Beckman.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,19 +214,19 @@
 			files = (
 				30D702E527C60EA80044B4B6 /* SelectOptionDelegate.swift in Sources */,
 				30D702EA27C60ED70044B4B6 /* Value.swift in Sources */,
-				300FB1E827F3003900F4863C /* newMenuViewController.swift in Sources */,
+				300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */,
 				30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */,
 				300FB1E227F1E82100F4863C /* testViewController.swift in Sources */,
 				300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */,
+				3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */,
 				30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */,
 				30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */,
 				30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */,
-				30D702DF27C604020044B4B6 /* mainModel.swift in Sources */,
+				30D702DF27C604020044B4B6 /* MainModel.swift in Sources */,
 				300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */,
 				30D702D227C603FB0044B4B6 /* SelectOptionViewController.swift in Sources */,
-				30D702DB27C603FB0044B4B6 /* MenuListViewController.swift in Sources */,
 				30D702E827C60EA80044B4B6 /* MenuCartDelegate.swift in Sources */,
-				30D702D127C603FB0044B4B6 /* SelectOptionBottomSheetViewController.swift in Sources */,
+				30D702D127C603FB0044B4B6 /* PersonalOptionTableViewController.swift in Sources */,
 				30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */,
 				30D702DA27C603FB0044B4B6 /* PayTableViewController.swift in Sources */,
 				30D702D527C603FB0044B4B6 /* OptionShotViewController.swift in Sources */,

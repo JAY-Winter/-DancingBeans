@@ -5,6 +5,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     private let main = MainModel.shared
     
+    // private let sub = MainModel.TestClass.shared
+    
     var delegate: SelectOptionDelegate?
     var menuType: String = ""
     var menuImage: UIImage!
@@ -17,7 +19,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     var indexOfOneAndOnlyGetWay: Int?
     var indexOfOneAndOnlyTemp: Int?
     
-    
     @IBOutlet var hotOrIce: [UIButton]!
     @IBOutlet var hereOrToGo: [UIButton]!
     @IBOutlet weak var setOptionButton: UIButton!
@@ -29,7 +30,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private var defaultMenuPriceLabel = UILabel()
     private var addMenuToCartButton: UIButton!
     
-    // countStepper code 로 작성 중
     private var countedNumberLabel = UILabel()
     private var countedPriceLabel = UILabel()
     private var countStepper: UIStepper! = UIStepper()
@@ -39,10 +39,13 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        
+        
+        // ICED ONLY 작동 안 함
         if main.modifiedMenuInfoInstance.temp == "ICED ONLY" {
-            setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1], button3: hereOrToGo[0] ,button4:hereOrToGo[1])
+            setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1], button3: hereOrToGo[0], button4:hereOrToGo[1])
         }
+        
         if menuType == "dessert" {
             hotOrIce[0].isHidden = true
             hotOrIce[1].isHidden = true
@@ -140,8 +143,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         menuNameLine.topAnchor.constraint(equalTo: menuKrNameLabel.bottomAnchor, constant: 5).isActive = true
         steeperLine.bottomAnchor.constraint(equalTo: countStepper2.topAnchor, constant: -10).isActive = true
-        
-    }
+        }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         main.initMenuInfoInstance()
@@ -161,7 +164,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     
     @IBAction func openSelectOptionBottomSheeet() {
-        let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "SelectOptionBottomSheetViewController") as! SelectOptionBottomSheetViewController
+        let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
         SelectOptionBottomSheetVC.menuName = main.modifiedMenuInfoInstance.name
         SelectOptionBottomSheetVC.menuName = main.modifiedMenuInfoInstance.name
@@ -241,7 +244,6 @@ extension UIButton {
 
 extension SelectOptionViewController {
     
-    
     func occurAddedMenuAlert(itemCount: Int) {
         let alertVC = UIAlertController(title: "장바구니 확인", message: "장바구니에 상품이 추가되었습니다.", preferredStyle: .alert)
         
@@ -317,7 +319,6 @@ extension SelectOptionViewController {
         
         button2.translatesAutoresizingMaskIntoConstraints = false
         button4.translatesAutoresizingMaskIntoConstraints = false
-        
         
         button2.widthAnchor.constraint(equalToConstant: 150).isActive = true
         button2.heightAnchor.constraint(equalToConstant: 30).isActive = true

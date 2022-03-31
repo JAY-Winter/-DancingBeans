@@ -24,10 +24,7 @@ class OptionShotViewController: UIViewController {
         confirmButton.addTarget(self, action: #selector(newAdustOption), for: .touchUpInside)
         
         view.addSubview(confirmButton)
-        
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         confirmButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

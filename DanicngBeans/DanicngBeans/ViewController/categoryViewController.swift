@@ -32,7 +32,7 @@ class categoryViewController: UIViewController {
         coffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
         coffee.setTitleColor(.black, for: .normal)
         coffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        coffee.addTarget(self, action: #selector(pushMenuList(_:)), for: .touchUpInside)
+        coffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
         noncoffee = UIButton()
         noncoffee.setTitle("NON COFFEE", for: .normal)
@@ -40,7 +40,7 @@ class categoryViewController: UIViewController {
         noncoffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
         noncoffee.setTitleColor(.black, for: .normal)
         noncoffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
-        noncoffee.addTarget(self, action: #selector(pushMenuList(_:)), for: .touchUpInside)
+        noncoffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
         filter = UIButton()
         filter.setTitle("FILTER", for: .normal)
@@ -48,7 +48,7 @@ class categoryViewController: UIViewController {
         filter.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
         filter.setTitleColor(.black, for: .normal)
         filter.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        filter.addTarget(self, action: #selector(pushMenuList(_:)), for: .touchUpInside)
+        filter.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
         dessert = UIButton()
         dessert.setTitle("DESSERT", for: .normal)
@@ -56,30 +56,30 @@ class categoryViewController: UIViewController {
         dessert.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
         dessert.setTitleColor(.black, for: .normal)
         dessert.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
-        dessert.addTarget(self, action: #selector(pushMenuList(_:)), for: .touchUpInside)
+        dessert.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
         coffee2 = UIButton()
         coffee2.setTitle("", for: .normal)
-        coffee2.backgroundColor = UIColor(named: "customSet2_1")
+        // coffee2.backgroundColor = UIColor(named: "customSet2_1")
         
         noncoffee2 = UIButton()
         noncoffee2.setTitle("", for: .normal)
-        noncoffee2.backgroundColor = UIColor(named: "customSet2_2")
+        // noncoffee2.backgroundColor = UIColor(named: "customSet2_2")
         
         filter2 = UIButton()
         filter2.setTitle("", for: .normal)
-        filter2.backgroundColor = UIColor(named: "customSet2_3")
+        // filter2.backgroundColor = UIColor(named: "customSet2_3")
         
         dessert2 = UIButton()
         dessert2.setTitle("", for: .normal)
-        dessert2.backgroundColor = UIColor(named: "customSet2_4")
+        // dessert2.backgroundColor = UIColor(named: "customSet2_4")
         
         order = UIButton()
         order.setTitle("ORDER", for: .normal)
         order.titleLabel?.adjustsFontSizeToFitWidth = true
         order.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 20)
         order.setTitleColor(.black, for: .normal)
-        order.addTarget(self, action: #selector(regSegue), for: .touchUpInside)
+        order.addTarget(self, action: #selector(presentPavVC), for: .touchUpInside)
         
         view.addSubview(coffee)
         view.addSubview(noncoffee)
@@ -134,40 +134,34 @@ class categoryViewController: UIViewController {
         order.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
     
-    
-    @objc func presentDetailMenuList() {
-        let menuVC = self.storyboard?.instantiateViewController(withIdentifier: "MenuListViewVC") as! MenuListViewController
-        self.navigationController?.pushViewController(menuVC, animated: true)
-    }
-    
-    
-    @objc func regSegue() {
+ 
+    @objc func presentPavVC() {
         let page = self.storyboard?.instantiateViewController(withIdentifier: "PayTableViewController") as! PayTableViewController
         self.navigationController?.pushViewController(page, animated: true)
     }
    
     
     @objc
-    func pushMenuList(_ sender: UIButton){
-        let newMenuListVC = storyboard?.instantiateViewController(identifier: "newMenuListVC") as! newMenuViewController
+    func pushMenuListVC(_ sender: UIButton){
+        let menuListVC = storyboard?.instantiateViewController(identifier: "newMenuListVC") as! menuListViewController
         
         
         switch sender.titleLabel?.text {
         case "COFFEE" :
-            self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            newMenuListVC.menuType = "COFFEE"
+            self.navigationController?.pushViewController(menuListVC, animated: true)
+            menuListVC.menuType = "COFFEE"
             
         case "NON COFFEE" :
-            self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            newMenuListVC.menuType = "NON COFFEE"
+            self.navigationController?.pushViewController(menuListVC, animated: true)
+            menuListVC.menuType = "NON COFFEE"
             
         case "FILTER" :
-            self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            newMenuListVC.menuType = "FILTER"
+            self.navigationController?.pushViewController(menuListVC, animated: true)
+            menuListVC.menuType = "FILTER"
             
         case "DESSERT" :
-            self.navigationController?.pushViewController(newMenuListVC, animated: true)
-            newMenuListVC.menuType = "DESSERT"
+            self.navigationController?.pushViewController(menuListVC, animated: true)
+            menuListVC.menuType = "DESSERT"
             
         default : break
         }
