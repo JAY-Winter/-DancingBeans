@@ -9,13 +9,14 @@ class OptionShotViewController: UIViewController {
     @IBOutlet weak var esspressoShotCountLabel: UILabel!
     @IBOutlet weak var esspressoShotCountStepper: UIStepper!
     
+    
+    
     //--------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         let confirmButton = UIButton()
-        
         confirmButton.setTitle("CHECK", for: .normal)
         confirmButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
         confirmButton.setTitleColor(.white, for: .normal)
@@ -35,9 +36,19 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.minimumValue = 1
         esspressoShotCountStepper.maximumValue = 6
         esspressoShotCountStepper.isContinuous = false
-        esspressoShotCountStepper.value = Double(main.modifiedMenuInfoInstance.shot!)
+        esspressoShotCountStepper.value = Double(main.menuInfoInstance.shot!)
 
-        esspressoShotCountLabel.text = String(main.modifiedMenuInfoInstance.shot!)
+        esspressoShotCountLabel.text = String(main.menuInfoInstance.shot!)
+
+        
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        let preVC = self.storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
+        
+        print("OptionShotVC viewDidDisapeear : \(preVC.paramTest)")
     }
     
     // MARK: - User actions
@@ -45,19 +56,18 @@ class OptionShotViewController: UIViewController {
     @IBAction func countEsspressoShotStepper(_ sender: UIStepper) {
         esspressoShotCountLabel.text = String(Int(sender.value))
         
-        resultShot = Int(sender.value)
-        main.modifiedMenuInfoInstance.shot = resultShot
+        resultShot = Int(sender.value) // count 후 변한 값
+        main.menuInfoInstance.shot = resultShot
     }
 
     
     @objc func newAdustOption() {
         if let resultShotEx = resultShot {
             delegate?.adjustOption(self, value: resultShotEx)
+            delegate?.sendData(value: resultShotEx)
         } else {
-            delegate?.adjustOption(self, value: main.modifiedMenuInfoInstance.shot!)
+            delegate?.adjustOption(self, value: main.menuInfoInstance.shot!)
         }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
-    
 }

@@ -26,7 +26,6 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.backgroundColor = UIColor(named: "defaultBackGroundColor")
         
         orderButton = UIButton(type: .system)
-        
 
         view.addSubview(orderButton)
         view.addSubview(totalPriceLabel)
@@ -39,7 +38,6 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         totalPriceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
         totalPriceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
         
         orderButton.setTitle("PAY", for: .normal)
         orderButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
@@ -73,11 +71,9 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
         let addedMenu = main.addedMenuList[indexPath.row]
-        
         
         cell.nameLabel.text = addedMenu.name
         cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)⎜\(addedMenu.count!)잔"

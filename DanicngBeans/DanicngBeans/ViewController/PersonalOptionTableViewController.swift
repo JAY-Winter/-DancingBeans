@@ -9,13 +9,9 @@ import UIKit
 
 
 class PersonalOptionTableViewController: UIViewController {
-    
     let main = MainModel.shared
     var delegate: PersonalOptionTableDelegate?
-    
-    // var optionList = ["SHOT", "ICE", "WATER", "SYRUP"]
     var optionList: Dictionary<String, Any> = [:]
-    
     
     var menuName: String!
     var shotCount: Int?
@@ -27,20 +23,25 @@ class PersonalOptionTableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuNameLabel: UILabel!
-    
-    
-    
+
+    var paramTest: String = ""
+    var count = 0
     
     // MARK: - viewControllerCycle
+        
+    override func viewWillAppear(_ animated: Bool) {
+        print("paramTest : \(paramTest)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var sortedOptionList = optionList.keys.sorted()
-        // print("sortedOpionList : \(sortedOptionList)")
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell") as! personalTableView
+        // shotCountLabel.text = ("\(main.menuInfoInstance.shot!)개")
+        cell.optionButton.configuration?.title = "\(String(describing: main.menuInfoInstance.shot))개"
         
         // MARK: - tableView 새로 세팅하게되면 안 쓸 코드
-        if main.modifiedMenuInfoInstance.shot == nil {
+        if main.menuInfoInstance.shot == nil {
             shotOptionButton.isHidden = true
             shotCountLabel.isHidden = true
         } else {
@@ -97,17 +98,13 @@ class PersonalOptionTableViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
-        
-        switch main.modifiedMenuList[menuName] {
+        switch main.menuList[menuName] {
         case .coffee(_, _, _, let shot, let syrup, let ice, let water, _, _,_) :
-
             optionList["Shot"] = shot
             optionList["Syrup"] = syrup
             optionList["Ice"] = ice
             optionList["Water"] = water
             
-            print(optionList.values)
         case .nonCoffee(_, _, _, let ice, let water, _, _, _) :
             optionList["Ice"] = ice
             optionList["Water"] = water
@@ -119,11 +116,9 @@ class PersonalOptionTableViewController: UIViewController {
         default :
             break
         }
-        
-        
-        
-        
     }
+
+
     
     // MARK: - User actions
     
@@ -143,76 +138,77 @@ class PersonalOptionTableViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+// MARK: - extension PersonalOptionViewTable
 
+extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDataSource{
 
-
-
-extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // return optionList.count
         return optionList.count
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 80
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // tableView 생성 func 는 viewDidLoad 시 한 번만 되는듯
         let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell", for: indexPath) as! personalTableView
-        
+        print(count)
+        count += 1
         cell.addSubview(cell.optionButton)
-        
-        
-        
-        cell.optionButton.configuration = .plain()
-        cell.optionButton.configuration?.title = (optionList.keys.sorted())[indexPath.row]
-        // cell.optionButton.configuration?.subtitle = (optionList["Shot"]! as AnyObject).debugDescription
+        cell.optionButton.configuration = .plain() // optionButton.configuration Instance 생성
+        // cell.optionButton.configuration?.title = (optionList.keys.sorted())[indexPath.row]
+        cell.optionButton.configuration?.title = paramTest
         cell.optionButton.configuration?.subtitle = (optionList[String((cell.optionButton.configuration?.title!)!)] as AnyObject).debugDescription
-        
-        // cell.optionButton.configuration?.subtitle = (optionList[(optionList.keys.sorted())[indexPath.row]]) as! String
-        cell.optionButton.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 10)
         cell.optionButton.contentHorizontalAlignment = .leading
         
         // 임시로 system image "play", image padding 설정
-        cell.optionButton.configuration?.image = UIImage(systemName: "play",
-                                                         withConfiguration: UIImage.SymbolConfiguration(scale: .default))
-        cell.optionButton.configuration?.imagePlacement = .trailing
-        cell.optionButton.configuration?.imagePadding = 200.0
-        
+        // cell.optionButton.configuration?.image = UIImage(systemName: "play",
+                                                         // withConfiguration: UIImage.SymbolConfiguration(scale: .default))
+        // cell.optionButton.configuration?.imagePlacement = .trailing
+        // cell.optionButton.configuration?.imagePadding = 100
+        // cell.optionButton.configuration?.imagePlacement = cell.optionButton
         
         cell.optionButton.translatesAutoresizingMaskIntoConstraints = false
         cell.optionButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 10).isActive = true
         cell.optionButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -10).isActive = true
-        // cell.optionButton.widthAnchor.constraint(equalToConstant: cell.frame.height).isActive = true
-        // cell.optionButton.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
         
         cell.optionButton.addTarget(self, action: #selector(toChangeShot), for: .touchUpInside)
         
-        
-        
         return cell
     }
-    
 }
 
 // MARK: - TableView Class
 class personalTableView: UITableViewCell {
-    
     var optionButton = UIButton()
+        
     
 }
 
 
 // MARK: - Delegate
 
-// 이전 view(Select OPtion Bottom Sheet ViewController)을 대신해 작성한 함수
+// view(Option Shot ViewController)을 대신해 작성한 함수
 extension PersonalOptionTableViewController: SelectOptionBottomSheetDelegate {
+    
+    func sendData(value: Int?){
+        self.paramTest = (value)?.description ?? "0"
+    }
+    
     func adjustOption(_ vc: UIViewController, value: Int?) {
+        // shotCountLabel.text = ("\(main.menuInfoInstance.shot!)개")
+        main.menuInfoInstance.shot = value
         
-        shotCountLabel.text = ("\(main.modifiedMenuInfoInstance.shot!)개")
-        main.modifiedMenuInfoInstance.shot = value
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell") as! personalTableView
+        
+        cell.optionButton.configuration?.title = String(Int(value!))
         
         
     }
 }
+
+
+

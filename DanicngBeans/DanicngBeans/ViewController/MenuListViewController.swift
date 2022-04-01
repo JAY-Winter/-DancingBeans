@@ -31,8 +31,8 @@ extension menuListViewController {
         
         switch menuType {
         case "COFFEE" :
-            for menuName in main.modifiedMenuList.keys {
-                if let cons = main.modifiedMenuList[menuName] {
+            for menuName in main.menuList.keys {
+                if let cons = main.menuList[menuName] {
                     switch cons {
                     case .coffee(let pr, _, _, _, _, _, _, _, _, _) :
                         appendedPrArrIrregularly[pr] = menuName
@@ -48,8 +48,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "NON COFFEE" :
-            for menuName in main.modifiedMenuList.keys {
-                if let cons = main.modifiedMenuList[menuName] {
+            for menuName in main.menuList.keys {
+                if let cons = main.menuList[menuName] {
                     switch cons {
                     case .coffee :
                         break
@@ -65,8 +65,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "FILTER" :
-            for menuName in main.modifiedMenuList.keys {
-                if let cons = main.modifiedMenuList[menuName] {
+            for menuName in main.menuList.keys {
+                if let cons = main.menuList[menuName] {
                     switch cons {
                     case .coffee:
                         break
@@ -82,8 +82,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "DESSERT" :
-            for menuName in main.modifiedMenuList.keys {
-                if let cons = main.modifiedMenuList[menuName] {
+            for menuName in main.menuList.keys {
+                if let cons = main.menuList[menuName] {
                     switch cons {
                     case .coffee:
                         break
@@ -114,7 +114,6 @@ extension menuListViewController {
     
     
     func setButton(buttonTitle: String, defaultHeight: CGFloat) {
-        
         let button = UIButton(type: .system)
         button.setTitle(buttonTitle, for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -140,10 +139,10 @@ extension menuListViewController {
         if let buttonTitle = sender.title(for: .normal) {
             main.setMenuDetailedOptionByTappedMenuButton(menuName: buttonTitle)
             
-            SelectOptionVC.defaultMenuEngName = main.modifiedMenuInfoInstance.name
-            SelectOptionVC.defaultMenuKrName = main.modifiedMenuInfoInstance.kr
-            SelectOptionVC.defaultMenuPrice = main.modifiedMenuInfoInstance.price
-            SelectOptionVC.menuKrName = main.modifiedMenuInfoInstance.kr
+            SelectOptionVC.defaultMenuEngName = main.menuInfoInstance.name
+            SelectOptionVC.defaultMenuKrName = main.menuInfoInstance.kr
+            SelectOptionVC.defaultMenuPrice = main.menuInfoInstance.price
+            SelectOptionVC.menuKrName = main.menuInfoInstance.kr
             
             if let image = UIImage(named: buttonTitle) {
                 SelectOptionVC.menuImage = image
@@ -151,7 +150,7 @@ extension menuListViewController {
                 SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
             }
             
-            switch main.modifiedMenuList[buttonTitle] {
+            switch main.menuList[buttonTitle] {
             case .coffee :
                 SelectOptionVC.menuType = "coffee"
             case .nonCoffee :

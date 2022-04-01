@@ -12,6 +12,8 @@ import UIKit
 protocol SelectOptionBottomSheetDelegate {
 
     func adjustOption(_ vc: UIViewController, value : Int?)
+    
+    func sendData(value: Int?)
 }
 
 

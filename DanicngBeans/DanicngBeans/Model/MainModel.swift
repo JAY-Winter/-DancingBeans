@@ -26,7 +26,7 @@ class MainModel {
         case syrup
     }
 
-    struct ModifiedMenuInfo {
+    struct MenuInfo {
         var name: String!
         var price: Int!
         var count: Int!
@@ -51,9 +51,9 @@ class MainModel {
     // }
 
     
-    var modifiedMenuInfoInstance: ModifiedMenuInfo = ModifiedMenuInfo()
+    var menuInfoInstance: MenuInfo = MenuInfo()
     
-    var addedMenuList: [ModifiedMenuInfo] = [ModifiedMenuInfo]()
+    var addedMenuList: [MenuInfo] = [MenuInfo]()
     
     var errorMessage: String = ""
     
@@ -68,7 +68,7 @@ class MainModel {
         }
     }
     
-    var modifiedMenuList: Dictionary<String, menuCategory> = [
+    var menuList: Dictionary<String, menuCategory> = [
         // coffee
         "Espresso"               : .coffee(pr: 1, price: 3000, count: 1, shot: 2, syrup : 0, ice: "보통", water: "보통", temp: nil, getWay: nil, kr: "에스프레소"),
         "Americano"              : .coffee(pr: 2, price: 3500, count: 1, shot: 2, syrup : 0, ice: "보통", water: "보통", temp: nil, getWay: nil, kr: "아메리카노"),
@@ -98,45 +98,45 @@ class MainModel {
     // 각 메뉴별 버튼 누를시 menu Instance 설정 및 menuDetailedOptionView 설정
     func setMenuDetailedOptionByTappedMenuButton(menuName: String) {
         
-        if let menu = modifiedMenuList[menuName] {
+        if let menu = menuList[menuName] {
             
             switch menu {
             case .coffee(_, let price, let count, let shot, let syrup,let ice, let water, let temp, let getWay, let kr) :
-                modifiedMenuInfoInstance.name   = menuName
-                modifiedMenuInfoInstance.price  = price
-                modifiedMenuInfoInstance.count  = count
-                modifiedMenuInfoInstance.shot   = shot
-                modifiedMenuInfoInstance.syrup  = syrup
-                modifiedMenuInfoInstance.ice    = ice
-                modifiedMenuInfoInstance.water  = water
-                modifiedMenuInfoInstance.temp   = temp
-                modifiedMenuInfoInstance.getWay = getWay
-                modifiedMenuInfoInstance.kr     = kr
+                menuInfoInstance.name   = menuName
+                menuInfoInstance.price  = price
+                menuInfoInstance.count  = count
+                menuInfoInstance.shot   = shot
+                menuInfoInstance.syrup  = syrup
+                menuInfoInstance.ice    = ice
+                menuInfoInstance.water  = water
+                menuInfoInstance.temp   = temp
+                menuInfoInstance.getWay = getWay
+                menuInfoInstance.kr     = kr
                 
             case .nonCoffee(_, let price, let count, let ice, let water, let temp, let getWay, let kr) :
-                modifiedMenuInfoInstance.name   = menuName
-                modifiedMenuInfoInstance.price  = price
-                modifiedMenuInfoInstance.count  = count
-                modifiedMenuInfoInstance.ice    = ice
-                modifiedMenuInfoInstance.water  = water
-                modifiedMenuInfoInstance.temp   = temp
-                modifiedMenuInfoInstance.getWay = getWay
-                modifiedMenuInfoInstance.kr     = kr
+                menuInfoInstance.name   = menuName
+                menuInfoInstance.price  = price
+                menuInfoInstance.count  = count
+                menuInfoInstance.ice    = ice
+                menuInfoInstance.water  = water
+                menuInfoInstance.temp   = temp
+                menuInfoInstance.getWay = getWay
+                menuInfoInstance.kr     = kr
                 
             case .filters(_, let price, let count, let temp, let getWay, let kr) :
-                modifiedMenuInfoInstance.name   = menuName
-                modifiedMenuInfoInstance.price  = price
-                modifiedMenuInfoInstance.count  = count
-                modifiedMenuInfoInstance.temp   = temp
-                modifiedMenuInfoInstance.getWay = getWay
-                modifiedMenuInfoInstance.kr     = kr
+                menuInfoInstance.name   = menuName
+                menuInfoInstance.price  = price
+                menuInfoInstance.count  = count
+                menuInfoInstance.temp   = temp
+                menuInfoInstance.getWay = getWay
+                menuInfoInstance.kr     = kr
                 
             case .dessert(_, let price, let count, let getWay, let kr) :
-                modifiedMenuInfoInstance.name   = menuName
-                modifiedMenuInfoInstance.price  = price
-                modifiedMenuInfoInstance.count  = count
-                modifiedMenuInfoInstance.getWay = getWay
-                modifiedMenuInfoInstance.kr     = kr
+                menuInfoInstance.name   = menuName
+                menuInfoInstance.price  = price
+                menuInfoInstance.count  = count
+                menuInfoInstance.getWay = getWay
+                menuInfoInstance.kr     = kr
             }
         }
     }
@@ -147,17 +147,17 @@ class MainModel {
     
     
     func initMenuInfoInstance() {
-        modifiedMenuInfoInstance.name = nil
-        modifiedMenuInfoInstance.price = nil
-        modifiedMenuInfoInstance.count = nil
-        modifiedMenuInfoInstance.shot = nil
-        modifiedMenuInfoInstance.syrup = nil
-        modifiedMenuInfoInstance.ice = nil
-        modifiedMenuInfoInstance.water = nil
-        modifiedMenuInfoInstance.temp = nil
-        modifiedMenuInfoInstance.getWay = nil
+        menuInfoInstance.name = nil
+        menuInfoInstance.price = nil
+        menuInfoInstance.count = nil
+        menuInfoInstance.shot = nil
+        menuInfoInstance.syrup = nil
+        menuInfoInstance.ice = nil
+        menuInfoInstance.water = nil
+        menuInfoInstance.temp = nil
+        menuInfoInstance.getWay = nil
         
-        modifiedMenuInfoInstance.kr = nil
+        menuInfoInstance.kr = nil
     }
     
     func setErrorMessage(errorCase: String) {
