@@ -2,7 +2,9 @@ import UIKit
 
 class OptionShotViewController: UIViewController {
     
-    let main = MainModel.shared
+    
+    let menuInstance = MenuInfo.shared
+    
     var delegate : SelectOptionBottomSheetDelegate?
     var resultShot: Int?
     
@@ -36,9 +38,9 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.minimumValue = 1
         esspressoShotCountStepper.maximumValue = 6
         esspressoShotCountStepper.isContinuous = false
-        esspressoShotCountStepper.value = Double(main.menuInfoInstance.shot!)
+        esspressoShotCountStepper.value = Double(menuInstance.shot!)
 
-        esspressoShotCountLabel.text = String(main.menuInfoInstance.shot!)
+        esspressoShotCountLabel.text = String(menuInstance.shot!)
 
         
     }
@@ -48,7 +50,7 @@ class OptionShotViewController: UIViewController {
         
         let preVC = self.storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
-        print("OptionShotVC viewDidDisapeear : \(preVC.paramTest)")
+        
     }
     
     // MARK: - User actions
@@ -57,7 +59,7 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountLabel.text = String(Int(sender.value))
         
         resultShot = Int(sender.value) // count 후 변한 값
-        main.menuInfoInstance.shot = resultShot
+        menuInstance.shot = resultShot
     }
 
     
@@ -66,7 +68,7 @@ class OptionShotViewController: UIViewController {
             delegate?.adjustOption(self, value: resultShotEx)
             delegate?.sendData(value: resultShotEx)
         } else {
-            delegate?.adjustOption(self, value: main.menuInfoInstance.shot!)
+            delegate?.adjustOption(self, value: menuInstance.shot!)
         }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

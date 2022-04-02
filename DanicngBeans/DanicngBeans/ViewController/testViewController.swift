@@ -1,9 +1,4 @@
-//
-//  testViewController.swift
-//  DanicngBeans
-//
 //  Created by JAEHYEON on 2022/03/28.
-//
 
 import UIKit
 
@@ -22,7 +17,6 @@ class testViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         coffee = UILabel()
         coffee.text = "COFFEE"

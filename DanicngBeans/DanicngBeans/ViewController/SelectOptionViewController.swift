@@ -2,17 +2,13 @@ import UIKit
 import CloudKit
 
 class SelectOptionViewController: UIViewController, PayTableDelegate {
-    
-    private let main = MainModel.shared
-    
-    // private let sub = MainModel.TestClass.shared
+    private let main = ActionModel()
+    private let menuInstance = MenuInfo.shared
     
     var delegate: SelectOptionDelegate?
-    var menuType: String = ""
     var menuImage: UIImage!
     var defaultMenuEngName: String = ""
     var defaultMenuKrName: String = ""
-    
     var defaultMenuPrice: Int = 0
     var menuKrName = ""
     var menuDescription: String!
@@ -41,23 +37,13 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         super.viewDidLoad()
         
         
-        // ICED ONLY 작동 안 함
-        if main.menuInfoInstance.temp == "ICED ONLY" {
-            setSignatureMenuButton(button1: hotOrIce[0], button2: hotOrIce[1], button3: hereOrToGo[0], button4:hereOrToGo[1])
-        }
-        
-        if menuType == "dessert" {
-            hotOrIce[0].isHidden = true
-            hotOrIce[1].isHidden = true
-        }
-       
         let menuNameLine = setColoredThinLine(setColor: "black")
         let steeperLine = setColoredThinLine(setColor: "black")
         
         menuImageView.image = menuImage
         
-        defaultMenuNameLabel.text = main.menuInfoInstance.name
-        defaultMenuPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
+        defaultMenuNameLabel.text = menuInstance.name
+        defaultMenuPriceLabel.text = main.setDeciamlWon(value: menuInstance.price)
         
         menuKrNameLabel.text = menuKrName
         menuKrNameLabel.font = UIFont(name: "Gill Sans", size: 15)
@@ -66,8 +52,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countStepper2.translatesAutoresizingMaskIntoConstraints = false
         countStepper2.addTarget(self, action: #selector(calculateCountedPrice(_:)), for: .valueChanged)
 
-        countedNumberLabel.text = "\(String(main.menuInfoInstance.count))잔"
-        countedPriceLabel.text = main.setDeciamlWon(value: main.menuInfoInstance.price)
+        countedNumberLabel.text = "\(String(menuInstance.count))잔"
+        countedPriceLabel.text = main.setDeciamlWon(value: menuInstance.price)
         
         addMenuToCartButton = UIButton(type: .system)
         addMenuToCartButton.setTitle("PUT", for: .normal)
@@ -145,11 +131,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         steeperLine.bottomAnchor.constraint(equalTo: countStepper2.topAnchor, constant: -10).isActive = true
         }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        main.initMenuInfoInstance()
-    }
-    
     // MARK: - User actions
 
     @objc func calculateCountedPrice(_ sender: UIStepper!) {
@@ -158,17 +139,17 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countedNumberLabel.text = "\(Int(sender.value))잔"
         countedPriceLabel.text = main.setDeciamlWon(value: calculatedPrice)
         
-        main.menuInfoInstance.price = calculatedPrice
-        main.menuInfoInstance.count = Int(sender.value)
+        menuInstance.price = calculatedPrice
+        menuInstance.count = Int(sender.value)
     }
     
     
     @IBAction func openSelectOptionBottomSheeet() {
         let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
-        SelectOptionBottomSheetVC.menuName = main.menuInfoInstance.name
+        SelectOptionBottomSheetVC.menuName = menuInstance.name
         
-        if let boolShot = main.menuInfoInstance.shot {
+        if let boolShot = menuInstance.shot {
             SelectOptionBottomSheetVC.shotCount = boolShot
         }
         
@@ -185,7 +166,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             if !sender.isSelected {
                 for index in hotOrIce.indices {
                     hotOrIce[index].isSelected = false
-                    main.menuInfoInstance.temp = sender.titleLabel?.text!
+                    menuInstance.temp = sender.titleLabel?.text!
                 }
                 sender.isSelected = true
                 indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
@@ -193,7 +174,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         } else {
             sender.isSelected = true
             indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
-            main.menuInfoInstance.temp = sender.titleLabel?.text!
+            menuInstance.temp = sender.titleLabel?.text!
         }
         
         if indexOfOneAndOnlyTemp == 0 {
@@ -215,12 +196,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
             } else {
                 sender.isSelected = false
                 indexOfOneAndOnlyGetWay = nil
-                main.menuInfoInstance.getWay = nil
+                menuInstance.getWay = nil
             }
         } else {
             sender.isSelected = true
             indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
-            main.menuInfoInstance.getWay = sender.titleLabel?.text!
+            menuInstance.getWay = sender.titleLabel?.text!
         }
     }
 }
@@ -284,8 +265,7 @@ extension SelectOptionViewController {
             }
             menuLabel.text = ("Iced \(defaultMenuEngName)")
             menuKrNameLabel.text = ("아이스 \(defaultMenuKrName)")
-            // main.menuInfoInstance.name = menuLabel.text
-            main.menuInfoInstance.kr = menuKrNameLabel.text
+            menuInstance.kr = menuKrNameLabel.text
             
         default :
             break
@@ -331,11 +311,6 @@ extension SelectOptionViewController {
     }
     
     
-    func setDessertMenuButton() {
-        
-    }
-    
-    
     func setColoredThinLine(setColor: String) -> UILabel {
         let line = UILabel()
         line.text = " "
@@ -362,24 +337,26 @@ extension SelectOptionViewController {
     
     
     @objc func addMenuToCart() {
-        if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp != nil {
-            main.addedMenuList.append(main.menuInfoInstance)
+        if menuInstance.getWay != nil, menuInstance.temp != nil {
+            // main.addedMenuList.append(main.menuInfoInstance)
+            menuInstance.putMenuList.append(menuInstance)
             
-            main.result = main.menuInfoInstance.price!
             
-            occurAddedMenuAlert(itemCount: main.addedMenuList.count)
+            main.result = menuInstance.price!
+            
+            occurAddedMenuAlert(itemCount: menuInstance.count)
         } else {
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp == nil {
+            if menuInstance.getWay == nil, menuInstance.temp == nil {
                 main.setErrorMessage(errorCase: "옵션")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.getWay == nil, main.menuInfoInstance.temp != nil {
+            if menuInstance.getWay == nil, menuInstance.temp != nil {
                 main.setErrorMessage(errorCase: "포장/매장")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)
             }
-            if main.menuInfoInstance.getWay != nil, main.menuInfoInstance.temp == nil {
+            if menuInstance.getWay != nil, menuInstance.temp == nil {
                 main.setErrorMessage(errorCase: "핫/아이스")
                 
                 occurErrorAlert(errorMessage: main.errorMessage)

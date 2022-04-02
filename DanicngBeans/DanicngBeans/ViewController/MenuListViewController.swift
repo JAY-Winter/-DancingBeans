@@ -9,7 +9,7 @@ import UIKit
 
 class menuListViewController: UIViewController {
     
-    let main = MainModel.shared
+    let menuInstance = MenuInfo.shared
     
     var menuType: String = ""
     
@@ -31,8 +31,8 @@ extension menuListViewController {
         
         switch menuType {
         case "COFFEE" :
-            for menuName in main.menuList.keys {
-                if let cons = main.menuList[menuName] {
+            for menuName in menuInstance.menuList.keys {
+                if let cons = menuInstance.menuList[menuName] {
                     switch cons {
                     case .coffee(let pr, _, _, _, _, _, _, _, _, _) :
                         appendedPrArrIrregularly[pr] = menuName
@@ -48,8 +48,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "NON COFFEE" :
-            for menuName in main.menuList.keys {
-                if let cons = main.menuList[menuName] {
+            for menuName in menuInstance.menuList.keys {
+                if let cons = menuInstance.menuList[menuName] {
                     switch cons {
                     case .coffee :
                         break
@@ -65,8 +65,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "FILTER" :
-            for menuName in main.menuList.keys {
-                if let cons = main.menuList[menuName] {
+            for menuName in menuInstance.menuList.keys {
+                if let cons = menuInstance.menuList[menuName] {
                     switch cons {
                     case .coffee:
                         break
@@ -82,8 +82,8 @@ extension menuListViewController {
             setButtonList(beforeArr: appendedPrArrIrregularly)
             
         case "DESSERT" :
-            for menuName in main.menuList.keys {
-                if let cons = main.menuList[menuName] {
+            for menuName in menuInstance.menuList.keys {
+                if let cons = menuInstance.menuList[menuName] {
                     switch cons {
                     case .coffee:
                         break
@@ -137,30 +137,17 @@ extension menuListViewController {
         let SelectOptionVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectOptionViewController") as! SelectOptionViewController
         
         if let buttonTitle = sender.title(for: .normal) {
-            main.setMenuDetailedOptionByTappedMenuButton(menuName: buttonTitle)
+            menuInstance.setMenuOptionTappedMenuButton(menuName: buttonTitle)
             
-            SelectOptionVC.defaultMenuEngName = main.menuInfoInstance.name
-            SelectOptionVC.defaultMenuKrName = main.menuInfoInstance.kr
-            SelectOptionVC.defaultMenuPrice = main.menuInfoInstance.price
-            SelectOptionVC.menuKrName = main.menuInfoInstance.kr
+            SelectOptionVC.defaultMenuEngName = menuInstance.name
+            SelectOptionVC.defaultMenuKrName = menuInstance.kr
+            SelectOptionVC.defaultMenuPrice = menuInstance.price
+            SelectOptionVC.menuKrName = menuInstance.kr
             
             if let image = UIImage(named: buttonTitle) {
                 SelectOptionVC.menuImage = image
             } else {
                 SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
-            }
-            
-            switch main.menuList[buttonTitle] {
-            case .coffee :
-                SelectOptionVC.menuType = "coffee"
-            case .nonCoffee :
-                SelectOptionVC.menuType = "nonCoffee"
-            case .filters :
-                SelectOptionVC.menuType = "filters"
-            case .dessert :
-                SelectOptionVC.menuType = "dessert"
-            default :
-                break
             }
         }
         self.present(SelectOptionVC, animated: true, completion: nil)

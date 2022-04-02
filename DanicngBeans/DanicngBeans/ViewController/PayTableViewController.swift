@@ -3,9 +3,9 @@ import UIKit
 
 class PayTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let main = MainModel.shared
     private let cellIdentifier: String = "cell"
-    
+    private let menuInstance = MenuInfo.shared
+    let main = ActionModel()
     private var delegate: PayTableDelegate?
     
     // MARK: - User actions
@@ -54,14 +54,14 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - User actions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if main.addedMenuList.count == 0 {
+        if menuInstance.count == 0 {
             tableView.setEmptyView(title: "현재 담긴 메뉴가 없습니다!")
             totalPriceLabel.isHidden = true
             orderButton.isHidden = true
         } else {
             tableView.restore()
         }
-        return main.addedMenuList.count
+        return menuInstance.count
     }
     
     
@@ -73,18 +73,18 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        let addedMenu = main.addedMenuList[indexPath.row]
+        let putMenu = menuInstance.putMenuList[indexPath.row]
         
-        cell.nameLabel.text = addedMenu.name
-        cell.optionLabel.text = "\(addedMenu.getWay!)⎜\(addedMenu.temp!)⎜\(addedMenu.count!)잔"
+        cell.nameLabel.text = putMenu.name
+        cell.optionLabel.text = "\(putMenu.getWay!)⎜\(putMenu.temp!)⎜\(putMenu.count!)잔"
         
-        if let isShotMenu = addedMenu.shot {
+        if let isShotMenu = putMenu.shot {
             cell.option2Label.text = "\(isShotMenu)shot"
         } else {
             cell.option2Label.isHidden = true
         }
         
-        cell.priceLabel.text = main.setDeciamlWon(value: addedMenu.price)
+        cell.priceLabel.text = main.setDeciamlWon(value: putMenu.price)
         
         cell.menuImageView.translatesAutoresizingMaskIntoConstraints = false
         cell.menuImageView.contentMode = .scaleAspectFit
@@ -116,7 +116,7 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         
-        if let menuImage = UIImage(named: addedMenu.name) {
+        if let menuImage = UIImage(named: putMenu.name) {
             cell.menuImageView.image = menuImage
             
         } else {
@@ -135,8 +135,8 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            main.accumlator -= main.addedMenuList[indexPath.row].price
-            main.addedMenuList.remove(at: indexPath.row)
+            main.accumlator -= menuInstance.putMenuList[indexPath.row].price
+            menuInstance.putMenuList.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()

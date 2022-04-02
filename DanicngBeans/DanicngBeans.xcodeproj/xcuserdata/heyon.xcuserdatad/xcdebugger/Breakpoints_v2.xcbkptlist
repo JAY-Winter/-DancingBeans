@@ -30,9 +30,9 @@
             filePath = "DanicngBeans/ViewController/OptionShotViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "viewDidDisappear(_:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "newAdustOption()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

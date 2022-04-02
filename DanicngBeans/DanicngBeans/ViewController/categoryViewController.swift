@@ -9,7 +9,6 @@ import UIKit
 
 class categoryViewController: UIViewController {
     
-    let main = MainModel.shared
     
     var coffee: UIButton!
     var noncoffee: UIButton!
