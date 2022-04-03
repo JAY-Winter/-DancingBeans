@@ -45,14 +45,6 @@ class OptionShotViewController: UIViewController {
         
     }
     
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        let preVC = self.storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
-        
-        
-    }
-    
     // MARK: - User actions
     //--------------------------------------------------------------------------------------------
     @IBAction func countEsspressoShotStepper(_ sender: UIStepper) {

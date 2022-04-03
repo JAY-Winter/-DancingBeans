@@ -10,7 +10,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     var defaultMenuEngName: String = ""
     var defaultMenuKrName: String = ""
     var defaultMenuPrice: Int = 0
-    var menuKrName = ""
     var menuDescription: String!
     var indexOfOneAndOnlyGetWay: Int?
     var indexOfOneAndOnlyTemp: Int?
@@ -45,13 +44,13 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         defaultMenuNameLabel.text = menuInstance.name
         defaultMenuPriceLabel.text = main.setDeciamlWon(value: menuInstance.price)
         
-        menuKrNameLabel.text = menuKrName
+        menuKrNameLabel.text = defaultMenuKrName
         menuKrNameLabel.font = UIFont(name: "Gill Sans", size: 15)
         
         let countStepper2 = setCountStepper(stepper: countStepper, min: 1, max: 30)
         countStepper2.translatesAutoresizingMaskIntoConstraints = false
         countStepper2.addTarget(self, action: #selector(calculateCountedPrice(_:)), for: .valueChanged)
-
+        
         countedNumberLabel.text = "\(String(menuInstance.count))잔"
         countedPriceLabel.text = main.setDeciamlWon(value: menuInstance.price)
         
@@ -61,7 +60,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         addMenuToCartButton.setTitleColor(.white, for: .normal)
         addMenuToCartButton.backgroundColor = .systemBlue
         addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
-                
+        
         view.addSubview(menuImageView)
         view.addSubview(defaultMenuNameLabel)
         view.addSubview(defaultMenuPriceLabel)
@@ -117,7 +116,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         addMenuToCartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addMenuToCartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-
+        
         countStepper2.bottomAnchor.constraint(equalTo: addMenuToCartButton.topAnchor, constant: -20).isActive = true
         countStepper2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -129,10 +128,10 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         menuNameLine.topAnchor.constraint(equalTo: menuKrNameLabel.bottomAnchor, constant: 5).isActive = true
         steeperLine.bottomAnchor.constraint(equalTo: countStepper2.topAnchor, constant: -10).isActive = true
-        }
+    }
     
     // MARK: - User actions
-
+    
     @objc func calculateCountedPrice(_ sender: UIStepper!) {
         let calculatedPrice = main.calculateAddedPrice(sender: sender, menuPrice: defaultMenuPrice)
         
@@ -338,10 +337,7 @@ extension SelectOptionViewController {
     
     @objc func addMenuToCart() {
         if menuInstance.getWay != nil, menuInstance.temp != nil {
-            // main.addedMenuList.append(main.menuInfoInstance)
             menuInstance.putMenuList.append(menuInstance)
-            
-            
             main.result = menuInstance.price!
             
             occurAddedMenuAlert(itemCount: menuInstance.count)

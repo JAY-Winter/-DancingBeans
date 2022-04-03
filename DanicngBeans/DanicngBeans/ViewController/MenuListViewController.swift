@@ -1,9 +1,4 @@
-//
-//  newMenuViewController.swift
-//  DanicngBeans
-//
 //  Created by JAEHYEON on 2022/03/29.
-//
 
 import UIKit
 
@@ -16,7 +11,7 @@ class menuListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView(menuType: menuType)
+        setMenuListView(menuType: menuType)
     }
 }
 
@@ -25,17 +20,17 @@ class menuListViewController: UIViewController {
 
 extension menuListViewController {
     
-    func setView(menuType: String) {
+    func setMenuListView(menuType: String) {
+        var irregularlyPrArr: Dictionary<Int, String> = [:]
         
-        var appendedPrArrIrregularly: Dictionary<Int, String> = [:]
-        
+        // menu별 pr(priority)를 정리 후 setButtonListView
         switch menuType {
         case "COFFEE" :
             for menuName in menuInstance.menuList.keys {
                 if let cons = menuInstance.menuList[menuName] {
                     switch cons {
                     case .coffee(let pr, _, _, _, _, _, _, _, _, _) :
-                        appendedPrArrIrregularly[pr] = menuName
+                        irregularlyPrArr[pr] = menuName
                     case .nonCoffee :
                         break
                     case .filters :
@@ -45,7 +40,7 @@ extension menuListViewController {
                     }
                 }
             }
-            setButtonList(beforeArr: appendedPrArrIrregularly)
+            setButtonList(beforeArr: irregularlyPrArr)
             
         case "NON COFFEE" :
             for menuName in menuInstance.menuList.keys {
@@ -54,7 +49,7 @@ extension menuListViewController {
                     case .coffee :
                         break
                     case .nonCoffee(let pr, _, _, _, _, _, _, _) :
-                        appendedPrArrIrregularly[pr] = menuName
+                        irregularlyPrArr[pr] = menuName
                     case .filters :
                         break
                     case .dessert :
@@ -62,7 +57,7 @@ extension menuListViewController {
                     }
                 }
             }
-            setButtonList(beforeArr: appendedPrArrIrregularly)
+            setButtonList(beforeArr: irregularlyPrArr)
             
         case "FILTER" :
             for menuName in menuInstance.menuList.keys {
@@ -73,13 +68,13 @@ extension menuListViewController {
                     case .nonCoffee:
                         break
                     case .filters(let pr, _, _, _, _, _) :
-                        appendedPrArrIrregularly[pr] = menuName
+                        irregularlyPrArr[pr] = menuName
                     case .dessert :
                         break
                     }
                 }
             }
-            setButtonList(beforeArr: appendedPrArrIrregularly)
+            setButtonList(beforeArr: irregularlyPrArr)
             
         case "DESSERT" :
             for menuName in menuInstance.menuList.keys {
@@ -92,11 +87,11 @@ extension menuListViewController {
                     case .filters:
                         break
                     case .dessert(let pr, _, _, _, _) :
-                        appendedPrArrIrregularly[pr] = menuName
+                        irregularlyPrArr[pr] = menuName
                     }
                 }
             }
-            setButtonList(beforeArr: appendedPrArrIrregularly)
+            setButtonList(beforeArr: irregularlyPrArr)
         default : break
         }
     }
@@ -129,11 +124,11 @@ extension menuListViewController {
         button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         button.layer.cornerRadius = 12
-        button.addTarget(self, action: #selector(tappedSetButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(setSelectOptionVcTappedMenuButton), for: .touchUpInside)
     }
     
     
-    @objc func tappedSetButton(_ sender: UIButton) {
+    @objc func setSelectOptionVcTappedMenuButton(_ sender: UIButton) {
         let SelectOptionVC = self.storyboard?.instantiateViewController(withIdentifier: "SelectOptionViewController") as! SelectOptionViewController
         
         if let buttonTitle = sender.title(for: .normal) {
@@ -142,7 +137,6 @@ extension menuListViewController {
             SelectOptionVC.defaultMenuEngName = menuInstance.name
             SelectOptionVC.defaultMenuKrName = menuInstance.kr
             SelectOptionVC.defaultMenuPrice = menuInstance.price
-            SelectOptionVC.menuKrName = menuInstance.kr
             
             if let image = UIImage(named: buttonTitle) {
                 SelectOptionVC.menuImage = image
@@ -153,3 +147,4 @@ extension menuListViewController {
         self.present(SelectOptionVC, animated: true, completion: nil)
     }
 }
+

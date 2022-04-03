@@ -3,11 +3,18 @@
 import Foundation
 
 class MenuInfo {
-    
+
     static let shared = MenuInfo()
-    
+
     private init() { }
-    
+
+    enum menuCategory {
+        case coffee(pr: Int, price: Int, count: Int, shot: Int, syrup: Int, ice: String, water: String, temp: String?, getWay: String?, kr: String)
+        case nonCoffee(pr: Int, price: Int, count: Int, ice: String, water: String, temp: String?, getWay: String?, kr: String)
+        case filters(pr: Int, price: Int, count: Int, temp: String?, getWay: String?, kr: String)
+        case dessert(pr: Int, price: Int, count: Int, getWay: String?, kr: String)
+    }
+
     var name: String!
     var price: Int!
     var count: Int!
@@ -18,16 +25,7 @@ class MenuInfo {
     var temp: String?
     var getWay: String?
     var kr: String!
-    
-    var putMenuList: [MenuInfo] = [MenuInfo]()
-    
-    enum menuCategory {
-        case coffee(pr: Int, price: Int, count: Int, shot: Int, syrup: Int, ice: String, water: String, temp: String?, getWay: String?, kr: String)
-        case nonCoffee(pr: Int, price: Int, count: Int, ice: String, water: String, temp: String?, getWay: String?, kr: String)
-        case filters(pr: Int, price: Int, count: Int, temp: String?, getWay: String?, kr: String)
-        case dessert(pr: Int, price: Int, count: Int, getWay: String?, kr: String)
-    }
-    
+
     var menuList: Dictionary<String, menuCategory> = [
         // coffee
         "Espresso"               : .coffee(pr: 1, price: 3000, count: 1, shot: 2, syrup : 0, ice: "보통", water: "보통", temp: nil, getWay: nil, kr: "에스프레소"),
@@ -54,9 +52,11 @@ class MenuInfo {
         "Plain Scone"            : .dessert(pr: 3, price: 3500, count: 1, getWay: nil, kr: "플레인 스콘"),
         "Egg Tart"               : .dessert(pr: 4, price: 3500, count: 1, getWay: nil, kr: "에그 타르트")
     ]
-    
+
+    var putMenuList: [MenuInfo] = [MenuInfo]()
+
     // MARK: - func
-    
+
     func setMenuOptionTappedMenuButton(menuName: String) {
         if let menu = menuList[menuName] {
             switch menu {
@@ -71,7 +71,7 @@ class MenuInfo {
                 self.temp   = temp
                 self.getWay = getWay
                 self.kr     = kr
-                
+
             case .nonCoffee(_, let price, let count, let ice, let water, let temp, let getWay, let kr) :
                 self.name   = menuName
                 self.price  = price
@@ -83,7 +83,7 @@ class MenuInfo {
                 self.temp   = temp
                 self.getWay = getWay
                 self.kr     = kr
-                
+
             case .filters(_, let price, let count, let temp, let getWay, let kr) :
                 self.name   = menuName
                 self.price  = price
@@ -95,7 +95,7 @@ class MenuInfo {
                 self.temp   = temp
                 self.getWay = getWay
                 self.kr     = kr
-                
+  
             case .dessert(_, let price, let count, let getWay, let kr) :
                 self.name   = menuName
                 self.price  = price
@@ -111,5 +111,3 @@ class MenuInfo {
         }
     }
 }
-
-

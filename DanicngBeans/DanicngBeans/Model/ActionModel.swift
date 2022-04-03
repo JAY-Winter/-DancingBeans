@@ -18,19 +18,6 @@ class ActionModel {
         }
     }
     
-    func setErrorMessage(errorCase: String) {
-        switch errorCase {
-        case "핫/아이스" :
-            self.errorMessage = "핫/아이스를 선택해주세요 :)"
-            
-        case "포장/매장" :
-            self.errorMessage = "포장/매장을 선택해주세요 :)"
-            
-        default :
-            self.errorMessage = "옵션을 선택해주세요 :)"
-        }
-    }
-    
     func setDeciamlWon(value: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -46,5 +33,18 @@ class ActionModel {
         let calculatedPrice = menuCount * menuPrice
         
         return calculatedPrice
+    }
+    
+    func setErrorMessage(errorCase: String) {
+        switch errorCase {
+        case "핫/아이스" :
+            self.errorMessage = "핫/아이스를 선택해주세요 :)"
+            
+        case "포장/매장" :
+            self.errorMessage = "포장/매장을 선택해주세요 :)"
+            
+        default :
+            self.errorMessage = "옵션을 선택해주세요 :)"
+        }
     }
 }

@@ -9,7 +9,6 @@ import UIKit
 
 class categoryViewController: UIViewController {
     
-    
     var coffee: UIButton!
     var noncoffee: UIButton!
     var filter: UIButton!
@@ -142,9 +141,8 @@ class categoryViewController: UIViewController {
     
     @objc
     func pushMenuListVC(_ sender: UIButton){
-        let menuListVC = storyboard?.instantiateViewController(identifier: "newMenuListVC") as! menuListViewController
-        
-        
+        let menuListVC = storyboard?.instantiateViewController(identifier: "MenuListVC") as! menuListViewController
+
         switch sender.titleLabel?.text {
         case "COFFEE" :
             self.navigationController?.pushViewController(menuListVC, animated: true)
