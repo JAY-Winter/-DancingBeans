@@ -11,6 +11,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private var indexOfOneAndOnlyTemp  : Int?
     private var menuImageView          = UIImageView()
     private var addMenuToCartButton    = UIButton()
+    private var setOptionButton        = UIButton()
     private var countStepper           = UIStepper()
     private var menuKrNameLabel        = UILabel()
     private var defaultMenuNameLabel   = UILabel()
@@ -28,7 +29,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     
     @IBOutlet var hotOrIce            : [UIButton]!
     @IBOutlet var hereOrToGo          : [UIButton]!
-    @IBOutlet weak var setOptionButton: UIButton!
+    // @IBOutlet weak var setOptionButton: UIButton!
     
     // MARK: - viewDidLoad
     
@@ -65,11 +66,19 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         self.addMenuToCartButton.backgroundColor = .systemBlue
         self.addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
         
+        self.setOptionButton = UIButton(type: .system)
+        self.setOptionButton.setTitle("Personal Option", for: .normal)
+        self.setOptionButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 12)
+        self.setOptionButton.setTitleColor(.white, for: .normal)
+        self.setOptionButton.backgroundColor = .systemBlue
+        self.setOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
+        
         view.addSubview(menuImageView)
         view.addSubview(defaultMenuNameLabel)
         view.addSubview(defaultMenuPriceLabel)
         view.addSubview(menuNameLine)
         view.addSubview(addMenuToCartButton)
+        view.addSubview(setOptionButton)
         view.addSubview(menuKrNameLabel)
         view.addSubview(countStepper)
         view.addSubview(countedPriceLabel)
@@ -87,6 +96,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countedNumberLabel.translatesAutoresizingMaskIntoConstraints     = false
         countedPriceLabel.translatesAutoresizingMaskIntoConstraints      = false
         addMenuToCartButton.translatesAutoresizingMaskIntoConstraints    = false
+        setOptionButton.translatesAutoresizingMaskIntoConstraints        = false
         
         menuImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         menuImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -112,14 +122,15 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         hereOrToGo[1].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
         hereOrToGo[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         
-        setOptionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
-        setOptionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        
         addMenuToCartButton.layer.cornerRadius = 12
         addMenuToCartButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         addMenuToCartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addMenuToCartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        
+        setOptionButton.layer.cornerRadius = 12
+        setOptionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        setOptionButton.bottomAnchor.constraint(equalTo: steeperLine.topAnchor, constant: -10).isActive = true
         
         countStepper.bottomAnchor.constraint(equalTo: addMenuToCartButton.topAnchor, constant: -20).isActive = true
         countStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -146,20 +157,20 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     }
     
     
-    @IBAction func openSelectOptionBottomSheeet() {
-        let SelectOptionBottomSheetVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
+    @objc func openSelectOptionBottomSheeet() {
+        let PersonalOptionTableVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
-        SelectOptionBottomSheetVC.menuName = menuInstance.menuInfoStructureInstance.name
+        PersonalOptionTableVC.menuName = menuInstance.menuInfoStructureInstance.name
         
         if let boolShot = menuInstance.menuInfoStructureInstance.shot {
-            SelectOptionBottomSheetVC.shotCount = boolShot
+            PersonalOptionTableVC.shotCount = boolShot
         }
         
-        if let sheet = SelectOptionBottomSheetVC.sheetPresentationController {
+        if let sheet = PersonalOptionTableVC.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersScrollingExpandsWhenScrolledToEdge = true
         }
-        present(SelectOptionBottomSheetVC, animated: true, completion: nil)
+        present(PersonalOptionTableVC, animated: true, completion: nil)
     }
     
     

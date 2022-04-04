@@ -15,7 +15,6 @@ class PersonalOptionTableViewController: UIViewController {
     private var optionList       : Dictionary<String, Any> = [:]
     private var indexOfOneAndOnly: Int?
     private var confirmButton    = UIButton()
-    private var shotOptionButton = UIButton()
     private var shotCountLabel   = UILabel()
     
     var menuName : String!
@@ -24,9 +23,6 @@ class PersonalOptionTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuNameLabel: UILabel!
 
-
-    
-    
     
     // MARK: - viewControllerCycle
         
@@ -37,7 +33,6 @@ class PersonalOptionTableViewController: UIViewController {
         // MARK: - 기존 코드
         
         view.addSubview(confirmButton)
-        view.addSubview(shotOptionButton)
         
         menuNameLabel.text = menuName
         menuNameLabel.adjustsFontSizeToFitWidth = true
@@ -49,27 +44,11 @@ class PersonalOptionTableViewController: UIViewController {
         confirmButton.layer.cornerRadius = 12
         confirmButton.addTarget(self, action: #selector(checkChangedOption), for: .touchUpInside)
         
-        shotOptionButton.setTitle("Shot Option", for: .normal)
-        shotOptionButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
-        shotOptionButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        shotOptionButton.setTitleColor(.white, for: .normal)
-        shotOptionButton.backgroundColor = .systemBlue
-        shotOptionButton.layer.cornerRadius = 12
-        shotOptionButton.addTarget(self, action: #selector(toChangeShot), for: .touchUpInside)
-        
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        shotOptionButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         confirmButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-        
-        shotOptionButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        shotOptionButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        shotOptionButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 60).isActive = true
-        shotOptionButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         
         // MARK: - table view 수정 코드
         

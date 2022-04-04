@@ -2,29 +2,33 @@ import UIKit
 
 class OptionShotViewController: UIViewController {
     
-    
-    let menuInstance = MenuInfo.shared
-    
+    private let menuInstance = MenuInfo.shared
     var delegate : SelectOptionBottomSheetDelegate?
     var resultShot: Int?
+
+    private var confirmButton = UIButton()
+    
+    
     
     @IBOutlet weak var esspressoShotCountLabel: UILabel!
     @IBOutlet weak var esspressoShotCountStepper: UIStepper!
     
+
+    // MARK: - viewDidLoad
     
-    
-    //--------------------------------------------------------------------------------------------
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        let confirmButton = UIButton()
-        confirmButton.setTitle("CHECK", for: .normal)
-        confirmButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
-        confirmButton.setTitleColor(.white, for: .normal)
-        confirmButton.backgroundColor = .systemBlue
-        confirmButton.layer.cornerRadius = 12
-        confirmButton.addTarget(self, action: #selector(newAdustOption), for: .touchUpInside)
+    }
+    
+    // MARK: - User actions
+    
+    func setView() {
+        self.confirmButton.setTitle("CHECK", for: .normal)
+        self.confirmButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
+        self.confirmButton.setTitleColor(.white, for: .normal)
+        self.confirmButton.backgroundColor = .systemBlue
+        self.confirmButton.layer.cornerRadius = 12
+        self.confirmButton.addTarget(self, action: #selector(newAdustOption), for: .touchUpInside)
         
         view.addSubview(confirmButton)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -40,12 +44,8 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.isContinuous = false
         esspressoShotCountStepper.value = Double(menuInstance.menuInfoStructureInstance.shot!)
         esspressoShotCountLabel.text = String(menuInstance.menuInfoStructureInstance.shot!)
-
-        
     }
     
-    // MARK: - User actions
-    //--------------------------------------------------------------------------------------------
     @IBAction func countEsspressoShotStepper(_ sender: UIStepper) {
         esspressoShotCountLabel.text = String(Int(sender.value))
         

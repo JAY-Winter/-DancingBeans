@@ -34,15 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxq-bW-W8G">
-                                <rect key="frame" x="1" y="559" width="100" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Option"/>
-                                <connections>
-                                    <action selector="openSelectOptionBottomSheeet" destination="SZr-oH-CY7" eventType="touchUpInside" id="bJQ-gX-Ww9"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBK-24-nyK">
                                 <rect key="frame" x="29" y="525" width="147" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -87,7 +78,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kn6-Yo-0f6"/>
                     <connections>
-                        <outlet property="setOptionButton" destination="oxq-bW-W8G" id="JVU-dv-a8V"/>
                         <outletCollection property="hereOrToGo" destination="eBK-24-nyK" collectionClass="NSMutableArray" id="fdI-E4-XDT"/>
                         <outletCollection property="hereOrToGo" destination="Dpz-Qp-hXP" collectionClass="NSMutableArray" id="3jb-2H-5G4"/>
                         <outletCollection property="hotOrIce" destination="gKI-ZX-DFm" collectionClass="NSMutableArray" id="Ijr-Za-iG8"/>
