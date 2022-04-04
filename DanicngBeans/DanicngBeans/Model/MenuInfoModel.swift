@@ -15,17 +15,33 @@ class MenuInfo {
         case dessert(pr: Int, price: Int, count: Int, getWay: String?, kr: String)
     }
 
-    var name: String!
-    var price: Int!
-    var count: Int!
-    var shot: Int?
-    var syrup: Int?
-    var ice: String?
-    var water: String?
-    var temp: String?
-    var getWay: String?
-    var kr: String!
-
+    struct menuInfoStructure {
+        var name: String!
+        var price: Int!
+        var count: Int!
+        var shot: Int?
+        var syrup: Int?
+        var ice: String?
+        var water: String?
+        var temp: String?
+        var getWay: String?
+        var kr: String!
+    }
+   
+    // payTableView 에서  를 기준으로 삼는데, 이때
+    // 2개 이상의 메뉴가 담길 시, class 자체 변수인 name, price 등을 가져온다.
+    
+    // menuListVC 에서 다른 메뉴 선택할 때, MenuInfoModel.setMenuOptionTappedMenuButton()
+    // 동작으로 class 자체 변수 name, price 등이 각 메뉴의 값에 맞게 변하게 된다.
+    // 선택된 메뉴를 PUT 이후 MenuInfoModel.putMenuList 확인해보면 모든 Index 의 변수가
+    // 가장 최근에 추가된 변수로 덮혀진다.
+    // 이는, MenuInfoModel.putMenuList 에 추가되는 것이 기존에 MenuInfo class 자체 변수
+    // name, price, count 등이 들어가게 되는데 위에 설명과 같이 메뉴가 select 될 때마다 변하기 때문에
+    // 이러한 현상이 일어났던 것이었다.
+    // 따라서 menu 에 관한 추가 구조체를 만들어서 이에 기존 변수를 담아 활용했다
+    
+    var menuInfoStructureInstance = menuInfoStructure()
+    
     var menuList: Dictionary<String, menuCategory> = [
         // coffee
         "Espresso"               : .coffee(pr: 1, price: 3000, count: 1, shot: 2, syrup : 0, ice: "보통", water: "보통", temp: nil, getWay: nil, kr: "에스프레소"),
@@ -53,7 +69,7 @@ class MenuInfo {
         "Egg Tart"               : .dessert(pr: 4, price: 3500, count: 1, getWay: nil, kr: "에그 타르트")
     ]
 
-    var putMenuList: [MenuInfo] = [MenuInfo]()
+    var putMenuList: [menuInfoStructure] = [menuInfoStructure]()
 
     // MARK: - func
 
@@ -61,52 +77,52 @@ class MenuInfo {
         if let menu = menuList[menuName] {
             switch menu {
             case .coffee(_, let price, let count, let shot, let syrup,let ice, let water, let temp, let getWay, let kr) :
-                self.name   = menuName
-                self.price  = price
-                self.count  = count
-                self.shot   = shot
-                self.syrup  = syrup
-                self.ice    = ice
-                self.water  = water
-                self.temp   = temp
-                self.getWay = getWay
-                self.kr     = kr
-
+                menuInfoStructureInstance.name   = menuName
+                menuInfoStructureInstance.price  = price
+                menuInfoStructureInstance.count  = count
+                menuInfoStructureInstance.shot   = shot
+                menuInfoStructureInstance.syrup  = syrup
+                menuInfoStructureInstance.ice    = ice
+                menuInfoStructureInstance.water  = water
+                menuInfoStructureInstance.temp   = temp
+                menuInfoStructureInstance.getWay = getWay
+                menuInfoStructureInstance.kr     = kr
+                
             case .nonCoffee(_, let price, let count, let ice, let water, let temp, let getWay, let kr) :
-                self.name   = menuName
-                self.price  = price
-                self.count  = count
-                self.shot   = nil
-                self.syrup  = nil
-                self.ice    = ice
-                self.water  = water
-                self.temp   = temp
-                self.getWay = getWay
-                self.kr     = kr
+                menuInfoStructureInstance.name   = menuName
+                menuInfoStructureInstance.price  = price
+                menuInfoStructureInstance.count  = count
+                menuInfoStructureInstance.shot   = nil
+                menuInfoStructureInstance.syrup  = nil
+                menuInfoStructureInstance.ice    = ice
+                menuInfoStructureInstance.water  = water
+                menuInfoStructureInstance.temp   = temp
+                menuInfoStructureInstance.getWay = getWay
+                menuInfoStructureInstance.kr     = kr
 
             case .filters(_, let price, let count, let temp, let getWay, let kr) :
-                self.name   = menuName
-                self.price  = price
-                self.count  = count
-                self.shot   = nil
-                self.syrup  = nil
-                self.ice    = nil
-                self.water  = nil
-                self.temp   = temp
-                self.getWay = getWay
-                self.kr     = kr
+                menuInfoStructureInstance.name   = menuName
+                menuInfoStructureInstance.price  = price
+                menuInfoStructureInstance.count  = count
+                menuInfoStructureInstance.shot   = nil
+                menuInfoStructureInstance.syrup  = nil
+                menuInfoStructureInstance.ice    = nil
+                menuInfoStructureInstance.water  = nil
+                menuInfoStructureInstance.temp   = temp
+                menuInfoStructureInstance.getWay = getWay
+                menuInfoStructureInstance.kr     = kr
   
             case .dessert(_, let price, let count, let getWay, let kr) :
-                self.name   = menuName
-                self.price  = price
-                self.count  = count
-                self.shot   = nil
-                self.syrup  = nil
-                self.ice    = nil
-                self.water  = nil
-                self.temp   = nil
-                self.getWay = getWay
-                self.kr     = kr
+                menuInfoStructureInstance.name   = menuName
+                menuInfoStructureInstance.price  = price
+                menuInfoStructureInstance.count  = count
+                menuInfoStructureInstance.shot   = nil
+                menuInfoStructureInstance.syrup  = nil
+                menuInfoStructureInstance.ice    = nil
+                menuInfoStructureInstance.water  = nil
+                menuInfoStructureInstance.temp   = nil
+                menuInfoStructureInstance.getWay = getWay
+                menuInfoStructureInstance.kr     = kr
             }
         }
     }

@@ -287,17 +287,6 @@
                     <view key="view" contentMode="scaleToFill" id="YdJ-Dq-WZS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiz-eG-PLC">
-                                <rect key="frame" x="-16" y="729" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="ORDER" id="QVy-3e-lcQ"/>
-                                    <tabBarItem systemItem="more" id="XIt-0x-pgI"/>
-                                </items>
-                            </tabBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="YZL-fm-oTI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -314,17 +303,6 @@
                     <view key="view" contentMode="scaleToFill" id="dc8-TQ-MKW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKB-mb-3W2">
-                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="ORDER" id="0RF-Lx-tuA"/>
-                                    <tabBarItem systemItem="more" id="cil-F5-xZx"/>
-                                </items>
-                            </tabBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0rC-Ni-ghd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>

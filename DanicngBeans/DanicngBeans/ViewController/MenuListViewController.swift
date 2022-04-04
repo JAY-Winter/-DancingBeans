@@ -134,14 +134,14 @@ extension menuListViewController {
         if let buttonTitle = sender.title(for: .normal) {
             menuInstance.setMenuOptionTappedMenuButton(menuName: buttonTitle)
             
-            SelectOptionVC.defaultMenuEngName = menuInstance.name
-            SelectOptionVC.defaultMenuKrName = menuInstance.kr
-            SelectOptionVC.defaultMenuPrice = menuInstance.price
+            SelectOptionVC.defaultMenuEngName = menuInstance.menuInfoStructureInstance.name
+            SelectOptionVC.defaultMenuKrName = menuInstance.menuInfoStructureInstance.kr
+            SelectOptionVC.defaultMenuPrice = menuInstance.menuInfoStructureInstance.price
             
             if let image = UIImage(named: buttonTitle) {
                 SelectOptionVC.menuImage = image
             } else {
-                SelectOptionVC.menuImage = UIImage(named: "Sorry :(")
+                SelectOptionVC.menuImage = UIImage(named: "Sorry :(")!
             }
         }
         self.present(SelectOptionVC, animated: true, completion: nil)

@@ -8,76 +8,73 @@
 import UIKit
 
 class categoryViewController: UIViewController {
-    
-    var coffee: UIButton!
-    var noncoffee: UIButton!
-    var filter: UIButton!
-    var dessert: UIButton!
-    var coffee2: UIButton!
-    var noncoffee2: UIButton!
-    var filter2: UIButton!
-    var dessert2: UIButton!
-    var order: UIButton!
+
+    var coffee      = UIButton()
+    var noncoffee   = UIButton()
+    var filter      = UIButton()
+    var dessert     = UIButton()
+    var coffee2     = UIButton()
+    var noncoffee2  = UIButton()
+    var filter2     = UIButton()
+    var dessert2    = UIButton()
+    var order       = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+    }
     
+ // MARK: - func List
+    
+    func setView() {
+        
         let defaultHeight: CGFloat = view.frame.height/5
         
-        coffee = UIButton()
-        coffee.setTitle("COFFEE", for: .normal)
-        coffee.titleLabel?.adjustsFontSizeToFitWidth = true
-        coffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
-        coffee.setTitleColor(.black, for: .normal)
-        coffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        coffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
+        self.coffee.setTitle("COFFEE", for: .normal)
+        self.coffee.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.coffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
+        self.coffee.setTitleColor(.black, for: .normal)
+        self.coffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        self.coffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
-        noncoffee = UIButton()
-        noncoffee.setTitle("NON COFFEE", for: .normal)
-        noncoffee.titleLabel?.adjustsFontSizeToFitWidth = true
-        noncoffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
-        noncoffee.setTitleColor(.black, for: .normal)
-        noncoffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
-        noncoffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
+        self.noncoffee.setTitle("NON COFFEE", for: .normal)
+        self.noncoffee.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.noncoffee.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
+        self.noncoffee.setTitleColor(.black, for: .normal)
+        self.noncoffee.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
+        self.noncoffee.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
-        filter = UIButton()
-        filter.setTitle("FILTER", for: .normal)
-        filter.titleLabel?.adjustsFontSizeToFitWidth = true
-        filter.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
-        filter.setTitleColor(.black, for: .normal)
-        filter.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        filter.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
+        self.filter.setTitle("FILTER", for: .normal)
+        self.filter.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.filter.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
+        self.filter.setTitleColor(.black, for: .normal)
+        self.filter.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        self.filter.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
-        dessert = UIButton()
-        dessert.setTitle("DESSERT", for: .normal)
-        dessert.titleLabel?.adjustsFontSizeToFitWidth = true
-        dessert.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
-        dessert.setTitleColor(.black, for: .normal)
-        dessert.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
-        dessert.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
+        self.dessert.setTitle("DESSERT", for: .normal)
+        self.dessert.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.dessert.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 30)
+        self.dessert.setTitleColor(.black, for: .normal)
+        self.dessert.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
+        self.dessert.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)
         
-        coffee2 = UIButton()
-        coffee2.setTitle("", for: .normal)
+        self.coffee2.setTitle("", for: .normal)
         // coffee2.backgroundColor = UIColor(named: "customSet2_1")
         
-        noncoffee2 = UIButton()
-        noncoffee2.setTitle("", for: .normal)
+        self.noncoffee2.setTitle("", for: .normal)
         // noncoffee2.backgroundColor = UIColor(named: "customSet2_2")
         
-        filter2 = UIButton()
-        filter2.setTitle("", for: .normal)
+        self.filter2.setTitle("", for: .normal)
         // filter2.backgroundColor = UIColor(named: "customSet2_3")
         
-        dessert2 = UIButton()
-        dessert2.setTitle("", for: .normal)
+        self.dessert2.setTitle("", for: .normal)
         // dessert2.backgroundColor = UIColor(named: "customSet2_4")
         
-        order = UIButton()
-        order.setTitle("ORDER", for: .normal)
-        order.titleLabel?.adjustsFontSizeToFitWidth = true
-        order.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 20)
-        order.setTitleColor(.black, for: .normal)
-        order.addTarget(self, action: #selector(presentPavVC), for: .touchUpInside)
+        self.order.setTitle("ORDER", for: .normal)
+        self.order.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.order.titleLabel?.font = UIFont(name: "Gill Sans Bold", size: 20)
+        self.order.setTitleColor(.black, for: .normal)
+        self.order.addTarget(self, action: #selector(presentPavVC), for: .touchUpInside)
         
         view.addSubview(coffee)
         view.addSubview(noncoffee)
@@ -132,7 +129,7 @@ class categoryViewController: UIViewController {
         order.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
     }
     
- 
+    
     @objc func presentPavVC() {
         let page = self.storyboard?.instantiateViewController(withIdentifier: "PayTableViewController") as! PayTableViewController
         self.navigationController?.pushViewController(page, animated: true)

@@ -38,9 +38,8 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.minimumValue = 1
         esspressoShotCountStepper.maximumValue = 6
         esspressoShotCountStepper.isContinuous = false
-        esspressoShotCountStepper.value = Double(menuInstance.shot!)
-
-        esspressoShotCountLabel.text = String(menuInstance.shot!)
+        esspressoShotCountStepper.value = Double(menuInstance.menuInfoStructureInstance.shot!)
+        esspressoShotCountLabel.text = String(menuInstance.menuInfoStructureInstance.shot!)
 
         
     }
@@ -51,7 +50,7 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountLabel.text = String(Int(sender.value))
         
         resultShot = Int(sender.value) // count 후 변한 값
-        menuInstance.shot = resultShot
+        menuInstance.menuInfoStructureInstance.shot = resultShot
     }
 
     
@@ -60,7 +59,7 @@ class OptionShotViewController: UIViewController {
             delegate?.adjustOption(self, value: resultShotEx)
             delegate?.sendData(value: resultShotEx)
         } else {
-            delegate?.adjustOption(self, value: menuInstance.shot!)
+            delegate?.adjustOption(self, value: menuInstance.menuInfoStructureInstance.shot!)
         }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

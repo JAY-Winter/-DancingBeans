@@ -10,17 +10,16 @@ import UIKit
 
 class PersonalOptionTableViewController: UIViewController {
 
-    let menuInstance = MenuInfo.shared
-    var delegate: PersonalOptionTableDelegate?
-    var optionList: Dictionary<String, Any> = [:]
-    
-    var menuName: String!
-    var shotCount: Int?
-    var indexOfOneAndOnly: Int?
-    
-    private var confirmButton = UIButton()
+    private let menuInstance     = MenuInfo.shared
+    private var delegate         : PersonalOptionTableDelegate?
+    private var optionList       : Dictionary<String, Any> = [:]
+    private var indexOfOneAndOnly: Int?
+    private var confirmButton    = UIButton()
     private var shotOptionButton = UIButton()
-    private var shotCountLabel = UILabel()
+    private var shotCountLabel   = UILabel()
+    
+    var menuName : String!
+    var shotCount: Int?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuNameLabel: UILabel!
@@ -178,7 +177,7 @@ extension PersonalOptionTableViewController: SelectOptionBottomSheetDelegate {
     
     func adjustOption(_ vc: UIViewController, value: Int?) {
         // shotCountLabel.text = ("\(main.menuInfoInstance.shot!)개")
-        menuInstance.shot = value
+        menuInstance.menuInfoStructureInstance.shot = value
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell") as! personalTableView
         

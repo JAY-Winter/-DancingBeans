@@ -5,13 +5,13 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     private let cellIdentifier: String = "cell"
     private let menuInstance = MenuInfo.shared
-    let main = ActionModel()
+    private let calculateInstance = CalculateModel.shared
+    private let actionInstance = ActionModel()
     private var delegate: PayTableDelegate?
     
     // MARK: - User actions
     
     @IBOutlet weak var tableView: UITableView!
-    // @IBOutlet weak var totalPriceLabel: UILabel!
     
     private var totalPriceLabel = UILabel()
     private var orderButton: UIButton!
@@ -19,49 +19,20 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - User actions
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        self.navigationItem.title = "Payment"
-
-        self.view.backgroundColor = UIColor(named: "defaultBackGroundColor")
-        
-        orderButton = UIButton(type: .system)
-
-        view.addSubview(orderButton)
-        view.addSubview(totalPriceLabel)
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        totalPriceLabel.text = main.setDeciamlWon(value: main.accumlator)
-        totalPriceLabel.font = UIFont(name: "Gill Sans", size: 20)
-        totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-        totalPriceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
-        totalPriceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        orderButton.setTitle("PAY", for: .normal)
-        orderButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
-        orderButton.setTitleColor(.white, for: .normal)
-        orderButton.backgroundColor = .systemBlue
-        orderButton.layer.cornerRadius = 12
-        orderButton.translatesAutoresizingMaskIntoConstraints = false
-        orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        orderButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-        orderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        setDefaultView()
     }
-    
     
     // MARK: - User actions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if menuInstance.count == 0 {
+        if menuInstance.putMenuList.count == 0 {
             tableView.setEmptyView(title: "현재 담긴 메뉴가 없습니다!")
             totalPriceLabel.isHidden = true
             orderButton.isHidden = true
         } else {
             tableView.restore()
         }
-        return menuInstance.count
+        return menuInstance.putMenuList.count
     }
     
     
@@ -72,11 +43,14 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
-        
         let putMenu = menuInstance.putMenuList[indexPath.row]
         
-        cell.nameLabel.text = putMenu.name
-        cell.optionLabel.text = "\(putMenu.getWay!)⎜\(putMenu.temp!)⎜\(putMenu.count!)잔"
+        if let menuImage = UIImage(named: putMenu.name) {
+            cell.menuImageView.image = menuImage
+            
+        } else {
+            cell.menuImageView.image = UIImage(named: "Sorry :(")
+        }
         
         if let isShotMenu = putMenu.shot {
             cell.option2Label.text = "\(isShotMenu)shot"
@@ -84,15 +58,18 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
             cell.option2Label.isHidden = true
         }
         
-        cell.priceLabel.text = main.setDeciamlWon(value: putMenu.price)
+        cell.nameLabel.text = putMenu.name
+        cell.priceLabel.text = calculateInstance.setDecimalWon(value: putMenu.price)
+        cell.optionLabel.text = "\(putMenu.getWay!)⎜\(putMenu.temp!)⎜\(putMenu.count!)잔"
         
+        
+            
         cell.menuImageView.translatesAutoresizingMaskIntoConstraints = false
         cell.menuImageView.contentMode = .scaleAspectFit
         cell.menuImageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0).isActive = true
         cell.menuImageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0).isActive = true
         cell.menuImageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -200).isActive = true
         cell.menuImageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
-
         
         cell.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.nameLabel.adjustsFontSizeToFitWidth = true
@@ -114,14 +91,7 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         cell.priceLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -10).isActive = true
         cell.priceLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
         
-        
-        
-        if let menuImage = UIImage(named: putMenu.name) {
-            cell.menuImageView.image = menuImage
-            
-        } else {
-            cell.menuImageView.image = UIImage(named: "Sorry :(")
-        }
+
         return cell
     }
     
@@ -135,13 +105,13 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            main.accumlator -= menuInstance.putMenuList[indexPath.row].price
+            calculateInstance.accumlator -= menuInstance.putMenuList[indexPath.row].price
             menuInstance.putMenuList.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
             
-            totalPriceLabel.text = main.setDeciamlWon(value: main.accumlator)
+            totalPriceLabel.text = calculateInstance.setDecimalWon(value: calculateInstance.accumlator)
         }
     }
 }
@@ -183,6 +153,42 @@ extension UITableView {
         self.backgroundView = nil
         self.separatorStyle = .singleLine
     }
+    
+
 }
 
+extension PayTableViewController {
+    func setDefaultView() {
+        
+        self.navigationItem.title = "Payment"
+
+        self.view.backgroundColor = UIColor(named: "defaultBackGroundColor")
+        
+        orderButton = UIButton(type: .system)
+
+        view.addSubview(orderButton)
+        view.addSubview(totalPriceLabel)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        totalPriceLabel.text = calculateInstance.setDecimalWon(value: calculateInstance.accumlator)
+        totalPriceLabel.font = UIFont(name: "Gill Sans", size: 20)
+        totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        totalPriceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        totalPriceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        orderButton.setTitle("PAY", for: .normal)
+        orderButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
+        orderButton.setTitleColor(.white, for: .normal)
+        orderButton.backgroundColor = .systemBlue
+        orderButton.layer.cornerRadius = 12
+        orderButton.translatesAutoresizingMaskIntoConstraints = false
+        orderButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        orderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        orderButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        orderButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
+    }
+}
 
