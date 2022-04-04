@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class PersonalOptionTableViewController: UIViewController {
 
     private let menuInstance     = MenuInfo.shared
@@ -24,14 +23,16 @@ class PersonalOptionTableViewController: UIViewController {
     @IBOutlet weak var menuNameLabel: UILabel!
 
     
-    // MARK: - viewControllerCycle
-        
+    // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK: - 기존 코드
-        
+        setView()
+    }
+    
+    // MARK: - User actions
+    
+    func setView() {
         view.addSubview(confirmButton)
         
         menuNameLabel.text = menuName
@@ -50,8 +51,6 @@ class PersonalOptionTableViewController: UIViewController {
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         
-        // MARK: - table view 수정 코드
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -68,16 +67,15 @@ class PersonalOptionTableViewController: UIViewController {
             
         case .filters :
             break
+            
         case .dessert:
             break
+            
         default :
             break
         }
     }
-
-
     
-    // MARK: - User actions
     
     @objc func toChangeShot() {
         guard let AfterVC = self.storyboard?.instantiateViewController(withIdentifier: "OptionShotViewController") as? OptionShotViewController else { return }
@@ -95,10 +93,12 @@ class PersonalOptionTableViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
 // MARK: - extension PersonalOptionViewTable
 
 extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDataSource{
 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return optionList.count
     }
@@ -108,9 +108,8 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
         return 80
     }
     
-    
+    // tableView 생성 func 는 viewDidLoad 시 한 번만 되는듯
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // tableView 생성 func 는 viewDidLoad 시 한 번만 되는듯
         let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell", for: indexPath) as! personalTableView
 
         cell.addSubview(cell.optionButton)
@@ -140,8 +139,6 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
 // MARK: - TableView Class
 class personalTableView: UITableViewCell {
     var optionButton = UIButton()
-        
-    
 }
 
 
@@ -149,10 +146,6 @@ class personalTableView: UITableViewCell {
 
 // view(Option Shot ViewController)을 대신해 작성한 함수
 extension PersonalOptionTableViewController: SelectOptionBottomSheetDelegate {
-    
-    func sendData(value: Int?){
-        // self.paramTest = (value)?.description ?? "0"
-    }
     
     func adjustOption(_ vc: UIViewController, value: Int?) {
         // shotCountLabel.text = ("\(main.menuInfoInstance.shot!)개")

@@ -20,7 +20,7 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultView()
+        setView()
     }
     
     // MARK: - User actions
@@ -158,7 +158,7 @@ extension UITableView {
 }
 
 extension PayTableViewController {
-    func setDefaultView() {
+    func setView() {
         
         self.navigationItem.title = "Payment"
 
