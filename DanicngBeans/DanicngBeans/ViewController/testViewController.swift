@@ -25,7 +25,6 @@ class testViewController: UIViewController {
         coffee.adjustsFontForContentSizeCategory = true
         coffee.textColor = .black
         
-        
         noncoffee = UILabel()
         noncoffee.text = "NON COFFEE"
         noncoffee.font = UIFont(name: "Gill Sans Bold", size: 30)
@@ -33,18 +32,15 @@ class testViewController: UIViewController {
         noncoffee.adjustsFontForContentSizeCategory = true
         noncoffee.textColor = .black
         
-        
         filter = UILabel()
         filter.text = "FILTER"
         filter.font = UIFont(name: "Gill Sans Bold", size: 30)
         filter.textColor = .black
         
-        
         dessert = UILabel()
         dessert.text = "DESSERT"
         dessert.font = UIFont(name: "Gill Sans Bold", size: 30)
         dessert.textColor = .black
-
         
         order = UILabel()
         order.text = "ORDER"
@@ -52,31 +48,24 @@ class testViewController: UIViewController {
         order.textColor = .black
         order.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
         
-        
-        
-        
         coffee2 = UILabel()
         coffee2.text = "                      "
         coffee2.backgroundColor = .systemBrown
-
         
         noncoffee2 = UILabel()
         noncoffee2.text = "                   "
         noncoffee2.font = UIFont(name: "Gill Sans Bold", size: 30)
         noncoffee2.backgroundColor = .systemCyan
         
-        
         filter2 = UILabel()
         filter2.text = "                      "
         filter2.font = UIFont(name: "Gill Sans Bold", size: 30)
         filter2.backgroundColor = .systemMint
         
-        
         dessert2 = UILabel()
         dessert2.text = "                    "
         dessert2.font = UIFont(name: "Gill Sans Bold", size: 30)
         dessert2.backgroundColor = .systemTeal
-
         
         view.addSubview(coffee)
         view.addSubview(noncoffee)
@@ -87,7 +76,6 @@ class testViewController: UIViewController {
         view.addSubview(noncoffee2)
         view.addSubview(filter2)
         view.addSubview(dessert2)
-
         
         coffee.translatesAutoresizingMaskIntoConstraints = false
         coffee.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
@@ -125,16 +113,4 @@ class testViewController: UIViewController {
         dessert2.topAnchor.constraint(equalTo: view.topAnchor, constant: 600).isActive = true
         dessert2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -3,18 +3,17 @@ import UIKit
 
 class PayTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let cellIdentifier: String = "cell"
-    private let menuInstance = MenuInfo.shared
-    private let calculateInstance = CalculateModel.shared
-    private let actionInstance = ActionModel()
-    private var delegate: PayTableDelegate?
+    private let cellIdentifier    : String = "cell"
+    private let menuInstance      : MenuInfo = MenuInfo.shared
+    private let calculateInstance : CalculateModel = CalculateModel.shared
+    private let actionInstance    : ActionModel = ActionModel()
+    private var delegate          : PayTableDelegate?
     
     // MARK: - User actions
     
     @IBOutlet weak var tableView: UITableView!
-    
     private var totalPriceLabel = UILabel()
-    private var orderButton: UIButton!
+    private var orderButton     : UIButton!
     
     // MARK: - User actions
     
@@ -62,36 +61,40 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
         cell.priceLabel.text = calculateInstance.setDecimalWon(value: putMenu.price)
         cell.optionLabel.text = "\(putMenu.getWay!)⎜\(putMenu.temp!)⎜\(putMenu.count!)잔"
         
+        self.view.addSubview(cell.nameLabel)
+        self.view.addSubview(cell.optionLabel)
+        self.view.addSubview(cell.priceLabel)
+        self.view.addSubview(cell.menuImageView)
+        self.view.addSubview(cell.option2Label)
         
-            
         cell.menuImageView.translatesAutoresizingMaskIntoConstraints = false
+        cell.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.optionLabel.translatesAutoresizingMaskIntoConstraints = false
+        cell.option2Label.translatesAutoresizingMaskIntoConstraints = false
+        cell.priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         cell.menuImageView.contentMode = .scaleAspectFit
         cell.menuImageView.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0).isActive = true
         cell.menuImageView.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0).isActive = true
         cell.menuImageView.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -200).isActive = true
         cell.menuImageView.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0).isActive = true
         
-        cell.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.nameLabel.adjustsFontSizeToFitWidth = true
         cell.nameLabel.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
         cell.nameLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
         cell.nameLabel.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -10).isActive = true
         
-        cell.optionLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.optionLabel.adjustsFontSizeToFitWidth = true
         cell.optionLabel.topAnchor.constraint(equalTo: cell.nameLabel.bottomAnchor, constant: 10).isActive = true
         cell.optionLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
-
-        cell.option2Label.translatesAutoresizingMaskIntoConstraints = false
+        
         cell.option2Label.adjustsFontSizeToFitWidth = true
         cell.option2Label.topAnchor.constraint(equalTo: cell.nameLabel.bottomAnchor, constant: 30).isActive = true
         cell.option2Label.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
         
-        cell.priceLabel.translatesAutoresizingMaskIntoConstraints = false
         cell.priceLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -10).isActive = true
         cell.priceLabel.leadingAnchor.constraint(equalTo: cell.menuImageView.trailingAnchor, constant: 10).isActive = true
         
-
         return cell
     }
     
@@ -119,11 +122,16 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
 // MARK: - CustomCell
 
 class CustomCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var optionLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var menuImageView: UIImageView!
-    @IBOutlet weak var option2Label: UILabel!
+    // @IBOutlet weak var nameLabel: UILabel!
+    var nameLabel: UILabel! = UILabel()
+    // @IBOutlet weak var optionLabel: UILabel!
+    var optionLabel: UILabel! = UILabel()
+    // @IBOutlet weak var priceLabel: UILabel!
+    var priceLabel: UILabel! = UILabel()
+    // @IBOutlet weak var menuImageView: UIImageView!
+    var menuImageView: UIImageView! = UIImageView()
+    // @IBOutlet weak var option2Label: UILabel!
+    var option2Label: UILabel! = UILabel()
 }
 
 // MARK: - Extension
@@ -172,7 +180,7 @@ extension PayTableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        totalPriceLabel.text = calculateInstance.setDecimalWon(value: calculateInstance.accumlator)
+        totalPriceLabel.text = calculateInstance.setDecimalWon(value:calculateInstance.accumlator)
         totalPriceLabel.font = UIFont(name: "Gill Sans", size: 20)
         totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         totalPriceLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true

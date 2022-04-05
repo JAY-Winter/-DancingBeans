@@ -10,19 +10,20 @@ import UIKit
 class PersonalOptionTableViewController: UIViewController {
 
     private let menuInstance     = MenuInfo.shared
+    private let uiModel          = UIModel()
     private var delegate         : PersonalOptionTableDelegate?
+    private lazy var menuNameLine: UILabel! = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     private var optionList       : Dictionary<String, Any> = [:]
     private var indexOfOneAndOnly: Int?
     private var confirmButton    = UIButton()
     private var shotCountLabel   = UILabel()
+    private var menuNameLabel    = UILabel()
     
     var menuName : String!
     var shotCount: Int?
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var menuNameLabel: UILabel!
 
-    
     // MARK: - viewDidLoad
     
     override func viewDidLoad() {
@@ -33,8 +34,10 @@ class PersonalOptionTableViewController: UIViewController {
     // MARK: - User actions
     
     func setView() {
-        view.addSubview(confirmButton)
-        
+
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+
         menuNameLabel.text = menuName
         menuNameLabel.adjustsFontSizeToFitWidth = true
         
@@ -45,14 +48,32 @@ class PersonalOptionTableViewController: UIViewController {
         confirmButton.layer.cornerRadius = 12
         confirmButton.addTarget(self, action: #selector(checkChangedOption), for: .touchUpInside)
         
+        view.addSubview(tableView)
+        view.addSubview(confirmButton)
+        view.addSubview(menuNameLabel)
+        view.addSubview(menuNameLine)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints     = false
+        menuNameLabel.translatesAutoresizingMaskIntoConstraints = false
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        menuNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        menuNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
         confirmButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.menuNameLine.topAnchor.constraint(equalTo: menuNameLabel.bottomAnchor, constant: 10).isActive = true
+        self.menuNameLine.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        self.menuNameLine.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        
+        tableView.topAnchor.constraint(equalTo: menuNameLine.bottomAnchor, constant: 10).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: confirmButton.topAnchor, constant: -10).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
         
         switch menuInstance.menuList[menuName] {
         case .coffee(_, _, _, let shot, let syrup, let ice, let water, _, _,_) :
@@ -115,17 +136,9 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
         cell.addSubview(cell.optionButton)
         cell.optionButton.configuration = .plain() // optionButton.configuration Instance 생성
         cell.optionButton.configuration?.title = (optionList.keys.sorted())[indexPath.row]
-        // cell.optionButton.configuration?.title = paramTest
         cell.optionButton.configuration?.subtitle = (optionList[String((cell.optionButton.configuration?.title!)!)] as AnyObject).debugDescription
         cell.optionButton.contentHorizontalAlignment = .leading
-        
-        // 임시로 system image "play", image padding 설정
-        // cell.optionButton.configuration?.image = UIImage(systemName: "play",
-                                                         // withConfiguration: UIImage.SymbolConfiguration(scale: .default))
-        // cell.optionButton.configuration?.imagePlacement = .trailing
-        // cell.optionButton.configuration?.imagePadding = 100
-        // cell.optionButton.configuration?.imagePlacement = cell.optionButton
-        
+
         cell.optionButton.translatesAutoresizingMaskIntoConstraints = false
         cell.optionButton.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 10).isActive = true
         cell.optionButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -10).isActive = true
@@ -133,12 +146,19 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
         cell.optionButton.addTarget(self, action: #selector(toChangeShot), for: .touchUpInside)
         
         return cell
+        
+        // 임시로 system image "play", image padding 설정
+        // cell.optionButton.configuration?.image = UIImage(systemName: "play",
+                                                         // withConfiguration: UIImage.SymbolConfiguration(scale: .default))
+        // cell.optionButton.configuration?.imagePlacement = .trailing
+        // cell.optionButton.configuration?.imagePadding = 100
+        // cell.optionButton.configuration?.imagePlacement = cell.optionButton
     }
 }
 
 // MARK: - TableView Class
 class personalTableView: UITableViewCell {
-    var optionButton = UIButton()
+    let optionButton = UIButton()
 }
 
 
@@ -148,7 +168,6 @@ class personalTableView: UITableViewCell {
 extension PersonalOptionTableViewController: SelectOptionBottomSheetDelegate {
     
     func adjustOption(_ vc: UIViewController, value: Int?) {
-        // shotCountLabel.text = ("\(main.menuInfoInstance.shot!)개")
         menuInstance.menuInfoStructureInstance.shot = value
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell") as! personalTableView

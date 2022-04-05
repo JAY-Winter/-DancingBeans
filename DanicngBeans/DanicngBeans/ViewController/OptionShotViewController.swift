@@ -2,11 +2,12 @@ import UIKit
 
 class OptionShotViewController: UIViewController {
     
-    private let menuInstance = MenuInfo.shared
-    private var confirmButton = UIButton()
-    private var esspressoNameLabel = UILabel()
+    private let menuInstance              = MenuInfo.shared
+    private var confirmButton             = UIButton()
+    private var esspressoNameLabel        = UILabel()
     private var esspressoShotCountStepper = UIStepper()
-    private var esspressoShotCountLabel = UILabel()
+    private var esspressoShotCountLabel   = UILabel()
+    
     
     var delegate : SelectOptionBottomSheetDelegate?
     var resultShot: Int?
@@ -22,10 +23,11 @@ class OptionShotViewController: UIViewController {
     // MARK: - User actions
     
     func setView() {
-
-        self.confirmButton.configuration = .plain()
-        self.confirmButton.configuration?.title = "Adjust New Option"
-        self.confirmButton.contentHorizontalAlignment = .leading
+        self.confirmButton.setTitle("적용하기", for: .normal)
+        self.confirmButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 15)
+        self.confirmButton.setTitleColor(.white, for: .normal)
+        self.confirmButton.backgroundColor = .systemBlue
+        self.confirmButton.layer.cornerRadius = 12
         self.confirmButton.addTarget(self, action: #selector(newAdustOption), for: .touchUpInside)
 
         self.esspressoShotCountStepper.wraps = false
@@ -38,7 +40,6 @@ class OptionShotViewController: UIViewController {
         
         self.esspressoNameLabel.text = "Esspresso Shot"
         self.esspressoShotCountLabel.text = String(menuInstance.menuInfoStructureInstance.shot!)
-        
         
         view.addSubview(confirmButton)
         view.addSubview(esspressoNameLabel)
@@ -56,15 +57,13 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         esspressoShotCountStepper.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
-        // esspressoShotCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         esspressoShotCountLabel.leadingAnchor.constraint(equalTo: esspressoShotCountStepper.trailingAnchor, constant: 60).isActive = true
         esspressoShotCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
-        confirmButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        confirmButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        confirmButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        confirmButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmButton.topAnchor.constraint(equalTo: esspressoShotCountStepper.bottomAnchor, constant: 50).isActive = true
-
     }
     
     @objc func countEsspressoShotStepper(_ sender: UIStepper) {

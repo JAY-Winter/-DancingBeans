@@ -3,33 +3,34 @@ import CloudKit
 
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - variables
-    private var delegate               : SelectOptionDelegate?
-    private let menuInstance           = MenuInfo.shared
-    private let calculateInstance      = CalculateModel.shared
-    private let actionInstance         = ActionModel()
-    private var indexOfOneAndOnlyGetWay: Int?
-    private var indexOfOneAndOnlyTemp  : Int?
-    private var menuImageView          = UIImageView()
-    private var addMenuToCartButton    = UIButton()
-    private var setOptionButton        = UIButton()
-    private var countStepper           = UIStepper()
-    private var menuKrNameLabel        = UILabel()
-    private var defaultMenuNameLabel   = UILabel()
-    private var defaultMenuPriceLabel  = UILabel()
-    private var countedNumberLabel     = UILabel()
-    private var countedPriceLabel      = UILabel()
+    private var delegate                    : SelectOptionDelegate?
+    private let menuInstance                = MenuInfo.shared
+    private let calculateInstance           = CalculateModel.shared
+    private let actionInstance              = ActionModel()
+    private let uiModel                     = UIModel()
+    private var indexOfOneAndOnlyGetWay     : Int?
+    private var indexOfOneAndOnlyTemp       : Int?
+    private var menuImageView               = UIImageView()
+    private lazy var addMenuToCartButton    : UIButton! = self.uiModel.setSelectButton(buttonTitle: "담기", buttonWidth: 150, buttonHeight: 50)
+    private lazy var setPersonalOptionButton: UIButton! = self.uiModel.setSelectButton(buttonTitle: "Personal Option", buttonWidth: 100, buttonHeight: 30)
+    private var countStepper                = UIStepper()
+    private var menuKrNameLabel             = UILabel()
+    private var defaultMenuNameLabel        = UILabel()
+    private var defaultMenuPriceLabel       = UILabel()
+    private var countedNumberLabel          = UILabel()
+    private var countedPriceLabel           = UILabel()
+    private lazy var menuNameLine           : UILabel! = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    private lazy var steeperLine            : UILabel! = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
     var menuImage         = UIImage()
     var defaultMenuEngName: String!
     var defaultMenuKrName : String!
     var defaultMenuPrice  : Int!
     
-    
     // MARK: - viewDidLoad
     
     @IBOutlet var hotOrIce            : [UIButton]!
     @IBOutlet var hereOrToGo          : [UIButton]!
-    // @IBOutlet weak var setOptionButton: UIButton!
     
     // MARK: - viewDidLoad
     
@@ -41,9 +42,7 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - User actions
     
     func setView() {
-        let menuNameLine = setColoredThinLine(setColor: "black")
-        let steeperLine = setColoredThinLine(setColor: "black")
-        
+
         self.menuImageView.image = menuImage
         
         self.defaultMenuNameLabel.text = menuInstance.menuInfoStructureInstance.name
@@ -59,44 +58,37 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         self.countedNumberLabel.text = "\(String(menuInstance.menuInfoStructureInstance.count))잔"
         self.countedPriceLabel.text = calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price)
         
-        self.addMenuToCartButton = UIButton(type: .system)
-        self.addMenuToCartButton.setTitle("PUT", for: .normal)
-        self.addMenuToCartButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 20)
-        self.addMenuToCartButton.setTitleColor(.white, for: .normal)
-        self.addMenuToCartButton.backgroundColor = .systemBlue
         self.addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
-        
-        self.setOptionButton = UIButton(type: .system)
-        self.setOptionButton.setTitle("Personal Option", for: .normal)
-        self.setOptionButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 12)
-        self.setOptionButton.setTitleColor(.white, for: .normal)
-        self.setOptionButton.backgroundColor = .systemBlue
-        self.setOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
+        self.setPersonalOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
         
         view.addSubview(menuImageView)
         view.addSubview(defaultMenuNameLabel)
         view.addSubview(defaultMenuPriceLabel)
         view.addSubview(menuNameLine)
         view.addSubview(addMenuToCartButton)
-        view.addSubview(setOptionButton)
+        view.addSubview(setPersonalOptionButton)
         view.addSubview(menuKrNameLabel)
         view.addSubview(countStepper)
         view.addSubview(countedPriceLabel)
         view.addSubview(countedNumberLabel)
+        // view.addSubview(menuNameLine)
+        // view.addSubview(steeperLine)
         
-        menuImageView.translatesAutoresizingMaskIntoConstraints          = false
-        defaultMenuNameLabel.translatesAutoresizingMaskIntoConstraints   = false
-        menuKrNameLabel.translatesAutoresizingMaskIntoConstraints        = false
-        defaultMenuPriceLabel.translatesAutoresizingMaskIntoConstraints  = false
-        hotOrIce[0].translatesAutoresizingMaskIntoConstraints            = false
-        hotOrIce[1].translatesAutoresizingMaskIntoConstraints            = false
-        hereOrToGo[0].translatesAutoresizingMaskIntoConstraints          = false
-        hereOrToGo[1].translatesAutoresizingMaskIntoConstraints          = false
-        setOptionButton.translatesAutoresizingMaskIntoConstraints        = false
-        countedNumberLabel.translatesAutoresizingMaskIntoConstraints     = false
-        countedPriceLabel.translatesAutoresizingMaskIntoConstraints      = false
-        addMenuToCartButton.translatesAutoresizingMaskIntoConstraints    = false
-        setOptionButton.translatesAutoresizingMaskIntoConstraints        = false
+        menuImageView.translatesAutoresizingMaskIntoConstraints           = false
+        defaultMenuNameLabel.translatesAutoresizingMaskIntoConstraints    = false
+        menuKrNameLabel.translatesAutoresizingMaskIntoConstraints         = false
+        defaultMenuPriceLabel.translatesAutoresizingMaskIntoConstraints   = false
+        hotOrIce[0].translatesAutoresizingMaskIntoConstraints             = false
+        hotOrIce[1].translatesAutoresizingMaskIntoConstraints             = false
+        hereOrToGo[0].translatesAutoresizingMaskIntoConstraints           = false
+        hereOrToGo[1].translatesAutoresizingMaskIntoConstraints           = false
+        setPersonalOptionButton.translatesAutoresizingMaskIntoConstraints = false
+        countedNumberLabel.translatesAutoresizingMaskIntoConstraints      = false
+        countedPriceLabel.translatesAutoresizingMaskIntoConstraints       = false
+        addMenuToCartButton.translatesAutoresizingMaskIntoConstraints     = false
+        setPersonalOptionButton.translatesAutoresizingMaskIntoConstraints = false
+        // menuNameLine.translatesAutoresizingMaskIntoConstraints            = false
+        // steeperLine.translatesAutoresizingMaskIntoConstraints             = false
         
         menuImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         menuImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -122,15 +114,13 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         hereOrToGo[1].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
         hereOrToGo[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         
-        addMenuToCartButton.layer.cornerRadius = 12
-        addMenuToCartButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        // addMenuToCartButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        // addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         addMenuToCartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addMenuToCartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         
-        setOptionButton.layer.cornerRadius = 12
-        setOptionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        setOptionButton.bottomAnchor.constraint(equalTo: steeperLine.topAnchor, constant: -10).isActive = true
+        setPersonalOptionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        setPersonalOptionButton.bottomAnchor.constraint(equalTo: steeperLine.topAnchor, constant: -10).isActive = true
         
         countStepper.bottomAnchor.constraint(equalTo: addMenuToCartButton.topAnchor, constant: -20).isActive = true
         countStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -142,7 +132,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countedPriceLabel.leadingAnchor.constraint(equalTo: countStepper.trailingAnchor, constant: 60).isActive = true
         
         menuNameLine.topAnchor.constraint(equalTo: menuKrNameLabel.bottomAnchor, constant: 5).isActive = true
+        // menuNameLine.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        // menuNameLine.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        
         steeperLine.bottomAnchor.constraint(equalTo: countStepper.topAnchor, constant: -10).isActive = true
+        // steeperLine.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        // steeperLine.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
     }
     
 
@@ -161,14 +156,16 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         let PersonalOptionTableVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
         PersonalOptionTableVC.menuName = menuInstance.menuInfoStructureInstance.name
-        
+
         if let boolShot = menuInstance.menuInfoStructureInstance.shot {
             PersonalOptionTableVC.shotCount = boolShot
         }
         
         if let sheet = PersonalOptionTableVC.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            sheet.detents = [.medium()] // 크기
+            sheet.largestUndimmedDetentIdentifier = .medium // bottomSheet present 시, 아래 깔려있는 view 안 어두워짐
+            sheet.preferredCornerRadius = 20.0 // state of bottomSheet Corner Radius
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false // bottomSheet 만 drag 가능, sheet 자체가 움직이지 않게 만듬
         }
         present(PersonalOptionTableVC, animated: true, completion: nil)
     }

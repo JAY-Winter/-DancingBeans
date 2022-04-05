@@ -4,7 +4,7 @@ import UIKit
 
 class menuListViewController: UIViewController {
     
-    let menuInstance = MenuInfo.shared
+    private let menuInstance = MenuInfo.shared
     
     var menuType: String = ""
     
