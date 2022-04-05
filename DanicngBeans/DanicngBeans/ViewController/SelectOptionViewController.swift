@@ -3,24 +3,34 @@ import CloudKit
 
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - variables
-    private var delegate                    : SelectOptionDelegate?
-    private let menuInstance                = MenuInfo.shared
-    private let calculateInstance           = CalculateModel.shared
-    private let actionInstance              = ActionModel()
-    private let uiModel                     = UIModel()
-    private var indexOfOneAndOnlyGetWay     : Int?
-    private var indexOfOneAndOnlyTemp       : Int?
-    private var menuImageView               = UIImageView()
-    private lazy var addMenuToCartButton    : UIButton! = self.uiModel.setSelectButton(buttonTitle: "담기", buttonWidth: 150, buttonHeight: 50)
-    private lazy var setPersonalOptionButton: UIButton! = self.uiModel.setSelectButton(buttonTitle: "Personal Option", buttonWidth: 100, buttonHeight: 30)
-    private var countStepper                = UIStepper()
-    private var menuKrNameLabel             = UILabel()
-    private var defaultMenuNameLabel        = UILabel()
-    private var defaultMenuPriceLabel       = UILabel()
-    private var countedNumberLabel          = UILabel()
-    private var countedPriceLabel           = UILabel()
-    private lazy var menuNameLine           : UILabel! = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
-    private lazy var steeperLine            : UILabel! = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    private var delegate                  : SelectOptionDelegate?
+    private let menuInstance              = MenuInfo.shared
+    private let calculateInstance         = CalculateModel.shared
+    private let actionInstance            = ActionModel()
+    private let uiModel                   = UIModel()
+    private var indexOfOneAndOnlyGetWay   : Int?
+    private var indexOfOneAndOnlyTemp     : Int?
+    private var menuImageView             = UIImageView()
+    private var countStepper              = UIStepper()
+    private lazy var addMenuToCartButton  : UIButton!
+        = self.uiModel.setSelectButton(action: #selector(addMenuToCart), buttonTitle: "담기", buttonWidth: 150, buttonHeight: 50, view: self.view)
+    private lazy var setPersonalOptionButton: UIButton!
+        = self.uiModel.setSelectButton(action: #selector(openSelectOptionBottomSheeet), buttonTitle: "Personal Option", buttonWidth: 100, buttonHeight: 30, view: self.view)
+    private lazy var menuKrNameLabel      : UILabel!
+        = self.uiModel.setLabel(text: defaultMenuKrName, size: 15, view: self.view)
+    private lazy var defaultMenuNameLabel : UILabel!
+        = self.uiModel.setLabel(text: menuInstance.menuInfoStructureInstance.name, size: 15, view: self.view)
+    private lazy var defaultMenuPriceLabel: UILabel!
+        = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 15, view: self.view)
+    private lazy var menuNameLine         : UILabel!
+        = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    private lazy var steeperLine          : UILabel!
+        = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    private lazy var countedNumberLabel   : UILabel!
+        = self.uiModel.setLabel(text: "\(String(menuInstance.menuInfoStructureInstance.count))잔", size: 20, view: self.view)
+    private lazy var countedPriceLabel    : UILabel!
+        = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
+    
     
     var menuImage         = UIImage()
     var defaultMenuEngName: String!
@@ -42,53 +52,27 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - User actions
     
     func setView() {
-
         self.menuImageView.image = menuImage
-        
-        self.defaultMenuNameLabel.text = menuInstance.menuInfoStructureInstance.name
-        self.defaultMenuPriceLabel.text = calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price)
-        
-        self.menuKrNameLabel.text = defaultMenuKrName
-        self.menuKrNameLabel.font = UIFont(name: "Gill Sans", size: 15)
         
         self.countStepper = setCountStepper(stepper: countStepper, min: 1, max: 30)
         self.countStepper.translatesAutoresizingMaskIntoConstraints = false
         self.countStepper.addTarget(self, action: #selector(calculateCountedPrice(_:)), for: .valueChanged)
         
-        self.countedNumberLabel.text = "\(String(menuInstance.menuInfoStructureInstance.count))잔"
-        self.countedPriceLabel.text = calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price)
-        
         self.addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
         self.setPersonalOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
         
         view.addSubview(menuImageView)
-        view.addSubview(defaultMenuNameLabel)
-        view.addSubview(defaultMenuPriceLabel)
         view.addSubview(menuNameLine)
-        view.addSubview(addMenuToCartButton)
-        view.addSubview(setPersonalOptionButton)
-        view.addSubview(menuKrNameLabel)
         view.addSubview(countStepper)
-        view.addSubview(countedPriceLabel)
-        view.addSubview(countedNumberLabel)
-        // view.addSubview(menuNameLine)
-        // view.addSubview(steeperLine)
         
         menuImageView.translatesAutoresizingMaskIntoConstraints           = false
-        defaultMenuNameLabel.translatesAutoresizingMaskIntoConstraints    = false
         menuKrNameLabel.translatesAutoresizingMaskIntoConstraints         = false
-        defaultMenuPriceLabel.translatesAutoresizingMaskIntoConstraints   = false
         hotOrIce[0].translatesAutoresizingMaskIntoConstraints             = false
         hotOrIce[1].translatesAutoresizingMaskIntoConstraints             = false
         hereOrToGo[0].translatesAutoresizingMaskIntoConstraints           = false
         hereOrToGo[1].translatesAutoresizingMaskIntoConstraints           = false
-        setPersonalOptionButton.translatesAutoresizingMaskIntoConstraints = false
         countedNumberLabel.translatesAutoresizingMaskIntoConstraints      = false
         countedPriceLabel.translatesAutoresizingMaskIntoConstraints       = false
-        addMenuToCartButton.translatesAutoresizingMaskIntoConstraints     = false
-        setPersonalOptionButton.translatesAutoresizingMaskIntoConstraints = false
-        // menuNameLine.translatesAutoresizingMaskIntoConstraints            = false
-        // steeperLine.translatesAutoresizingMaskIntoConstraints             = false
         
         menuImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         menuImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -114,8 +98,6 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         hereOrToGo[1].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
         hereOrToGo[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         
-        // addMenuToCartButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        // addMenuToCartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         addMenuToCartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addMenuToCartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         
@@ -132,12 +114,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         countedPriceLabel.leadingAnchor.constraint(equalTo: countStepper.trailingAnchor, constant: 60).isActive = true
         
         menuNameLine.topAnchor.constraint(equalTo: menuKrNameLabel.bottomAnchor, constant: 5).isActive = true
-        // menuNameLine.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        // menuNameLine.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
         steeperLine.bottomAnchor.constraint(equalTo: countStepper.topAnchor, constant: -10).isActive = true
-        // steeperLine.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        // steeperLine.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
     }
     
 
@@ -257,7 +235,6 @@ extension SelectOptionViewController {
     
     
     func setMenuDetailInfo(tempIndex: Int, menuName: String, menuImageView: UIImageView, menuEngLabel: UILabel, menuKrLabel: UILabel) {
-        
         switch tempIndex {
         case 0 : // hot
             if let img = UIImage(named: ("\(menuName)")) {
@@ -285,7 +262,6 @@ extension SelectOptionViewController {
     
     
     func setSignatureMenuButton(button1: UIButton, button2: UIButton, button3: UIButton, button4: UIButton) {
-        
         self.view.addSubview(button2)
         self.view.addSubview(button4)
         
@@ -319,21 +295,6 @@ extension SelectOptionViewController {
         button4.heightAnchor.constraint(equalToConstant: 30).isActive = true
         button4.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -190).isActive = true
         button4.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    }
-    
-    
-    func setColoredThinLine(setColor: String) -> UILabel {
-        let line = UILabel()
-        line.text = " "
-        line.font = UIFont(name: "HelveticaNeue-Bold", size: 1)
-        line.backgroundColor = UIColor(named: setColor)
-        
-        self.view.addSubview(line)
-        line.translatesAutoresizingMaskIntoConstraints = false
-        line.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        line.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-        
-        return line
     }
     
     
