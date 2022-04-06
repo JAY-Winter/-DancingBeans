@@ -5,6 +5,7 @@ import UIKit
 class menuListViewController: UIViewController {
     
     private let menuInstance = MenuInfo.shared
+    private let uiModel = UIModel()
     
     var menuType: String = ""
     
@@ -102,7 +103,11 @@ extension menuListViewController {
         let sortedprArr = beforeArr.sorted { $0.0 < $1.0}
         
         for (_, name) in sortedprArr {
-            setButton(buttonTitle: name, defaultHeight: spacingFromTop)
+            let button = uiModel.setSelectButton(buttonTitle: name, font: "HelveticaNeue", fontSize: 20, fontColor: .black, backGroundColor: UIColor(named: "customGray")!, buttonWidth: self.view.frame.width-20, buttonHeight: 50, view: self.view)
+            
+            button.topAnchor.constraint(equalTo: view.topAnchor, constant: spacingFromTop).isActive = true
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+
             spacingFromTop += 90
         }
     }

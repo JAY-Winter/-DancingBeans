@@ -9,15 +9,16 @@ import Foundation
 import UIKit
 
 class UIModel {
-    
-    func setSelectButton(action: Selector , buttonTitle: String, buttonWidth: CGFloat, buttonHeight: CGFloat, view: UIView) -> UIButton {
-        let button = UIButton(type: .system)
-        button.configuration = .filled()
-        button.configuration?.title = buttonTitle
-        button.titleLabel?.font = UIFont(name: "Gill Sans", size: 12)
+
+    func setSelectButton(buttonTitle: String, font: String, fontSize: CGFloat, fontColor: UIColor, backGroundColor: UIColor, buttonWidth: CGFloat, buttonHeight: CGFloat, view: UIView) -> UIButton {
+        let button = UIButton()
+        
+        button.setTitle(buttonTitle, for: .normal)
+        button.titleLabel?.font = UIFont(name: font, size: fontSize)
+        button.setTitleColor(fontColor, for: .normal)
+        button.backgroundColor = backGroundColor
         button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.layer.cornerRadius = 12
-        button.addTarget(self, action: action, for: .touchUpInside)
+        button.layer.cornerRadius = 8
         
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false

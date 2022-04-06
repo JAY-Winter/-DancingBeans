@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300FB1E227F1E82100F4863C /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E127F1E82100F4863C /* testViewController.swift */; };
 		300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E327F1F3E200F4863C /* categoryViewController.swift */; };
 		300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E527F2E6B900F4863C /* UIModel.swift */; };
 		300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E727F3003900F4863C /* menuListViewController.swift */; };
 		3035966327F82D2900C1F8FF /* MenuInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035966227F82D2900C1F8FF /* MenuInfoModel.swift */; };
 		3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */; };
-		3097100627F4A9230034EAA1 /* Beckman.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3097100527F4A9230034EAA1 /* Beckman.otf */; };
 		30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AC27C5E7450044B4B6 /* AppDelegate.swift */; };
 		30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */; };
 		30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702B027C5E7450044B4B6 /* ViewController.swift */; };
@@ -34,13 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		300FB1E127F1E82100F4863C /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		300FB1E327F1F3E200F4863C /* categoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryViewController.swift; sourceTree = "<group>"; };
 		300FB1E527F2E6B900F4863C /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
 		300FB1E727F3003900F4863C /* menuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuListViewController.swift; sourceTree = "<group>"; };
 		3035966227F82D2900C1F8FF /* MenuInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInfoModel.swift; sourceTree = "<group>"; };
 		3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalOptionTableDelegate.swift; sourceTree = "<group>"; };
-		3097100527F4A9230034EAA1 /* Beckman.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Beckman.otf; path = ../../../../../../Downloads/Beckman.otf; sourceTree = "<group>"; };
 		30D702A927C5E7450044B4B6 /* DanicngBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanicngBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D702AC27C5E7450044B4B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +95,6 @@
 				30D702B527C5E7480044B4B6 /* Assets.xcassets */,
 				30D702B727C5E7480044B4B6 /* LaunchScreen.storyboard */,
 				30D702BA27C5E7480044B4B6 /* Info.plist */,
-				3097100527F4A9230034EAA1 /* Beckman.otf */,
 				30D702E027C60EA80044B4B6 /* Delegate */,
 				30D702DD27C604020044B4B6 /* Model */,
 				30D702C027C603FB0044B4B6 /* ViewController */,
@@ -116,7 +111,6 @@
 				30D702C327C603FB0044B4B6 /* PersonalOptionTableViewController.swift */,
 				30D702C727C603FB0044B4B6 /* OptionShotViewController.swift */,
 				30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */,
-				300FB1E127F1E82100F4863C /* testViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -207,7 +201,6 @@
 				30D702B927C5E7480044B4B6 /* LaunchScreen.storyboard in Resources */,
 				30D702B627C5E7480044B4B6 /* Assets.xcassets in Resources */,
 				30D702B427C5E7450044B4B6 /* Main.storyboard in Resources */,
-				3097100627F4A9230034EAA1 /* Beckman.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +215,6 @@
 				30D702EA27C60ED70044B4B6 /* Value.swift in Sources */,
 				300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */,
 				30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */,
-				300FB1E227F1E82100F4863C /* testViewController.swift in Sources */,
 				300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */,
 				3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */,
 				3035966327F82D2900C1F8FF /* MenuInfoModel.swift in Sources */,

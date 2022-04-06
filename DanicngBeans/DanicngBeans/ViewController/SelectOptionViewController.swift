@@ -12,26 +12,34 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private var indexOfOneAndOnlyTemp     : Int?
     private var menuImageView             = UIImageView()
     private var countStepper              = UIStepper()
+    
     private lazy var addMenuToCartButton  : UIButton!
-        = self.uiModel.setSelectButton(action: #selector(addMenuToCart), buttonTitle: "담기", buttonWidth: 150, buttonHeight: 50, view: self.view)
+        = self.uiModel.setSelectButton(buttonTitle: "담기", font: "HelveticaNeue", fontSize: 12 ,fontColor: .white, backGroundColor: .systemBlue, buttonWidth: 150,  buttonHeight: 50, view: self.view)
+    
     private lazy var setPersonalOptionButton: UIButton!
-        = self.uiModel.setSelectButton(action: #selector(openSelectOptionBottomSheeet), buttonTitle: "Personal Option", buttonWidth: 100, buttonHeight: 30, view: self.view)
+        = self.uiModel.setSelectButton(buttonTitle: "Personal Option", font: "HelveticaNeue", fontSize: 8, fontColor: .white, backGroundColor: .systemBlue, buttonWidth: 100, buttonHeight: 30, view: self.view)
+        
     private lazy var menuKrNameLabel      : UILabel!
         = self.uiModel.setLabel(text: defaultMenuKrName, size: 15, view: self.view)
+    
     private lazy var defaultMenuNameLabel : UILabel!
         = self.uiModel.setLabel(text: menuInstance.menuInfoStructureInstance.name, size: 15, view: self.view)
+    
     private lazy var defaultMenuPriceLabel: UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 15, view: self.view)
+    
     private lazy var menuNameLine         : UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    
     private lazy var steeperLine          : UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+    
     private lazy var countedNumberLabel   : UILabel!
         = self.uiModel.setLabel(text: "\(String(menuInstance.menuInfoStructureInstance.count))잔", size: 20, view: self.view)
+    
     private lazy var countedPriceLabel    : UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
-    
-    
+
     var menuImage         = UIImage()
     var defaultMenuEngName: String!
     var defaultMenuKrName : String!
