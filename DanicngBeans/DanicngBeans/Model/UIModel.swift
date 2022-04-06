@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class UIModel {
-
+    
     func setSelectButton(buttonTitle: String, font: String, fontSize: CGFloat, fontColor: UIColor, backGroundColor: UIColor, buttonWidth: CGFloat, buttonHeight: CGFloat, view: UIView) -> UIButton {
         let button = UIButton()
         
@@ -27,6 +27,49 @@ class UIModel {
         
         return button
     }
+
+    
+    func setLabel(text: String, size: CGFloat, view: UIView) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = UIFont(name: "HelveticaNeue", size: size)
+        
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }
+    
+    
+    func setUIImageView(imageName: String, view: UIView) -> UIImageView {
+        let imageView = UIImageView()
+        
+        if let image = UIImage(named: imageName) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "Sorry :(")
+        }
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }
+
+    
+    
+    func setStepper(min: Double, max: Double, view: UIView) -> UIStepper {
+        let stepper = UIStepper()
+        
+        stepper.wraps = true
+        stepper.autorepeat = true
+        stepper.minimumValue = min
+        stepper.maximumValue = max
+        
+        view.addSubview(stepper)
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stepper
+    }
     
     
     func setColoredThinLine(setColor: String, view: UIView) -> UILabel {
@@ -42,21 +85,4 @@ class UIModel {
         
         return line
     }
-    
-    func setLabel(text: String, size: CGFloat, view: UIView) -> UILabel{
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont(name: "HelveticaNeue", size: size)
-        
-        view.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }
-    
-    @objc func addMenuToCart() {    }
-    
-    @objc func openSelectOptionBottomSheeet() {    }
-    
-    
 }

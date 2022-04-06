@@ -3,6 +3,7 @@ import CloudKit
 
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - variables
+    
     private var delegate                  : SelectOptionDelegate?
     private let menuInstance              = MenuInfo.shared
     private let calculateInstance         = CalculateModel.shared
@@ -10,8 +11,12 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private let uiModel                   = UIModel()
     private var indexOfOneAndOnlyGetWay   : Int?
     private var indexOfOneAndOnlyTemp     : Int?
-    private var menuImageView             = UIImageView()
-    private var countStepper              = UIStepper()
+    
+    private lazy var countStepper         : UIStepper!
+        = self.uiModel.setStepper(min: 1, max: 30, view: self.view)
+    
+    private lazy var menuImageView        : UIImageView!
+        = uiModel.setUIImageView(imageName: defaultMenuEngName, view: self.view)
     
     private lazy var addMenuToCartButton  : UIButton!
         = self.uiModel.setSelectButton(buttonTitle: "담기", font: "HelveticaNeue", fontSize: 12 ,fontColor: .white, backGroundColor: .systemBlue, buttonWidth: 150,  buttonHeight: 50, view: self.view)
@@ -40,15 +45,14 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private lazy var countedPriceLabel    : UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
 
-    var menuImage         = UIImage()
     var defaultMenuEngName: String!
     var defaultMenuKrName : String!
     var defaultMenuPrice  : Int!
     
     // MARK: - viewDidLoad
     
-    @IBOutlet var hotOrIce            : [UIButton]!
-    @IBOutlet var hereOrToGo          : [UIButton]!
+    @IBOutlet var hotOrIce  : [UIButton]!
+    @IBOutlet var hereOrToGo: [UIButton]!
     
     // MARK: - viewDidLoad
     
@@ -60,27 +64,15 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - User actions
     
     func setView() {
-        self.menuImageView.image = menuImage
         
-        self.countStepper = setCountStepper(stepper: countStepper, min: 1, max: 30)
-        self.countStepper.translatesAutoresizingMaskIntoConstraints = false
         self.countStepper.addTarget(self, action: #selector(calculateCountedPrice(_:)), for: .valueChanged)
-        
         self.addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
         self.setPersonalOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
-        
-        view.addSubview(menuImageView)
-        view.addSubview(menuNameLine)
-        view.addSubview(countStepper)
-        
-        menuImageView.translatesAutoresizingMaskIntoConstraints           = false
-        menuKrNameLabel.translatesAutoresizingMaskIntoConstraints         = false
+
         hotOrIce[0].translatesAutoresizingMaskIntoConstraints             = false
         hotOrIce[1].translatesAutoresizingMaskIntoConstraints             = false
         hereOrToGo[0].translatesAutoresizingMaskIntoConstraints           = false
         hereOrToGo[1].translatesAutoresizingMaskIntoConstraints           = false
-        countedNumberLabel.translatesAutoresizingMaskIntoConstraints      = false
-        countedPriceLabel.translatesAutoresizingMaskIntoConstraints       = false
         
         menuImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         menuImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -125,98 +117,9 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         
         steeperLine.bottomAnchor.constraint(equalTo: countStepper.topAnchor, constant: -10).isActive = true
     }
-    
-
-    @objc func calculateCountedPrice(_ sender: UIStepper!) {
-        let calculatedPrice = calculateInstance.calculateAddedPrice(sender: sender, menuPrice: defaultMenuPrice)
-        
-        countedNumberLabel.text = "\(Int(sender.value))잔"
-        countedPriceLabel.text = calculateInstance.setDecimalWon(value: calculatedPrice)
-        
-        menuInstance.menuInfoStructureInstance.price = calculatedPrice
-        menuInstance.menuInfoStructureInstance.count = Int(sender.value)
-    }
-    
-    
-    @objc func openSelectOptionBottomSheeet() {
-        let PersonalOptionTableVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
-        
-        PersonalOptionTableVC.menuName = menuInstance.menuInfoStructureInstance.name
-
-        if let boolShot = menuInstance.menuInfoStructureInstance.shot {
-            PersonalOptionTableVC.shotCount = boolShot
-        }
-        
-        if let sheet = PersonalOptionTableVC.sheetPresentationController {
-            sheet.detents = [.medium()] // 크기
-            sheet.largestUndimmedDetentIdentifier = .medium // bottomSheet present 시, 아래 깔려있는 view 안 어두워짐
-            sheet.preferredCornerRadius = 20.0 // state of bottomSheet Corner Radius
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false // bottomSheet 만 drag 가능, sheet 자체가 움직이지 않게 만듬
-        }
-        present(PersonalOptionTableVC, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func selectTemp(_ sender: UIButton) {
-        if indexOfOneAndOnlyTemp != nil {
-            if !sender.isSelected {
-                for index in hotOrIce.indices {
-                    hotOrIce[index].isSelected = false
-                    menuInstance.menuInfoStructureInstance.temp = sender.titleLabel?.text!
-                }
-                sender.isSelected = true
-                indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
-            }
-        } else {
-            sender.isSelected = true
-            indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
-            menuInstance.menuInfoStructureInstance.temp = sender.titleLabel?.text!
-        }
-        
-        if indexOfOneAndOnlyTemp == 0 {
-            setMenuDetailInfo(tempIndex: 0, menuName: defaultMenuEngName, menuImageView: menuImageView, menuEngLabel: defaultMenuNameLabel, menuKrLabel: menuKrNameLabel)
-        } else if indexOfOneAndOnlyTemp == 1 {
-            setMenuDetailInfo(tempIndex: 1, menuName: defaultMenuEngName, menuImageView: menuImageView, menuEngLabel: defaultMenuNameLabel, menuKrLabel: menuKrNameLabel)
-        }
-    }
-    
-    
-    @IBAction func selectGetWay(_ sender: UIButton) {
-        if indexOfOneAndOnlyGetWay != nil {
-            if !sender.isSelected {
-                for index in hereOrToGo.indices {
-                    hereOrToGo[index].isSelected = false
-                }
-                sender.isSelected = true
-                indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
-            } else {
-                sender.isSelected = false
-                indexOfOneAndOnlyGetWay = nil
-                menuInstance.menuInfoStructureInstance.getWay = nil
-            }
-        } else {
-            sender.isSelected = true
-            indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
-            menuInstance.menuInfoStructureInstance.getWay = sender.titleLabel?.text!
-        }
-    }
 }
 
-// MARK: - Extension
-
-extension UIButton {
-    func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
-        UIGraphicsBeginImageContext(CGSize(width: 1.0, height: 1.0))
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        context.setFillColor(color.cgColor)
-        context.fill(CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0))
-        
-        let backgroundImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        self.setBackgroundImage(backgroundImage, for: state)
-    }
-}
+// MARK: - Extension SelectOptionViewController Function List
 
 extension SelectOptionViewController {
     
@@ -260,8 +163,7 @@ extension SelectOptionViewController {
             }
             menuEngLabel.text = ("Iced \(defaultMenuEngName!)")
             menuKrLabel.text = ("아이스 \(defaultMenuKrName!)")
-            menuInstance.menuInfoStructureInstance.name = menuEngLabel.text
-            menuInstance.menuInfoStructureInstance.kr = menuKrNameLabel.text
+            
             
         default :
             break
@@ -306,18 +208,55 @@ extension SelectOptionViewController {
     }
     
     
-    func setCountStepper(stepper: UIStepper,min: Int, max: Int) -> UIStepper {
-        stepper.wraps = true
-        stepper.autorepeat = true
-        stepper.minimumValue = 1
-        stepper.maximumValue = 30
+    // func setCountStepper(stepper: UIStepper,min: Int, max: Int) -> UIStepper {
+    //     stepper.wraps = true
+    //     stepper.autorepeat = true
+    //     stepper.minimumValue = 1
+    //     stepper.maximumValue = 30
+    //
+    //     return stepper
+    // }
+}
+
+// MARK: - @objc Function List
+
+extension SelectOptionViewController {
+    
+    @objc func openSelectOptionBottomSheeet() {
+        let PersonalOptionTableVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
-        return stepper
+        PersonalOptionTableVC.menuName = menuInstance.menuInfoStructureInstance.name
+
+        if let boolShot = menuInstance.menuInfoStructureInstance.shot {
+            PersonalOptionTableVC.shotCount = boolShot
+        }
+        
+        if let sheet = PersonalOptionTableVC.sheetPresentationController {
+            sheet.detents = [.medium()] // 크기
+            sheet.largestUndimmedDetentIdentifier = .medium // bottomSheet present 시, 아래 깔려있는 view 안 어두워짐
+            sheet.preferredCornerRadius = 20.0 // state of bottomSheet Corner Radius
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false // bottomSheet 만 drag 가능, sheet 자체가 움직이지 않게 만듬
+        }
+        present(PersonalOptionTableVC, animated: true, completion: nil)
+    }
+    
+    
+    @objc func calculateCountedPrice(_ sender: UIStepper!) {
+        let calculatedPrice = calculateInstance.calculateAddedPrice(sender: sender, menuPrice: defaultMenuPrice)
+        
+        countedNumberLabel.text = "\(Int(sender.value))잔"
+        countedPriceLabel.text = calculateInstance.setDecimalWon(value: calculatedPrice)
+        
+        menuInstance.menuInfoStructureInstance.price = calculatedPrice
+        menuInstance.menuInfoStructureInstance.count = Int(sender.value)
     }
     
     
     @objc func addMenuToCart() {
         if menuInstance.menuInfoStructureInstance.getWay != nil, menuInstance.menuInfoStructureInstance.temp != nil {
+            menuInstance.menuInfoStructureInstance.name = self.defaultMenuNameLabel.text
+            menuInstance.menuInfoStructureInstance.kr = menuKrNameLabel.text
+
             menuInstance.putMenuList.append(menuInstance.menuInfoStructureInstance)
             calculateInstance.result = menuInstance.menuInfoStructureInstance.price!
             
@@ -342,15 +281,51 @@ extension SelectOptionViewController {
     }
 }
 
+// MARK: - SelectOptionViewController @IBAotulet Function List
 
-class testView: UIView {
+extension SelectOptionViewController {
     
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath()
-        path.lineWidth = 1
-        path.move(to: CGPoint(x: 10, y: self.frame.height/2))
-        path.addLine(to: CGPoint(x: self.frame.width-10, y: self.frame.height/2))
-        path.close()
-        path.stroke()
+    @IBAction func selectTemp(_ sender: UIButton) {
+        if indexOfOneAndOnlyTemp != nil {
+            if !sender.isSelected {
+                for index in hotOrIce.indices {
+                    hotOrIce[index].isSelected = false
+                    menuInstance.menuInfoStructureInstance.temp = sender.titleLabel?.text!
+                }
+                sender.isSelected = true
+                indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
+            }
+        } else {
+            sender.isSelected = true
+            indexOfOneAndOnlyTemp = hotOrIce.firstIndex(of: sender)
+            menuInstance.menuInfoStructureInstance.temp = sender.titleLabel?.text!
+        }
+        
+        if indexOfOneAndOnlyTemp == 0 {
+            setMenuDetailInfo(tempIndex: 0, menuName: defaultMenuEngName, menuImageView: menuImageView, menuEngLabel: defaultMenuNameLabel, menuKrLabel: menuKrNameLabel)
+        } else if indexOfOneAndOnlyTemp == 1 {
+            setMenuDetailInfo(tempIndex: 1, menuName: defaultMenuEngName, menuImageView: menuImageView, menuEngLabel: defaultMenuNameLabel, menuKrLabel: menuKrNameLabel)
+        }
+    }
+    
+    
+    @IBAction func selectGetWay(_ sender: UIButton) {
+        if indexOfOneAndOnlyGetWay != nil {
+            if !sender.isSelected {
+                for index in hereOrToGo.indices {
+                    hereOrToGo[index].isSelected = false
+                }
+                sender.isSelected = true
+                indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
+            } else {
+                sender.isSelected = false
+                indexOfOneAndOnlyGetWay = nil
+                menuInstance.menuInfoStructureInstance.getWay = nil
+            }
+        } else {
+            sender.isSelected = true
+            indexOfOneAndOnlyGetWay = hereOrToGo.firstIndex(of: sender)
+            menuInstance.menuInfoStructureInstance.getWay = sender.titleLabel?.text!
+        }
     }
 }

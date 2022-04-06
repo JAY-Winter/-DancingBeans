@@ -103,33 +103,14 @@ extension menuListViewController {
         let sortedprArr = beforeArr.sorted { $0.0 < $1.0}
         
         for (_, name) in sortedprArr {
-            let button = uiModel.setSelectButton(buttonTitle: name, font: "HelveticaNeue", fontSize: 20, fontColor: .black, backGroundColor: UIColor(named: "customGray")!, buttonWidth: self.view.frame.width-20, buttonHeight: 50, view: self.view)
-            
+            let button
+            = uiModel.setSelectButton(buttonTitle: name, font: "HelveticaNeue", fontSize: 20, fontColor: .black, backGroundColor: UIColor(named: "customGray")!, buttonWidth: self.view.frame.width-20, buttonHeight: 50, view: self.view)
+            button.addTarget(self, action: #selector(setSelectOptionVcTappedMenuButton(_:)), for: .touchUpInside)
             button.topAnchor.constraint(equalTo: view.topAnchor, constant: spacingFromTop).isActive = true
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
             spacingFromTop += 90
         }
-    }
-    
-    
-    func setButton(buttonTitle: String, defaultHeight: CGFloat) {
-        let button = UIButton(type: .system)
-        button.setTitle(buttonTitle, for: .normal)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.setTitleColor(.black, for: .normal)
-        button.contentHorizontalAlignment = .left
-        
-        self.view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration = .filled()
-        button.configuration?.baseBackgroundColor = UIColor(named: "customGray")?.withAlphaComponent(0.7)
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.topAnchor.constraint(equalTo: view.topAnchor, constant: defaultHeight).isActive = true
-        button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        button.layer.cornerRadius = 12
-        button.addTarget(self, action: #selector(setSelectOptionVcTappedMenuButton), for: .touchUpInside)
     }
     
     
@@ -142,12 +123,6 @@ extension menuListViewController {
             SelectOptionVC.defaultMenuEngName = menuInstance.menuInfoStructureInstance.name
             SelectOptionVC.defaultMenuKrName = menuInstance.menuInfoStructureInstance.kr
             SelectOptionVC.defaultMenuPrice = menuInstance.menuInfoStructureInstance.price
-            
-            if let image = UIImage(named: buttonTitle) {
-                SelectOptionVC.menuImage = image
-            } else {
-                SelectOptionVC.menuImage = UIImage(named: "Sorry :(")!
-            }
         }
         self.present(SelectOptionVC, animated: true, completion: nil)
     }
