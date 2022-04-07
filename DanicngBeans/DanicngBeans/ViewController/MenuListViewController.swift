@@ -104,10 +104,15 @@ extension menuListViewController {
         
         for (_, name) in sortedprArr {
             let button
-            = uiModel.setSelectButton(buttonTitle: name, font: "HelveticaNeue", fontSize: 20, fontColor: .black, backGroundColor: UIColor(named: "customGray")!, buttonWidth: self.view.frame.width-20, buttonHeight: 50, view: self.view)
+            = uiModel.setSelectButton(buttonTitle: name, font: "HelveticaNeue", fontSize: 15, fontColor: .black, backGroundColor: UIColor(named: "customGray")!, buttonWidth: self.view.frame.width-40, buttonHeight: 50, view: self.view)
+            
+            button.configuration?.titleAlignment = .leading
+            // button.titleLabel?.textAlignment = .left
+            
             button.addTarget(self, action: #selector(setSelectOptionVcTappedMenuButton(_:)), for: .touchUpInside)
             button.topAnchor.constraint(equalTo: view.topAnchor, constant: spacingFromTop).isActive = true
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            // button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
 
             spacingFromTop += 90
         }

@@ -1,9 +1,6 @@
-//
 //  UIModel.swift
 //  DanicngBeans
-//
 //  Created by JAEHYEON on 2022/03/29.
-//
 
 import Foundation
 import UIKit
@@ -33,7 +30,7 @@ class UIModel {
         let label = UILabel()
         label.text = text
         label.font = UIFont(name: "HelveticaNeue", size: size)
-        
+        label.adjustsFontSizeToFitWidth = true
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,25 +46,25 @@ class UIModel {
         } else {
             imageView.image = UIImage(named: "Sorry :(")
         }
+        
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         return imageView
     }
-
     
     
     func setStepper(min: Double, max: Double, view: UIView) -> UIStepper {
         let stepper = UIStepper()
-        
+
         stepper.wraps = true
         stepper.autorepeat = true
         stepper.minimumValue = min
         stepper.maximumValue = max
-        
+
         view.addSubview(stepper)
         stepper.translatesAutoresizingMaskIntoConstraints = false
-        
+
         return stepper
     }
     

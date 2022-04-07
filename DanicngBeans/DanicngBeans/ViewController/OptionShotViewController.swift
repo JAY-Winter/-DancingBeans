@@ -1,17 +1,27 @@
 import UIKit
 
+protocol SendAndReloadProtocol {
+    func sendAndReloadData(data: Int)
+}
+
 class OptionShotViewController: UIViewController {
+
+    private let menuInstance = MenuInfo.shared
+    private let uiModel      = UIModel()
+    var delegate             : SendAndReloadProtocol?
     
-    private let menuInstance              = MenuInfo.shared
-    private var confirmButton             = UIButton()
-    private var esspressoNameLabel        = UILabel()
-    private var esspressoShotCountStepper = UIStepper()
+    private lazy var confirmButton: UIButton!
+        = self.uiModel.setSelectButton(buttonTitle: "적용하기", font: "HelveticaNeue-Bold", fontSize: 15, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
+    
+    private lazy var esspressoNameLabel        : UILabel!
+        = self.uiModel.setLabel(text: "Esspresso Shot", size: 15, view: self.view)
+    
+    private lazy var esspressoShotCountStepper : UIStepper!
+        = self.uiModel.setStepper(min: 1, max: 6, view: self.view)
+    
     private var esspressoShotCountLabel   = UILabel()
     
-    
-    var delegate : SelectOptionBottomSheetDelegate?
     var resultShot: Int?
-    
 
     // MARK: - viewDidLoad
     
@@ -23,35 +33,20 @@ class OptionShotViewController: UIViewController {
     // MARK: - User actions
     
     func setView() {
-        self.confirmButton.setTitle("적용하기", for: .normal)
-        self.confirmButton.titleLabel?.font = UIFont(name: "Gill Sans", size: 15)
-        self.confirmButton.setTitleColor(.white, for: .normal)
-        self.confirmButton.backgroundColor = .systemBlue
-        self.confirmButton.layer.cornerRadius = 12
-        self.confirmButton.addTarget(self, action: #selector(newAdustOption), for: .touchUpInside)
-
+        self.confirmButton.addTarget(self, action: #selector(newNewNewButton), for: .touchUpInside)
+        
         self.esspressoShotCountStepper.wraps = false
-        self.esspressoShotCountStepper.autorepeat = true
-        self.esspressoShotCountStepper.minimumValue = 1
-        self.esspressoShotCountStepper.maximumValue = 6
         self.esspressoShotCountStepper.isContinuous = false
         self.esspressoShotCountStepper.value = Double(menuInstance.menuInfoStructureInstance.shot!)
         self.esspressoShotCountStepper.addTarget(self, action: #selector(countEsspressoShotStepper(_:)), for: .touchUpInside)
         
-        self.esspressoNameLabel.text = "Esspresso Shot"
         self.esspressoShotCountLabel.text = String(menuInstance.menuInfoStructureInstance.shot!)
         
-        view.addSubview(confirmButton)
-        view.addSubview(esspressoNameLabel)
-        view.addSubview(esspressoShotCountStepper)
         view.addSubview(esspressoShotCountLabel)
         
-        esspressoNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        esspressoShotCountStepper.translatesAutoresizingMaskIntoConstraints = false
         esspressoShotCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
 
-        esspressoNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        esspressoNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         esspressoNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
         esspressoShotCountStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -60,8 +55,6 @@ class OptionShotViewController: UIViewController {
         esspressoShotCountLabel.leadingAnchor.constraint(equalTo: esspressoShotCountStepper.trailingAnchor, constant: 60).isActive = true
         esspressoShotCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
-        confirmButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        confirmButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         confirmButton.topAnchor.constraint(equalTo: esspressoShotCountStepper.bottomAnchor, constant: 50).isActive = true
     }
@@ -72,14 +65,14 @@ class OptionShotViewController: UIViewController {
         resultShot = Int(sender.value) // count 후 변한 값
         menuInstance.menuInfoStructureInstance.shot = resultShot
     }
-
     
-    @objc func newAdustOption() {
+    @objc func newNewNewButton() {
         if let resultShotEx = resultShot {
-            delegate?.adjustOption(self, value: resultShotEx)
+            delegate?.sendAndReloadData(data: resultShotEx)
         } else {
-            delegate?.adjustOption(self, value: menuInstance.menuInfoStructureInstance.shot!)
+            delegate?.sendAndReloadData(data: menuInstance.menuInfoStructureInstance.shot!)
         }
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
 }

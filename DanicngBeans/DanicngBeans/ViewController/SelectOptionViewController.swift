@@ -19,10 +19,10 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         = uiModel.setUIImageView(imageName: defaultMenuEngName, view: self.view)
     
     private lazy var addMenuToCartButton  : UIButton!
-        = self.uiModel.setSelectButton(buttonTitle: "담기", font: "HelveticaNeue", fontSize: 12 ,fontColor: .white, backGroundColor: .systemBlue, buttonWidth: 150,  buttonHeight: 50, view: self.view)
+        = self.uiModel.setSelectButton(buttonTitle: "담기", font: "HelveticaNeue-Bold", fontSize: 15 ,fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100,  buttonHeight: 30, view: self.view)
     
     private lazy var setPersonalOptionButton: UIButton!
-        = self.uiModel.setSelectButton(buttonTitle: "Personal Option", font: "HelveticaNeue", fontSize: 8, fontColor: .white, backGroundColor: .systemBlue, buttonWidth: 100, buttonHeight: 30, view: self.view)
+        = self.uiModel.setSelectButton(buttonTitle: "Personal Option", font: "HelveticaNeue-Bold", fontSize: 11, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
         
     private lazy var menuKrNameLabel      : UILabel!
         = self.uiModel.setLabel(text: defaultMenuKrName, size: 15, view: self.view)
@@ -33,18 +33,21 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
     private lazy var defaultMenuPriceLabel: UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 15, view: self.view)
     
+    private lazy var countedNumberLabel   : UILabel!
+        = self.uiModel.setLabel(text: "\(String(menuInstance.menuInfoStructureInstance.count))잔", size: 20, view: self.view)
+    
+    private lazy var countedPriceLabel    : UILabel!
+        = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
+    
     private lazy var menuNameLine         : UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
     private lazy var steeperLine          : UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
-    private lazy var countedNumberLabel   : UILabel!
-        = self.uiModel.setLabel(text: "\(String(menuInstance.menuInfoStructureInstance.count))잔", size: 20, view: self.view)
+    private lazy var personalOptionLine   : UILabel!
+        = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
-    private lazy var countedPriceLabel    : UILabel!
-        = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
-
     var defaultMenuEngName: String!
     var defaultMenuKrName : String!
     var defaultMenuPrice  : Int!
@@ -93,16 +96,16 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         hotOrIce[1].topAnchor.constraint(equalTo: menuImageView.bottomAnchor, constant: 70).isActive = true
         hotOrIce[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         
-        hereOrToGo[0].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
+        hereOrToGo[0].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -135).isActive = true
         hereOrToGo[0].leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100).isActive = true
-        hereOrToGo[1].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
+        hereOrToGo[1].bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -135).isActive = true
         hereOrToGo[1].trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100).isActive = true
         
         addMenuToCartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addMenuToCartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
         
         setPersonalOptionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        setPersonalOptionButton.bottomAnchor.constraint(equalTo: steeperLine.topAnchor, constant: -10).isActive = true
+        setPersonalOptionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200).isActive = true
         
         countStepper.bottomAnchor.constraint(equalTo: addMenuToCartButton.topAnchor, constant: -20).isActive = true
         countStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -116,6 +119,8 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         menuNameLine.topAnchor.constraint(equalTo: menuKrNameLabel.bottomAnchor, constant: 5).isActive = true
         
         steeperLine.bottomAnchor.constraint(equalTo: countStepper.topAnchor, constant: -10).isActive = true
+        
+        personalOptionLine.bottomAnchor.constraint(equalTo: setPersonalOptionButton.topAnchor, constant: -10).isActive = true
     }
 }
 
@@ -164,7 +169,6 @@ extension SelectOptionViewController {
             menuEngLabel.text = ("Iced \(defaultMenuEngName!)")
             menuKrLabel.text = ("아이스 \(defaultMenuKrName!)")
             
-            
         default :
             break
         }
@@ -206,16 +210,6 @@ extension SelectOptionViewController {
         button4.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -190).isActive = true
         button4.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
-    
-    
-    // func setCountStepper(stepper: UIStepper,min: Int, max: Int) -> UIStepper {
-    //     stepper.wraps = true
-    //     stepper.autorepeat = true
-    //     stepper.minimumValue = 1
-    //     stepper.maximumValue = 30
-    //
-    //     return stepper
-    // }
 }
 
 // MARK: - @objc Function List
