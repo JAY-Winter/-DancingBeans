@@ -8,11 +8,12 @@ import UIKit
 
 class categoryViewController: UIViewController {
 
+    private let menuInstance = MenuInfo.shared
     private let uiModel = UIModel()
     private lazy var order = uiModel.setSelectButton(buttonTitle: "ORDER", font: "Gill Sans Bold", fontSize: 30, fontColor: .black, backGroundColor: .white, buttonWidth: 100, buttonHeight: 50, view: self.view)
     
     
-    private var categoryList: [String] = ["COFFEE", "NON COFFEE", "FILTER", "DESSERT"]
+    // private var categoryList: [String] = ["COFFEE", "NON COFFEE", "FILTER", "DESSERT"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class categoryViewController: UIViewController {
     func setView() {
         var defaultHeight: CGFloat = view.frame.height/5
         
-        for list in categoryList {
+        for list in menuInstance.categoryList {
             let button = uiModel.setSelectButton(buttonTitle: list, font: "Gill Sans Bold", fontSize: 30, fontColor: .black, backGroundColor: .white, buttonWidth: self.view.frame.width-20, buttonHeight: 40, view: self.view)
             
             button.addTarget(self, action: #selector(pushMenuListVC(_:)), for: .touchUpInside)

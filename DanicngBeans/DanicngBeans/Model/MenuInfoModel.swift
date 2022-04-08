@@ -69,6 +69,8 @@ class MenuInfo {
         "Egg Tart"               : .dessert(pr: 4, price: 3500, count: 1, getWay: nil, kr: "에그 타르트")
     ]
 
+    var categoryList: [String] = ["COFFEE", "NON COFFEE", "FILTER", "DESSERT"]
+    
     var putMenuList: [menuInfoStructure] = [menuInfoStructure]()
 
     // MARK: - func

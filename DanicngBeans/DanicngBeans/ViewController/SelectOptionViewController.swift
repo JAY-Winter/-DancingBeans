@@ -219,12 +219,6 @@ extension SelectOptionViewController {
     @objc func openSelectOptionBottomSheeet() {
         let PersonalOptionTableVC = storyboard?.instantiateViewController(withIdentifier: "PersonalOptionTableViewController") as! PersonalOptionTableViewController
         
-        PersonalOptionTableVC.menuName = menuInstance.menuInfoStructureInstance.name
-
-        if let boolShot = menuInstance.menuInfoStructureInstance.shot {
-            PersonalOptionTableVC.shotCount = boolShot
-        }
-        
         if let sheet = PersonalOptionTableVC.sheetPresentationController {
             sheet.detents = [.medium()] // 크기
             sheet.largestUndimmedDetentIdentifier = .medium // bottomSheet present 시, 아래 깔려있는 view 안 어두워짐

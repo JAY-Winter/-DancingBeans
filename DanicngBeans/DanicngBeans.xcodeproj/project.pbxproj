@@ -10,8 +10,14 @@
 		300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E327F1F3E200F4863C /* categoryViewController.swift */; };
 		300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E527F2E6B900F4863C /* UIModel.swift */; };
 		300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300FB1E727F3003900F4863C /* menuListViewController.swift */; };
+		302AAA4827FECB1000A29C7F /* OptionSyrupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA4727FECB1000A29C7F /* OptionSyrupViewController.swift */; };
+		302AAA4A27FECDAB00A29C7F /* OptionIceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA4927FECDAB00A29C7F /* OptionIceViewController.swift */; };
+		302AAA4C27FECDD400A29C7F /* OptionWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA4B27FECDD400A29C7F /* OptionWaterViewController.swift */; };
+		302AAA4E27FF0FB700A29C7F /* IceValueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA4D27FF0FB700A29C7F /* IceValueDelegate.swift */; };
+		302AAA5027FF100000A29C7F /* ShotValueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA4F27FF100000A29C7F /* ShotValueDelegate.swift */; };
+		302AAA5227FF102600A29C7F /* SyrupValueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA5127FF102600A29C7F /* SyrupValueDelegate.swift */; };
+		302AAA5427FF104300A29C7F /* WaterValueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302AAA5327FF104300A29C7F /* WaterValueDelegate.swift */; };
 		3035966327F82D2900C1F8FF /* MenuInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035966227F82D2900C1F8FF /* MenuInfoModel.swift */; };
-		3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */; };
 		30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AC27C5E7450044B4B6 /* AppDelegate.swift */; };
 		30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */; };
 		30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702B027C5E7450044B4B6 /* ViewController.swift */; };
@@ -24,10 +30,8 @@
 		30D702DA27C603FB0044B4B6 /* PayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */; };
 		30D702DF27C604020044B4B6 /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702DE27C604020044B4B6 /* ActionModel.swift */; };
 		30D702E527C60EA80044B4B6 /* SelectOptionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */; };
-		30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */; };
 		30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */; };
 		30D702E827C60EA80044B4B6 /* MenuCartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E427C60EA80044B4B6 /* MenuCartDelegate.swift */; };
-		30D702EA27C60ED70044B4B6 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D702E927C60ED70044B4B6 /* Value.swift */; };
 		30F85E2227FB06CE003C4C7E /* CalculateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F85E2127FB06CE003C4C7E /* CalculateModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +39,14 @@
 		300FB1E327F1F3E200F4863C /* categoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryViewController.swift; sourceTree = "<group>"; };
 		300FB1E527F2E6B900F4863C /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
 		300FB1E727F3003900F4863C /* menuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuListViewController.swift; sourceTree = "<group>"; };
+		302AAA4727FECB1000A29C7F /* OptionSyrupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSyrupViewController.swift; sourceTree = "<group>"; };
+		302AAA4927FECDAB00A29C7F /* OptionIceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionIceViewController.swift; sourceTree = "<group>"; };
+		302AAA4B27FECDD400A29C7F /* OptionWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionWaterViewController.swift; sourceTree = "<group>"; };
+		302AAA4D27FF0FB700A29C7F /* IceValueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IceValueDelegate.swift; sourceTree = "<group>"; };
+		302AAA4F27FF100000A29C7F /* ShotValueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotValueDelegate.swift; sourceTree = "<group>"; };
+		302AAA5127FF102600A29C7F /* SyrupValueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyrupValueDelegate.swift; sourceTree = "<group>"; };
+		302AAA5327FF104300A29C7F /* WaterValueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterValueDelegate.swift; sourceTree = "<group>"; };
 		3035966227F82D2900C1F8FF /* MenuInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInfoModel.swift; sourceTree = "<group>"; };
-		3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalOptionTableDelegate.swift; sourceTree = "<group>"; };
 		30D702A927C5E7450044B4B6 /* DanicngBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanicngBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D702AC27C5E7450044B4B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30D702AE27C5E7450044B4B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,10 +61,8 @@
 		30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableViewController.swift; sourceTree = "<group>"; };
 		30D702DE27C604020044B4B6 /* ActionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
 		30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionDelegate.swift; sourceTree = "<group>"; };
-		30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionBottomSheetDelegate.swift; sourceTree = "<group>"; };
 		30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayTableDelegate.swift; sourceTree = "<group>"; };
 		30D702E427C60EA80044B4B6 /* MenuCartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCartDelegate.swift; sourceTree = "<group>"; };
-		30D702E927C60ED70044B4B6 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		30F85E2127FB06CE003C4C7E /* CalculateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,12 +113,15 @@
 		30D702C027C603FB0044B4B6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */,
 				300FB1E327F1F3E200F4863C /* categoryViewController.swift */,
 				300FB1E727F3003900F4863C /* menuListViewController.swift */,
 				30D702C427C603FB0044B4B6 /* SelectOptionViewController.swift */,
 				30D702C327C603FB0044B4B6 /* PersonalOptionTableViewController.swift */,
+				302AAA4927FECDAB00A29C7F /* OptionIceViewController.swift */,
 				30D702C727C603FB0044B4B6 /* OptionShotViewController.swift */,
-				30D702CC27C603FB0044B4B6 /* PayTableViewController.swift */,
+				302AAA4727FECB1000A29C7F /* OptionSyrupViewController.swift */,
+				302AAA4B27FECDD400A29C7F /* OptionWaterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -122,7 +133,6 @@
 				30D702DE27C604020044B4B6 /* ActionModel.swift */,
 				30F85E2127FB06CE003C4C7E /* CalculateModel.swift */,
 				300FB1E527F2E6B900F4863C /* UIModel.swift */,
-				30D702E927C60ED70044B4B6 /* Value.swift */,
 			);
 			name = Model;
 			path = DanicngBeans/Model;
@@ -131,11 +141,13 @@
 		30D702E027C60EA80044B4B6 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				3061A62727F589EF002A8986 /* PersonalOptionTableDelegate.swift */,
 				30D702E127C60EA80044B4B6 /* SelectOptionDelegate.swift */,
-				30D702E227C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift */,
 				30D702E327C60EA80044B4B6 /* PayTableDelegate.swift */,
 				30D702E427C60EA80044B4B6 /* MenuCartDelegate.swift */,
+				302AAA4D27FF0FB700A29C7F /* IceValueDelegate.swift */,
+				302AAA4F27FF100000A29C7F /* ShotValueDelegate.swift */,
+				302AAA5127FF102600A29C7F /* SyrupValueDelegate.swift */,
+				302AAA5327FF104300A29C7F /* WaterValueDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -212,24 +224,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D702E527C60EA80044B4B6 /* SelectOptionDelegate.swift in Sources */,
-				30D702EA27C60ED70044B4B6 /* Value.swift in Sources */,
 				300FB1E827F3003900F4863C /* menuListViewController.swift in Sources */,
 				30D702B127C5E7450044B4B6 /* ViewController.swift in Sources */,
+				302AAA4A27FECDAB00A29C7F /* OptionIceViewController.swift in Sources */,
 				300FB1E427F1F3E200F4863C /* categoryViewController.swift in Sources */,
-				3061A62827F589EF002A8986 /* PersonalOptionTableDelegate.swift in Sources */,
 				3035966327F82D2900C1F8FF /* MenuInfoModel.swift in Sources */,
 				30D702AD27C5E7450044B4B6 /* AppDelegate.swift in Sources */,
-				30D702E627C60EA80044B4B6 /* SelectOptionBottomSheetDelegate.swift in Sources */,
+				302AAA4C27FECDD400A29C7F /* OptionWaterViewController.swift in Sources */,
 				30D702E727C60EA80044B4B6 /* PayTableDelegate.swift in Sources */,
 				30D702DF27C604020044B4B6 /* ActionModel.swift in Sources */,
 				300FB1E627F2E6B900F4863C /* UIModel.swift in Sources */,
 				30D702D227C603FB0044B4B6 /* SelectOptionViewController.swift in Sources */,
 				30F85E2227FB06CE003C4C7E /* CalculateModel.swift in Sources */,
 				30D702E827C60EA80044B4B6 /* MenuCartDelegate.swift in Sources */,
+				302AAA5427FF104300A29C7F /* WaterValueDelegate.swift in Sources */,
+				302AAA4E27FF0FB700A29C7F /* IceValueDelegate.swift in Sources */,
 				30D702D127C603FB0044B4B6 /* PersonalOptionTableViewController.swift in Sources */,
+				302AAA5227FF102600A29C7F /* SyrupValueDelegate.swift in Sources */,
 				30D702AF27C5E7450044B4B6 /* SceneDelegate.swift in Sources */,
+				302AAA5027FF100000A29C7F /* ShotValueDelegate.swift in Sources */,
 				30D702DA27C603FB0044B4B6 /* PayTableViewController.swift in Sources */,
 				30D702D527C603FB0044B4B6 /* OptionShotViewController.swift in Sources */,
+				302AAA4827FECB1000A29C7F /* OptionSyrupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
