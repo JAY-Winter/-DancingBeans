@@ -16,30 +16,18 @@ class MenuInfo {
     }
 
     struct menuInfoStructure {
-        var name: String!
-        var price: Int!
-        var count: Int!
-        var shot: Int?
-        var syrup: Int?
-        var ice: String?
-        var water: String?
-        var temp: String?
+        var name  : String!
+        var price : Int!
+        var count : Int!
+        var shot  : Int?
+        var syrup : Int?
+        var ice   : String?
+        var water : String?
+        var temp  : String?
         var getWay: String?
-        var kr: String!
+        var kr    : String!
     }
    
-    // payTableView 에서  를 기준으로 삼는데, 이때
-    // 2개 이상의 메뉴가 담길 시, class 자체 변수인 name, price 등을 가져온다.
-    
-    // menuListVC 에서 다른 메뉴 선택할 때, MenuInfoModel.setMenuOptionTappedMenuButton()
-    // 동작으로 class 자체 변수 name, price 등이 각 메뉴의 값에 맞게 변하게 된다.
-    // 선택된 메뉴를 PUT 이후 MenuInfoModel.putMenuList 확인해보면 모든 Index 의 변수가
-    // 가장 최근에 추가된 변수로 덮혀진다.
-    // 이는, MenuInfoModel.putMenuList 에 추가되는 것이 기존에 MenuInfo class 자체 변수
-    // name, price, count 등이 들어가게 되는데 위에 설명과 같이 메뉴가 select 될 때마다 변하기 때문에
-    // 이러한 현상이 일어났던 것이었다.
-    // 따라서 menu 에 관한 추가 구조체를 만들어서 이에 기존 변수를 담아 활용했다
-    
     var menuInfoStructureInstance = menuInfoStructure()
     
     var menuList: Dictionary<String, menuCategory> = [
@@ -75,7 +63,7 @@ class MenuInfo {
 
     // MARK: - func
 
-    func setMenuOptionTappedMenuButton(menuName: String) {
+    func setMenuOptionTappedMenuButton(menuName: String) -> Void {
         if let menu = menuList[menuName] {
             switch menu {
             case .coffee(_, let price, let count, let shot, let syrup,let ice, let water, let temp, let getWay, let kr) :

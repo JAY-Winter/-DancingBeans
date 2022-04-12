@@ -122,15 +122,11 @@ class PayTableViewController: UIViewController, UITableViewDelegate, UITableView
 // MARK: - CustomCell
 
 class CustomCell: UITableViewCell {
-    // @IBOutlet weak var nameLabel: UILabel!
+
     var nameLabel: UILabel! = UILabel()
-    // @IBOutlet weak var optionLabel: UILabel!
     var optionLabel: UILabel! = UILabel()
-    // @IBOutlet weak var priceLabel: UILabel!
     var priceLabel: UILabel! = UILabel()
-    // @IBOutlet weak var menuImageView: UIImageView!
     var menuImageView: UIImageView! = UIImageView()
-    // @IBOutlet weak var option2Label: UILabel!
     var option2Label: UILabel! = UILabel()
 }
 
@@ -161,8 +157,6 @@ extension UITableView {
         self.backgroundView = nil
         self.separatorStyle = .singleLine
     }
-    
-
 }
 
 extension PayTableViewController {

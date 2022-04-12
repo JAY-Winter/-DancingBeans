@@ -15,13 +15,13 @@ class PersonalOptionTableViewController: UIViewController {
     private var indexOfOneAndOnly: Int?
     
     private lazy var confirmButton: UIButton!
-    = self.uiModel.setSelectButton(buttonTitle: "CHECK", font: "HelveticaNeue-Bold", fontSize: 15, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
+        = self.uiModel.setSelectButton(buttonTitle: "CHECK", font: "HelveticaNeue-Bold", fontSize: 15, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
     
     private lazy var menuNameLine: UILabel!
-    = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
+        = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
     private lazy var menuNameLabel: UILabel!
-    = self.uiModel.setLabel(text: "Personal Option", size: 15, view: self.view)
+        = self.uiModel.setLabel(text: "Personal Option", size: 15, view: self.view)
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,7 +31,6 @@ class PersonalOptionTableViewController: UIViewController {
         super.viewDidLoad()
         setAutoLayout()
         setFunction()
-        setPersonalOptionList()
     }
     
     // MARK: - User actions
@@ -63,19 +62,21 @@ class PersonalOptionTableViewController: UIViewController {
         self.tableView.dataSource = self
         
         confirmButton.addTarget(self, action: #selector(checkChangedOption), for: .touchUpInside)
+        
+        setPersonalOptionList()
     }
     
     
     func setPersonalOptionList() {
         switch menuInstance.menuList[menuInstance.menuInfoStructureInstance.name] {
         case .coffee(_, _, _, let shot, let syrup, let ice, let water, _, _,_) :
-            optionList["Shot"] = shot
+            optionList["Shot"]  = shot
             optionList["Syrup"] = syrup
-            optionList["Ice"] = ice
+            optionList["Ice"]   = ice
             optionList["Water"] = water
             
         case .nonCoffee(_, _, _, let ice, let water, _, _, _) :
-            optionList["Ice"] = ice
+            optionList["Ice"]   = ice
             optionList["Water"] = water
             
         case .filters :
@@ -127,11 +128,6 @@ extension PersonalOptionTableViewController {
         default :
             break
         }
-            // let AfterVC2 = self.storyboard?.instantiateViewController(withIdentifier: "OptionShotViewController") as! OptionShotViewController
-            // AfterVC2.delegate = self // delegate? 라고 하면 안 됨 . .. . .왜..?
-            // AfterVC2.sheetPresentationController?.detents = [.medium()]
-            //
-            // present(AfterVC2, animated: true, completion: nil)
     }
     
     
@@ -159,14 +155,14 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
         return 80
     }
     
-    // tableView 생성 func 는 viewDidLoad 시 한 번만 되는듯
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "personalOptionCell", for: indexPath) as! personalTableView
         
         cell.addSubview(cell.optionButton)
-        cell.optionButton.configuration = .plain() // optionButton.configuration Instance 생성
+        cell.optionButton.configuration = .plain()
         cell.optionButton.configuration?.title = (optionList.keys.sorted())[indexPath.row]
-        
+
         switch (optionList.keys.sorted())[indexPath.row] {
         case "Ice":
             cell.optionButton.configuration?.subtitle = menuInstance.menuInfoStructureInstance.ice
@@ -197,24 +193,18 @@ extension PersonalOptionTableViewController: UITableViewDelegate, UITableViewDat
 
 extension PersonalOptionTableViewController: SendIceValue, SendShotValue, SendSyrupValue, SendWaterValue {
     func sendIceValueAndReloadData(data: String) {
-        print("1")
         tableView.reloadData()
     }
     
     func sendShotValueAndReloadData(data: Int) {
-        print("2")
         tableView.reloadData()
     }
     
     func sendSyrupValueAndReloadData(data: Int) {
-        print("3")
         tableView.reloadData()
     }
     
     func sendWaterValueAndReloadData(data: String) {
-        print("4")
         tableView.reloadData()
     }
-    
-    
 }
