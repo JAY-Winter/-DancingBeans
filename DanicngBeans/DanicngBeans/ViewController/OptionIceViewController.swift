@@ -31,8 +31,6 @@ class OptionIceViewController: UIViewController {
         button1.backgroundColor = .brown
         
         view.addSubview(button1)
-        
-        
     }
     
     func setAutuLayout() {

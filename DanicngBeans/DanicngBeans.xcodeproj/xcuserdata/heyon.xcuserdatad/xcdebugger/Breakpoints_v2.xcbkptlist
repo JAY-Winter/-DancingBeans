@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3C90D7D2-EF01-408A-BE3E-606CF0AF0037"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DanicngBeans/Model/CalculateModel.swift"
