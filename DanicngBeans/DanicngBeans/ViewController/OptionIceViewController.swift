@@ -12,7 +12,7 @@ class OptionIceViewController: UIViewController {
 
     var delegate: SendIceValue?
     private let menuInstance = MenuInfo.shared
-    private let uiModel      = UIModel()
+    private let uiModel = UIModel()
     
     private var button1: UIButton! = UIButton()
     

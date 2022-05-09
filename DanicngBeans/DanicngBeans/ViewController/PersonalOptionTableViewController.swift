@@ -9,9 +9,9 @@ import UIKit
 
 class PersonalOptionTableViewController: UIViewController {
     
-    private let menuInstance     = MenuInfo.shared
-    private let uiModel          = UIModel()
-    private var optionList       : Dictionary<String, Any> = [:]
+    private let menuInstance = MenuInfo.shared
+    private let uiModel = UIModel()
+    private var optionList: Dictionary<String, Any> = [:]
     private var indexOfOneAndOnly: Int?
     
     private lazy var confirmButton: UIButton!
@@ -70,13 +70,13 @@ class PersonalOptionTableViewController: UIViewController {
     func setPersonalOptionList() {
         switch menuInstance.menuList[menuInstance.menuInfoStructureInstance.name] {
         case .coffee(_, _, _, let shot, let syrup, let ice, let water, _, _,_) :
-            optionList["Shot"]  = shot
+            optionList["Shot"] = shot
             optionList["Syrup"] = syrup
-            optionList["Ice"]   = ice
+            optionList["Ice"] = ice
             optionList["Water"] = water
             
         case .nonCoffee(_, _, _, let ice, let water, _, _, _) :
-            optionList["Ice"]   = ice
+            optionList["Ice"] = ice
             optionList["Water"] = water
             
         case .filters :

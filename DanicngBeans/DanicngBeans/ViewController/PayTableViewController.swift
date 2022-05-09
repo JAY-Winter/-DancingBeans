@@ -3,17 +3,17 @@ import UIKit
 
 class PayTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let cellIdentifier    : String = "cell"
-    private let menuInstance      : MenuInfo = MenuInfo.shared
-    private let calculateInstance : CalculateModel = CalculateModel.shared
-    private let actionInstance    : ActionModel = ActionModel()
-    private var delegate          : PayTableDelegate?
+    private let cellIdentifier: String = "cell"
+    private let menuInstance: MenuInfo = MenuInfo.shared
+    private let calculateInstance: CalculateModel = CalculateModel.shared
+    private let actionInstance: ActionModel = ActionModel()
+    private var delegate: PayTableDelegate?
     
     // MARK: - User actions
     
     @IBOutlet weak var tableView: UITableView!
     private var totalPriceLabel = UILabel()
-    private var orderButton     : UIButton!
+    private var orderButton: UIButton!
     
     // MARK: - User actions
     

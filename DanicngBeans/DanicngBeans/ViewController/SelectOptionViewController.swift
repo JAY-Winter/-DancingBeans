@@ -4,57 +4,57 @@ import CloudKit
 class SelectOptionViewController: UIViewController, PayTableDelegate {
     // MARK: - variables
     
-    private var delegate                  : SelectOptionDelegate?
-    private let menuInstance              = MenuInfo.shared
-    private let calculateInstance         = CalculateModel.shared
-    private let actionInstance            = ActionModel()
-    private let uiModel                   = UIModel()
-    private var indexOfOneAndOnlyGetWay   : Int?
-    private var indexOfOneAndOnlyTemp     : Int?
+    private var delegate: SelectOptionDelegate?
+    private let menuInstance = MenuInfo.shared
+    private let calculateInstance = CalculateModel.shared
+    private let actionInstance = ActionModel()
+    private let uiModel = UIModel()
+    private var indexOfOneAndOnlyGetWay: Int?
+    private var indexOfOneAndOnlyTemp: Int?
     
-    private lazy var countStepper         : UIStepper!
+    private lazy var countStepper: UIStepper!
         = self.uiModel.setStepper(min: 1, max: 30, view: self.view)
     
-    private lazy var menuImageView        : UIImageView!
+    private lazy var menuImageView: UIImageView!
         = uiModel.setUIImageView(imageName: defaultMenuEngName, view: self.view)
     
-    private lazy var addMenuToCartButton  : UIButton!
+    private lazy var addMenuToCartButton: UIButton!
         = self.uiModel.setSelectButton(buttonTitle: "담기", font: "HelveticaNeue-Bold", fontSize: 15 ,fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100,  buttonHeight: 30, view: self.view)
     
     private lazy var setPersonalOptionButton: UIButton!
         = self.uiModel.setSelectButton(buttonTitle: "Personal Option", font: "HelveticaNeue-Bold", fontSize: 11, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
         
-    private lazy var menuKrNameLabel      : UILabel!
+    private lazy var menuKrNameLabel: UILabel!
         = self.uiModel.setLabel(text: defaultMenuKrName, size: 15, view: self.view)
     
-    private lazy var defaultMenuNameLabel : UILabel!
+    private lazy var defaultMenuNameLabel: UILabel!
         = self.uiModel.setLabel(text: menuInstance.menuInfoStructureInstance.name, size: 15, view: self.view)
     
     private lazy var defaultMenuPriceLabel: UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 15, view: self.view)
     
-    private lazy var countedNumberLabel   : UILabel!
+    private lazy var countedNumberLabel: UILabel!
         = self.uiModel.setLabel(text: "\(String(menuInstance.menuInfoStructureInstance.count))잔", size: 20, view: self.view)
     
-    private lazy var countedPriceLabel    : UILabel!
+    private lazy var countedPriceLabel: UILabel!
         = self.uiModel.setLabel(text: calculateInstance.setDecimalWon(value: menuInstance.menuInfoStructureInstance.price), size: 20, view: self.view)
     
-    private lazy var menuNameLine         : UILabel!
+    private lazy var menuNameLine: UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
-    private lazy var steeperLine          : UILabel!
+    private lazy var steeperLine: UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
-    private lazy var personalOptionLine   : UILabel!
+    private lazy var personalOptionLine: UILabel!
         = self.uiModel.setColoredThinLine(setColor: "black", view: self.view)
     
     var defaultMenuEngName: String!
-    var defaultMenuKrName : String!
-    var defaultMenuPrice  : Int!
+    var defaultMenuKrName: String!
+    var defaultMenuPrice: Int!
     
     // MARK: - viewDidLoad
     
-    @IBOutlet var hotOrIce  : [UIButton]!
+    @IBOutlet var hotOrIce: [UIButton]!
     @IBOutlet var hereOrToGo: [UIButton]!
     
     // MARK: - viewDidLoad
@@ -72,10 +72,10 @@ class SelectOptionViewController: UIViewController, PayTableDelegate {
         self.addMenuToCartButton.addTarget(self, action: #selector(addMenuToCart), for: .touchUpInside)
         self.setPersonalOptionButton.addTarget(self, action: #selector(openSelectOptionBottomSheeet), for: .touchUpInside)
 
-        hotOrIce[0].translatesAutoresizingMaskIntoConstraints             = false
-        hotOrIce[1].translatesAutoresizingMaskIntoConstraints             = false
-        hereOrToGo[0].translatesAutoresizingMaskIntoConstraints           = false
-        hereOrToGo[1].translatesAutoresizingMaskIntoConstraints           = false
+        hotOrIce[0].translatesAutoresizingMaskIntoConstraints = false
+        hotOrIce[1].translatesAutoresizingMaskIntoConstraints = false
+        hereOrToGo[0].translatesAutoresizingMaskIntoConstraints = false
+        hereOrToGo[1].translatesAutoresizingMaskIntoConstraints = false
         
         menuImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         menuImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
