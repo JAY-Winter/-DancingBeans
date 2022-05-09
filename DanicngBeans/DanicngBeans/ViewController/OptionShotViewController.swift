@@ -3,9 +3,9 @@ import UIKit
 
 class OptionShotViewController: UIViewController {
 
-    var delegate             : SendShotValue?
+    var delegate: SendShotValue?
     private let menuInstance = MenuInfo.shared
-    private let uiModel      = UIModel()
+    private let uiModel = UIModel()
     
     
     private lazy var confirmButton: UIButton!

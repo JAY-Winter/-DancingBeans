@@ -13,7 +13,7 @@ class OptionWaterViewController: UIViewController {
 
     var delegate: SendWaterValue?
     private let menuInstance = MenuInfo.shared
-    private let uiModel      = UIModel()
+    private let uiModel = UIModel()
         
     private lazy var confirmButton: UIButton!
         = self.uiModel.setSelectButton(buttonTitle: "적용하기", font: "HelveticaNeue-Bold", fontSize: 15, fontColor: .white, backGroundColor: UIColor(named: "buttonBackGroundColor")!, buttonWidth: 100, buttonHeight: 30, view: self.view)
